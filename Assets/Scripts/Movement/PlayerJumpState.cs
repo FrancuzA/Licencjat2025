@@ -11,7 +11,7 @@ public class PlayerJumpState : State
     public override void Enter()
     {
         _rb = _stateMachine.GetComponent<Rigidbody>();
-        _rb.AddForce(Vector3.up * 30f, ForceMode.Impulse);
+        _rb.AddForce(Vector3.up * 5f, ForceMode.Impulse);
     }
 
     public override void Update()
@@ -25,7 +25,7 @@ public class PlayerJumpState : State
 
         if (Physics.Raycast(_stateMachine.transform.position, Vector3.down, 1f))
         {
-            _stateMachine.Begin(new PlayerGroundedState(_stateMachine));
+            _stateMachine.SetState(new PlayerGroundedState(_stateMachine));
         }
     }
 }

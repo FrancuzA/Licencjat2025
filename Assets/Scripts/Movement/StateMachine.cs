@@ -5,6 +5,15 @@ public class StateMachine : MonoBehaviour
     [SerializeField] private StateStack _stack;
     public State CurrentState { get; private set; }
     private State _PreviousState;
+    public static StateMachine instance;
+
+    private void Start()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+    }
     public void Begin(State state)
     {
         _stack = new StateStack();
@@ -40,7 +49,6 @@ public class StateMachine : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("state machine Update");
         if (CurrentState == null)
             return;
 
