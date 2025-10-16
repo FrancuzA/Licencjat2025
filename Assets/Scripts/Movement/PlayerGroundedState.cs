@@ -4,8 +4,8 @@ public class PlayerGroundedState : State
 {
     private Vector3 _input;
     private float _rotationInput;
-    private float _CurrentmovementSpeed = 300f;
-    private float _mouseSens = 0.5f; 
+    private float _CurrentmovementSpeed = 1500f;
+    private float _mouseSens = 3.0f; 
     private Rigidbody _rb;
 
     public PlayerGroundedState(StateMachine stateMachine) : base(stateMachine) { }
