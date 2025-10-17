@@ -4,8 +4,8 @@ public class PlayerGroundedState : State
 {
     private Vector3 _input;
     private float _rotationInput;
-    private float _CurrentmovementSpeed = 1500f;
-    private float _mouseSens = 3.0f; 
+    private float _CurrentmovementSpeed = 300f;
+    private float _mouseSens = 150.0f; 
     private Rigidbody _rb;
 
     public PlayerGroundedState(StateMachine stateMachine) : base(stateMachine) { }
@@ -22,11 +22,11 @@ public class PlayerGroundedState : State
         Vector3 moveDirection = _stateMachine.transform.TransformDirection(_input);
         moveDirection.y = 0;
 
-        _rb.linearVelocity = moveDirection * _CurrentmovementSpeed * Time.deltaTime;
+        _rb.linearVelocity = moveDirection * _CurrentmovementSpeed * Time.fixedDeltaTime;
 
         if (Mathf.Abs(_rotationInput) > 0.01f)
         {
-            _rb.angularVelocity = new Vector3(0, _rotationInput * _mouseSens, 0);
+            _rb.angularVelocity = new Vector3(0, _rotationInput * _mouseSens * Time.fixedDeltaTime, 0);
         }
         else
         {
@@ -37,5 +37,8 @@ public class PlayerGroundedState : State
         {
             _stateMachine.SetState(new PlayerJumpState(_stateMachine));
         }
+
     }
+
+    
 }

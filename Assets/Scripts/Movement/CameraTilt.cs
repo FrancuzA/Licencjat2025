@@ -13,7 +13,7 @@ public class CameraTilt : MonoBehaviour
     void Update()
     {
         float mouseY = Input.GetAxis("Mouse Y");
-        tiltAngle -= mouseY * mouseSensitivity;
+        tiltAngle -= mouseY * mouseSensitivity * Time.fixedDeltaTime;
         tiltAngle = Mathf.Clamp(tiltAngle, minTilt, maxTilt);
 
         if (followTarget != null && !InMenu)

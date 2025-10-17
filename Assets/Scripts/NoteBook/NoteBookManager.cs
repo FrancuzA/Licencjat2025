@@ -1,3 +1,4 @@
+using Commands;
 using NUnit.Framework.Constraints;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ public class NoteBookManager : MonoBehaviour
     {
         LoadAllPages();
         StartCoroutine(TryToRegister());
+        CommandsManager.Instance.RegisterInstance(this);
     }
 
     void Update()
@@ -76,6 +78,7 @@ public class NoteBookManager : MonoBehaviour
         return true;
     }
 
+    [Command("AddPage", "Adds an Page")]
     public void AddPage(GameObject lastPage)
     {
         lastPage.GetComponent<PageManager>().enabled = false;
