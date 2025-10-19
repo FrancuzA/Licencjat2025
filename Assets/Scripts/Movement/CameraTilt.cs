@@ -23,7 +23,7 @@ public class CameraTilt : MonoBehaviour
             followTarget.localEulerAngles = euler;
         }
 
-        if (Input.GetKeyDown(KeyCode.N))
+        if (Input.GetKeyDown(KeyCode.N) && !Dependencies.Instance.GetDependancy<NoteBookManager>().isWriting)
         {
             InMenu = !InMenu;
         }

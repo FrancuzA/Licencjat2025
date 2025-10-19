@@ -119,23 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &222836545 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 254707059662405588, guid: ca723ff9834559f4886ff96ade4ede03, type: 3}
-  m_PrefabInstance: {fileID: 8833194581994791009}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &222836550
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 222836545}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57dc510ccbaaad5429e4dd979a774746, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &265409749
 GameObject:
   m_ObjectHideFlags: 0
@@ -332,6 +315,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2633167073288957153, guid: cf6872ca03818b9428ee748af2c2789e, type: 3}
+      propertyPath: m_Padding.m_Left
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2633167073288957153, guid: cf6872ca03818b9428ee748af2c2789e, type: 3}
+      propertyPath: m_Padding.m_Right
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2633167073288957153, guid: cf6872ca03818b9428ee748af2c2789e, type: 3}
+      propertyPath: m_ChildControlWidth
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8581090527380531942, guid: cf6872ca03818b9428ee748af2c2789e, type: 3}
       propertyPath: m_Name
       value: Page
@@ -467,6 +462,7 @@ MonoBehaviour:
   noteBookObject: {fileID: 1121100941}
   pagePrefab: {fileID: 8581090527380531942, guid: cf6872ca03818b9428ee748af2c2789e, type: 3}
   pages: []
+  isWriting: 0
 --- !u!1 &1121100941
 GameObject:
   m_ObjectHideFlags: 0
@@ -1274,6 +1270,7 @@ GameObject:
   - component: {fileID: 1915654789}
   - component: {fileID: 1915654791}
   - component: {fileID: 1915654792}
+  - component: {fileID: 1915654793}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -1515,6 +1512,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4beb548ec57042248ad012fa31232a66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1915654793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1915654788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e14981d158ed754a9de686f30985526, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1961408619 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1172311658474408972, guid: 1dbfc229ab1de464f8e1741f55f18e8a, type: 3}
@@ -1662,10 +1671,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 254707059662405588, guid: ca723ff9834559f4886ff96ade4ede03, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 222836550}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca723ff9834559f4886ff96ade4ede03, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

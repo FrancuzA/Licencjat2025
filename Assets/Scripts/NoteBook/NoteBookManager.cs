@@ -11,16 +11,19 @@ public class NoteBookManager : MonoBehaviour
     public GameObject pagePrefab;
     public List<GameObject> pages;
     private int currentPageIndex = 0;
+
+    public bool isWriting = false;
     private void Start()
     {
         LoadAllPages();
         StartCoroutine(TryToRegister());
-        CommandsManager.Instance.RegisterInstance(this);
+        //CommandsManager.Instance.RegisterInstance(this);
     }
 
     void Update()
     {
-        ProcessInputs();
+        if(!isWriting)
+            ProcessInputs();
     }
 
     public void ProcessInputs()
