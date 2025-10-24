@@ -5,7 +5,7 @@ public class DictionaryManager : MonoBehaviour
 {
     public static DictionaryManager Instance { get; private set; }
 
-    private readonly Dictionary<string, string> words = new Dictionary<string, string>();
+    private readonly Dictionary<string, Translation> words = new Dictionary<string, Translation>();
 
     private void Awake()
     {
@@ -18,17 +18,18 @@ public class DictionaryManager : MonoBehaviour
         Instance = this;
     }
 
-    public void AddOrUpdate(string original, string translation)
+
+    public void AddOrUpdate(string original, Translation translation)
     {
-        if (string.IsNullOrEmpty(original))
+        if (string.IsNullOrEmpty(original) || translation == null)
             return;
 
-        words[original] = translation ?? string.Empty;
+        words[original] = translation;
 
-        Debug.Log(words[original]);
+        Debug.Log($"Saving the word /{original}/ as /{words[original].translatedText ?? string.Empty}/");
     }
 
-    public bool TryGetTranslation(string original, out string translation)
+    public bool TryGetTranslation(string original, out Translation translation)
     {
         if (original == null)
         {
@@ -39,7 +40,7 @@ public class DictionaryManager : MonoBehaviour
         return words.TryGetValue(original, out translation);
     }
 
-    public string GetTranslation(string original)
+    public Translation GetTranslation(string original)
     {
         return TryGetTranslation(original, out var translation) ? translation : null;
     }
@@ -66,7 +67,7 @@ public class DictionaryManager : MonoBehaviour
     }
 
     // Expose a read-only view of all entries
-    public IReadOnlyDictionary<string, string> GetAll()
+    public IReadOnlyDictionary<string, Translation> GetAll()
     {
         return words;
     }

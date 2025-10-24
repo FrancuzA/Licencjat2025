@@ -7,6 +7,8 @@ using UnityEngine;
 public class NoteBookManager : MonoBehaviour
 {
     public GameObject noteBookObject;
+    public GameObject settingsObject;
+    public GameObject achievementsObject;
     private GameObject currentActivePage;
     public GameObject pagePrefab;
     public List<GameObject> pages;
@@ -17,7 +19,7 @@ public class NoteBookManager : MonoBehaviour
     {
         LoadAllPages();
         StartCoroutine(TryToRegister());
-        //CommandsManager.Instance.RegisterInstance(this);
+        CommandsManager.Instance.RegisterInstance(this);
     }
 
     void Update()
@@ -60,17 +62,20 @@ public class NoteBookManager : MonoBehaviour
         pages.Clear();
         foreach(Transform child in noteBookObject.transform)
         {
-            pages.Add(child.gameObject);
+            if (child.CompareTag("Page"))
+                pages.Add(child.gameObject);
         }
     }
 
+    [Command("OpenPage", "opens the page x if it exist")]
     public void Openpage(int pageNumber)
     {
+        if (pageNumber >= pages.Count) return;
         foreach (GameObject page in pages)
         {
             page.SetActive(false);
         }
-
+        
         pages[pageNumber].SetActive(true);
         currentActivePage = pages[pageNumber];
     }
@@ -82,11 +87,13 @@ public class NoteBookManager : MonoBehaviour
     }
 
     [Command("AddPage", "Adds an Page")]
-    public void AddPage(GameObject lastPage)
+    public void AddPage()
     {
+        GameObject lastPage = Dependencies.Instance.GetDependancy<PageManager>().gameObject;
         lastPage.GetComponent<PageManager>().enabled = false;
         GameObject newPage = Instantiate(pagePrefab,noteBookObject.transform.position,Quaternion.identity,noteBookObject.transform);
         newPage.AddComponent<PageManager>();
+        LoadAllPages();
     }
 
     public void SendWordToAdd(GameObject word)
@@ -96,14 +103,16 @@ public class NoteBookManager : MonoBehaviour
     }
     public void OpenCloseNotebook()
     {
-        if (noteBookObject.activeInHierarchy)
+        if (noteBookObject.activeInHierarchy || settingsObject.activeInHierarchy || achievementsObject.activeInHierarchy)
         {
             Time.timeScale = 1f;
             noteBookObject.SetActive(false);
+            settingsObject.SetActive(false);
+            achievementsObject.SetActive(false);
             return;
         }
 
-        if (!noteBookObject.activeInHierarchy)
+        if (!noteBookObject.activeInHierarchy && !settingsObject.activeInHierarchy && !achievementsObject.activeInHierarchy)
         {
             Time.timeScale = 0f;
             noteBookObject.SetActive(true);
@@ -116,6 +125,7 @@ public class NoteBookManager : MonoBehaviour
     {
         yield return new WaitUntil(() => Dependencies.Instance != null);
         Dependencies.Instance.RegisterDependency<NoteBookManager>(this);
+
     }
     
 }

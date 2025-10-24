@@ -5,6 +5,7 @@ public class TranslateWord : MonoBehaviour
 {
     public TMP_InputField inputField;
     public TextMeshProUGUI originalText;
+    public Translation _translation;
     void Start()
     {
         inputField.onSubmit.AddListener(SendToManager);
@@ -12,7 +13,17 @@ public class TranslateWord : MonoBehaviour
 
     public void SendToManager(string word)
     {
-        DictionaryManager.Instance.AddOrUpdate(originalText.text, word);
+        if (_translation == null)
+        {
+            _translation = new Translation(word, $"correct {word}");
+        }
+        else
+        {
+            _translation.translatedText = word;
+            _translation.correctTranslation = $"correct {word}";
+        }
+
+        DictionaryManager.Instance.AddOrUpdate(originalText.text, _translation);
     }
 
 
