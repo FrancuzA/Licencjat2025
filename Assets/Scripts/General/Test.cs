@@ -4,6 +4,7 @@ using UnityEngine.Rendering.HighDefinition;
 
 public class Test : MonoBehaviour
 {
+    /*
     void Start()
     {
         Debug.Log("Applying HDRP compute shader fixes...");
@@ -50,4 +51,5 @@ public class Test : MonoBehaviour
             Debug.Log("Found HD Camera - attempting to disable compute features");
         }
     }
+    */
 }

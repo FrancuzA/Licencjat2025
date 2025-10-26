@@ -3,13 +3,17 @@ using UnityEngine;
 public class CameraTilt : MonoBehaviour
 {
     [SerializeField] private Transform followTarget; 
-    [SerializeField] private float mouseSensitivity = 0.5f;
+    [SerializeField] public float mouseSensitivity = 0.5f;
     [SerializeField] private float minTilt = -45f;
     [SerializeField] private float maxTilt = 75f;
     [SerializeField] private bool InMenu = false;
 
     private float tiltAngle = 0f;
 
+    public void Start()
+    {
+        Dependencies.Instance.RegisterDependency<CameraTilt>(this);
+    }
     void Update()
     {
         float mouseY = Input.GetAxis("Mouse Y");
