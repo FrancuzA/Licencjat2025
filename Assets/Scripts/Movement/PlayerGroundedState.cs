@@ -17,6 +17,7 @@ public class PlayerGroundedState : State
     }
     public override void Update()
     {
+        _mouseSens = Dependencies.Instance.GetDependancy<CameraTilt>().mouseSensitivity;
         _input = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         _rotationInput = Input.GetAxis("Mouse X");
 
