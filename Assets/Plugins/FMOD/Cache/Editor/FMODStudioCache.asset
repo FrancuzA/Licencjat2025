@@ -42,10 +42,10 @@ MonoBehaviour:
   Path: Assets/MusicAndSounds/LicencjatAudio/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638977973422674619
+  lastModified: 638978759292949232
   FileSizes:
   - Name: Desktop
-    Value: 11914
+    Value: 12134
   Exists: 1
 --- !u!114 &-5597025129230173563
 MonoBehaviour:
@@ -252,7 +252,7 @@ MonoBehaviour:
   Path: Assets/MusicAndSounds/LicencjatAudio/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638977973422694674
+  lastModified: 638978759292954605
   FileSizes:
   - Name: Desktop
     Value: 1804
@@ -318,7 +318,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: -1042284886373644419}
   cacheVersion: 131856
-  cacheTime: 638977973422694674
+  cacheTime: 638978759292954605
   SerializableEventsDict:
   - key: event:/SFX/PickUp
     index: 0
@@ -342,6 +342,8 @@ MonoBehaviour:
     index: 9
   - key: event:/Music/GameMusic
     index: 10
+  - key: event:/UI/UIWriting
+    index: 11
 --- !u!114 &37400106520371242
 MonoBehaviour:
   m_ObjectHideFlags: 0
