@@ -26,5 +26,16 @@
 		<property name="initialValue">
 			<value>0</value>
 		</property>
+		<relationship name="modulators">
+			<destination>{b5172e09-9a1f-4b92-8deb-c1d215dc5c6b}</destination>
+		</relationship>
+	</object>
+	<object class="RandomizerModulator" id="{b5172e09-9a1f-4b92-8deb-c1d215dc5c6b}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>cursorPosition</value>
+		</property>
+		<property name="amount">
+			<value>100</value>
+		</property>
 	</object>
 </objects>
