@@ -42,11 +42,38 @@ MonoBehaviour:
   Path: Assets/MusicAndSounds/LicencjatAudio/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638977973422674619
+  lastModified: 638983154206193384
   FileSizes:
   - Name: Desktop
-    Value: 11914
+    Value: 48800
   Exists: 1
+--- !u!114 &-7606911036268994826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: snapshot:/EnterRoom
+  m_EditorClassIdentifier: 
+  Path: snapshot:/EnterRoom
+  Guid:
+    Data1: -1480751796
+    Data2: 1190091208
+    Data3: 1851055277
+    Data4: -252675816
+  Banks:
+  - {fileID: -8464567649042680170}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 0
 --- !u!114 &-5597025129230173563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,7 +263,7 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
+  Length: 1000
 --- !u!114 &-1042284886373644419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,10 +279,10 @@ MonoBehaviour:
   Path: Assets/MusicAndSounds/LicencjatAudio/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638977973422694674
+  lastModified: 638983154206238855
   FileSizes:
   - Name: Desktop
-    Value: 1804
+    Value: 1866
   Exists: 1
 --- !u!114 &-557271921842789981
 MonoBehaviour:
@@ -312,13 +339,14 @@ MonoBehaviour:
   - {fileID: 37400106520371242}
   - {fileID: -3182952677696753243}
   - {fileID: 2042059923881469108}
+  - {fileID: -7606911036268994826}
   EditorParameters: []
   MasterBanks:
   - {fileID: -8464567649042680170}
   StringsBanks:
   - {fileID: -1042284886373644419}
   cacheVersion: 131856
-  cacheTime: 638977973422694674
+  cacheTime: 638983154206238855
   SerializableEventsDict:
   - key: event:/SFX/PickUp
     index: 0
@@ -342,6 +370,10 @@ MonoBehaviour:
     index: 9
   - key: event:/Music/GameMusic
     index: 10
+  - key: event:/UI/UIWriting
+    index: 11
+  - key: snapshot:/EnterRoom
+    index: 12
 --- !u!114 &37400106520371242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -369,7 +401,7 @@ MonoBehaviour:
   - {fileID: 5121990816405331180}
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
+  Length: 1260
 --- !u!114 &2042059923881469108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -407,9 +439,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/UINotebook/Parameter 2
+  m_Name: parameter:/UINotebook/NoteBookState
   m_EditorClassIdentifier: 
-  Name: Parameter 2
+  Name: NoteBookState
   StudioPath: 
   Min: 0
   Max: 1

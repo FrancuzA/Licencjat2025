@@ -1,20 +1,28 @@
 using Commands;
-using NUnit.Framework.Constraints;
+using FMOD.Studio;
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class NoteBookManager : MonoBehaviour
 {
+    [Header("General")]
     public GameObject noteBookObject;
     public GameObject settingsObject;
-    public GameObject achievementsObject;
     private GameObject currentActivePage;
     public GameObject pagePrefab;
     public List<GameObject> pages;
     private int currentPageIndex = 0;
-
     public bool isWriting = false;
+
+    [Header("Audio")]
+    public EventReference NotebookSoundRef;
+    public EventReference PageTurnSoundRef;
+    private EventInstance NotebookSoundInstance;
+    private EventInstance PageTurnSoundInstance;
+
+    
     private void Start()
     {
         LoadAllPages();
@@ -70,6 +78,9 @@ public class NoteBookManager : MonoBehaviour
     [Command("OpenPage", "opens the page x if it exist")]
     public void Openpage(int pageNumber)
     {
+        PageTurnSoundInstance = RuntimeManager.CreateInstance(PageTurnSoundRef);
+        PageTurnSoundInstance.start();
+        PageTurnSoundInstance.release();
         if (pageNumber >= pages.Count) return;
         foreach (GameObject page in pages)
         {
@@ -103,17 +114,23 @@ public class NoteBookManager : MonoBehaviour
     }
     public void OpenCloseNotebook()
     {
-        if (noteBookObject.activeInHierarchy || settingsObject.activeInHierarchy || achievementsObject.activeInHierarchy)
+        NotebookSoundInstance = RuntimeManager.CreateInstance(NotebookSoundRef);
+        if (noteBookObject.activeInHierarchy || settingsObject.activeInHierarchy)
         {
+            NotebookSoundInstance.setParameterByName("NoteBookState", 1);
+            NotebookSoundInstance.start();
+            NotebookSoundInstance.release();
             Time.timeScale = 1f;
             noteBookObject.SetActive(false);
             settingsObject.SetActive(false);
-            achievementsObject.SetActive(false);
             return;
         }
 
-        if (!noteBookObject.activeInHierarchy && !settingsObject.activeInHierarchy && !achievementsObject.activeInHierarchy)
+        if (!noteBookObject.activeInHierarchy && !settingsObject.activeInHierarchy)
         {
+            NotebookSoundInstance.setParameterByName("NoteBookState", 0);
+            NotebookSoundInstance.start();
+            NotebookSoundInstance.release();
             Time.timeScale = 0f;
             noteBookObject.SetActive(true);
             LoadAllPages();
