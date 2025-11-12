@@ -18,7 +18,7 @@ namespace Commands
 
         public void RegisterInstance(object instance)
         {
-            _instances.Add(Instance.GetType(), instance);
+            _instances.Add(instance.GetType(), instance);
         }
 
         private void Awake()
@@ -80,8 +80,15 @@ namespace Commands
                 invocationParams.Add(Convert.ChangeType(parameterTokens[i], parameterInfo.ParameterType));
             }
 
+            object instance = this;
 
-            methodInfo.Invoke(this, invocationParams.ToArray());
+
+            if(methodInfo.DeclaringType != null && _instances.ContainsKey(methodInfo.DeclaringType))
+            {
+                instance = _instances[methodInfo.DeclaringType];
+            }
+
+            methodInfo.Invoke(instance, invocationParams.ToArray());
         }
 
     }

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="ParameterPreset" id="{06f4a2ee-b16e-4a26-b3b7-3fedc9ed2add}">
+		<property name="name">
+			<value>NoteBookState</value>
+		</property>
+		<relationship name="folder">
+			<destination>{bc2c9a40-d424-4388-8388-eb67d6a9dde9}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{1b7aebc5-3f1e-4105-a232-990f962ed63c}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{1b7aebc5-3f1e-4105-a232-990f962ed63c}">
+		<property name="parameterType">
+			<value>2</value>
+		</property>
+		<property name="maximum">
+			<value>2</value>
+		</property>
+		<property name="enumerationLabels">
+			<value>Open</value>
+			<value>Close</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

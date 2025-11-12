@@ -5,7 +5,7 @@ using UnityEngine;
 public class PageManager : MonoBehaviour
 {
     private int numberOfWords = 0;
-    public List<GameObject> sides;
+    public List<GameObject> sides = new();
     private GameObject currentSide;
 
     private void Start()
@@ -34,7 +34,7 @@ public class PageManager : MonoBehaviour
         if(numberOfWords >= 12)
         {
             NoteBookManager noteManager = Dependencies.Instance.GetDependancy<NoteBookManager>();
-            noteManager.AddPage(gameObject);
+            noteManager.AddPage();
         }
     }
 }

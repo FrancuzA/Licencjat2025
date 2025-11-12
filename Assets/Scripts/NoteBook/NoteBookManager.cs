@@ -1,16 +1,28 @@
 using Commands;
-using NUnit.Framework.Constraints;
+using FMOD.Studio;
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class NoteBookManager : MonoBehaviour
 {
+    [Header("General")]
     public GameObject noteBookObject;
+    public GameObject settingsObject;
     private GameObject currentActivePage;
     public GameObject pagePrefab;
     public List<GameObject> pages;
     private int currentPageIndex = 0;
+    public bool isWriting = false;
+
+    [Header("Audio")]
+    public EventReference NotebookSoundRef;
+    public EventReference PageTurnSoundRef;
+    private EventInstance NotebookSoundInstance;
+    private EventInstance PageTurnSoundInstance;
+
+    
     private void Start()
     {
         LoadAllPages();
@@ -20,7 +32,8 @@ public class NoteBookManager : MonoBehaviour
 
     void Update()
     {
-        ProcessInputs();
+        if(!isWriting)
+            ProcessInputs();
     }
 
     public void ProcessInputs()
@@ -57,17 +70,23 @@ public class NoteBookManager : MonoBehaviour
         pages.Clear();
         foreach(Transform child in noteBookObject.transform)
         {
-            pages.Add(child.gameObject);
+            if (child.CompareTag("Page"))
+                pages.Add(child.gameObject);
         }
     }
 
+    [Command("OpenPage", "opens the page x if it exist")]
     public void Openpage(int pageNumber)
     {
+        PageTurnSoundInstance = RuntimeManager.CreateInstance(PageTurnSoundRef);
+        PageTurnSoundInstance.start();
+        PageTurnSoundInstance.release();
+        if (pageNumber >= pages.Count) return;
         foreach (GameObject page in pages)
         {
             page.SetActive(false);
         }
-
+        
         pages[pageNumber].SetActive(true);
         currentActivePage = pages[pageNumber];
     }
@@ -79,11 +98,13 @@ public class NoteBookManager : MonoBehaviour
     }
 
     [Command("AddPage", "Adds an Page")]
-    public void AddPage(GameObject lastPage)
+    public void AddPage()
     {
+        GameObject lastPage = Dependencies.Instance.GetDependancy<PageManager>().gameObject;
         lastPage.GetComponent<PageManager>().enabled = false;
         GameObject newPage = Instantiate(pagePrefab,noteBookObject.transform.position,Quaternion.identity,noteBookObject.transform);
         newPage.AddComponent<PageManager>();
+        LoadAllPages();
     }
 
     public void SendWordToAdd(GameObject word)
@@ -93,15 +114,23 @@ public class NoteBookManager : MonoBehaviour
     }
     public void OpenCloseNotebook()
     {
-        if (noteBookObject.activeInHierarchy)
+        NotebookSoundInstance = RuntimeManager.CreateInstance(NotebookSoundRef);
+        if (noteBookObject.activeInHierarchy || settingsObject.activeInHierarchy)
         {
+            NotebookSoundInstance.setParameterByName("NoteBookState", 1);
+            NotebookSoundInstance.start();
+            NotebookSoundInstance.release();
             Time.timeScale = 1f;
             noteBookObject.SetActive(false);
+            settingsObject.SetActive(false);
             return;
         }
 
-        if (!noteBookObject.activeInHierarchy)
+        if (!noteBookObject.activeInHierarchy && !settingsObject.activeInHierarchy)
         {
+            NotebookSoundInstance.setParameterByName("NoteBookState", 0);
+            NotebookSoundInstance.start();
+            NotebookSoundInstance.release();
             Time.timeScale = 0f;
             noteBookObject.SetActive(true);
             LoadAllPages();
@@ -113,6 +142,7 @@ public class NoteBookManager : MonoBehaviour
     {
         yield return new WaitUntil(() => Dependencies.Instance != null);
         Dependencies.Instance.RegisterDependency<NoteBookManager>(this);
+
     }
     
 }

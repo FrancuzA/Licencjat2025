@@ -3,17 +3,29 @@ using UnityEngine;
 public class CameraTilt : MonoBehaviour
 {
     [SerializeField] private Transform followTarget; 
-    [SerializeField] private float mouseSensitivity = 0.5f;
+    [SerializeField] public float mouseSensitivity = 0.5f;
+    [SerializeField] private float sensitivityMin = 0.1f;
+    [SerializeField] private float sensitivityMax = 3f;
     [SerializeField] private float minTilt = -45f;
     [SerializeField] private float maxTilt = 75f;
     [SerializeField] private bool InMenu = false;
 
     private float tiltAngle = 0f;
 
+    public void Start()
+    {
+        Dependencies.Instance.RegisterDependency<CameraTilt>(this);
+    }
+
+    public void CHangeSens(float value)
+    {
+        mouseSensitivity = Mathf.Lerp(sensitivityMin, sensitivityMax, value) ;
+    }
     void Update()
     {
+
         float mouseY = Input.GetAxis("Mouse Y");
-        tiltAngle -= mouseY * mouseSensitivity * Time.fixedDeltaTime;
+        tiltAngle -= mouseY * mouseSensitivity * 300  * Time.fixedDeltaTime;
         tiltAngle = Mathf.Clamp(tiltAngle, minTilt, maxTilt);
 
         if (followTarget != null && !InMenu)
@@ -23,7 +35,7 @@ public class CameraTilt : MonoBehaviour
             followTarget.localEulerAngles = euler;
         }
 
-        if (Input.GetKeyDown(KeyCode.N))
+        if (Input.GetKeyDown(KeyCode.N) && !Dependencies.Instance.GetDependancy<NoteBookManager>().isWriting)
         {
             InMenu = !InMenu;
         }
