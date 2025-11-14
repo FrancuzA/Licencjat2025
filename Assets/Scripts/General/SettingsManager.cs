@@ -28,14 +28,12 @@ public class SettingsManager : MonoBehaviour
         MusicVolume.onValueChanged.AddListener(SetMusicVolume);
         SFXVolume.onValueChanged.AddListener(SetSFXVolume);
         UIVolume.onValueChanged.AddListener(SetUIVolume);
-        Dependencies.Instance.GetDependancy<CameraTilt>().CHangeSens(PlayerPrefs.GetFloat("sensitivity", 1f));
-        _camera.GetComponent<CinemachineCamera>().Lens.FieldOfView = PlayerPrefs.GetFloat("FOV", 0f);
         InitializeResolutions();
         LoadResolutionSettings();
     }
     public void SetSensitivity(float value)
     {
-        Dependencies.Instance.GetDependancy<CameraTilt>().CHangeSens(value);
+        Dependencies.Instance.GetDependancy<CameraTilt>().ChangeSens(value);
         PlayerPrefs.SetFloat("sensitivity", value);
     }
 
