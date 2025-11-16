@@ -15,6 +15,7 @@ public class CameraTilt : MonoBehaviour
     public void Start()
     {
         Dependencies.Instance.RegisterDependency<CameraTilt>(this);
+        ChangeSens(PlayerPrefs.GetFloat("sensitivity", 0.5f));
     }
 
     public void ChangeSens(float value)
