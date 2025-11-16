@@ -5,7 +5,7 @@ public class CameraTilt : MonoBehaviour
     [SerializeField] private Transform followTarget; 
     [SerializeField] public float mouseSensitivity = 0.5f;
     [SerializeField] private float sensitivityMin = 0.1f;
-    [SerializeField] private float sensitivityMax = 3f;
+    [SerializeField] private float sensitivityMax = 1f;
     [SerializeField] private float minTilt = -45f;
     [SerializeField] private float maxTilt = 75f;
     [SerializeField] private bool InMenu = false;
@@ -17,7 +17,7 @@ public class CameraTilt : MonoBehaviour
         Dependencies.Instance.RegisterDependency<CameraTilt>(this);
     }
 
-    public void CHangeSens(float value)
+    public void ChangeSens(float value)
     {
         mouseSensitivity = Mathf.Lerp(sensitivityMin, sensitivityMax, value) ;
     }

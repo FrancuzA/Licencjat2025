@@ -1,8 +1,9 @@
+using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class SettingsManager : MonoBehaviour
 {
@@ -28,15 +29,16 @@ public class SettingsManager : MonoBehaviour
         MusicVolume.onValueChanged.AddListener(SetMusicVolume);
         SFXVolume.onValueChanged.AddListener(SetSFXVolume);
         UIVolume.onValueChanged.AddListener(SetUIVolume);
-        Dependencies.Instance.GetDependancy<CameraTilt>().CHangeSens(PlayerPrefs.GetFloat("sensitivity", 1f));
-        _camera.GetComponent<CinemachineCamera>().Lens.FieldOfView = PlayerPrefs.GetFloat("FOV", 0f);
+        StartCoroutine(TryGetDep());
+        SetFOV(0f);
         InitializeResolutions();
         LoadResolutionSettings();
     }
     public void SetSensitivity(float value)
     {
-        Dependencies.Instance.GetDependancy<CameraTilt>().CHangeSens(value);
+        Dependencies.Instance.GetDependancy<CameraTilt>().ChangeSens(value);
         PlayerPrefs.SetFloat("sensitivity", value);
+        Debug.Log("sensitivity " + value);
     }
 
     public void SetFOV(float value)
@@ -44,6 +46,7 @@ public class SettingsManager : MonoBehaviour
         float fovValue = Mathf.Lerp(fovMin, fovMax, value);
         _camera.GetComponent<CinemachineCamera>().Lens.FieldOfView = fovValue;
         PlayerPrefs.SetFloat("FOV", value);
+        Debug.Log("FOV " + value + " " + fovValue);
     }
 
     public void SetMusicVolume(float value)
@@ -141,5 +144,12 @@ public class SettingsManager : MonoBehaviour
             resolutionDropdown.RefreshShownValue();
         }
     }
+
+    IEnumerator TryGetDep()
+    {
+        yield return new WaitUntil(() => Dependencies.Instance.GetDependancy<CameraTilt>() != null);
+        SetSensitivity(0.1f);
+    }
+
 }
 

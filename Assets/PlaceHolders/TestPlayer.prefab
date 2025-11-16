@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5657762918923560474}
   - component: {fileID: 7399366314292436943}
   - component: {fileID: 8919057164705469032}
+  - component: {fileID: 7831321969501465881}
   m_Layer: 0
   m_Name: TestPlayer
   m_TagString: Untagged
@@ -169,9 +170,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   followTarget: {fileID: 1172311658474408972}
   mouseSensitivity: 40
+  sensitivityMin: 0.1
+  sensitivityMax: 3
   minTilt: -45
   maxTilt: 75
   InMenu: 0
+--- !u!114 &7831321969501465881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4872235731070662818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nonRigidbodyVelocity: 0
+  attenuationObject: {fileID: 7617957881447898251}
 --- !u!1 &7617957881447898251
 GameObject:
   m_ObjectHideFlags: 0
@@ -181,6 +198,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1172311658474408972}
+  - component: {fileID: 3621734134455226562}
   m_Layer: 0
   m_Name: CamerPivot
   m_TagString: Untagged
@@ -203,3 +221,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2039110805409694633}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3621734134455226562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7617957881447898251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d2e508446be2ae46811c61439a9b690, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactRange: 5
+  interactText: {fileID: 0}

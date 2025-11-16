@@ -25,6 +25,8 @@ public class NoteBookManager : MonoBehaviour
     
     private void Start()
     {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         LoadAllPages();
         StartCoroutine(TryToRegister());
         CommandsManager.Instance.RegisterInstance(this);
@@ -123,6 +125,8 @@ public class NoteBookManager : MonoBehaviour
             Time.timeScale = 1f;
             noteBookObject.SetActive(false);
             settingsObject.SetActive(false);
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
             return;
         }
 
@@ -135,6 +139,8 @@ public class NoteBookManager : MonoBehaviour
             noteBookObject.SetActive(true);
             LoadAllPages();
             Openpage(currentPageIndex);
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
             return;
         }
     }

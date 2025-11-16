@@ -1,5 +1,5 @@
 using UnityEngine;
-
+/*
 public class PlayerPauseState : State
 {
 
@@ -24,4 +24,4 @@ public class PlayerPauseState : State
     {
         Time.timeScale = 1f;
     }
-}
+}*/
