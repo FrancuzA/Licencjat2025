@@ -7,13 +7,16 @@ public class StateMachine : MonoBehaviour
     private State _PreviousState;
     public static StateMachine instance;
 
+    public float CurrentRotationAngle { get; set; }
+
     private void Start()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
         }
     }
+
     public void Begin(State state)
     {
         _stack = new StateStack();
@@ -47,7 +50,7 @@ public class StateMachine : MonoBehaviour
         CurrentState.Enter();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (CurrentState == null)
             return;
