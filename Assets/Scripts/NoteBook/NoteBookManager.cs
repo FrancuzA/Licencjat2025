@@ -148,7 +148,6 @@ public class NoteBookManager : MonoBehaviour
     {
         yield return new WaitUntil(() => Dependencies.Instance != null);
         Dependencies.Instance.RegisterDependency<NoteBookManager>(this);
-
     }
-    
+
 }

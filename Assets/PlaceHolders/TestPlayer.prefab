@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 7399366314292436943}
   - component: {fileID: 8919057164705469032}
   - component: {fileID: 7831321969501465881}
+  - component: {fileID: 5043938804175975059}
   m_Layer: 0
   m_Name: TestPlayer
   m_TagString: Untagged
@@ -123,8 +124,8 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4872235731070662818}
   serializedVersion: 4
-  m_Mass: 3
-  m_Drag: 0.03
+  m_Mass: 1
+  m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -189,6 +190,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nonRigidbodyVelocity: 0
   attenuationObject: {fileID: 7617957881447898251}
+--- !u!114 &5043938804175975059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4872235731070662818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fcad88859060e94982094412786697c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collected: []
+  dropOffset: 5
+  dropHeight: 0
 --- !u!1 &7617957881447898251
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,3 +251,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactRange: 5
   interactText: {fileID: 0}
+  playerCamera: {fileID: 0}
