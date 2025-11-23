@@ -22,18 +22,18 @@ public class PlayerGroundedState : State
     public override void Update()
     {
         _mouseSens = Dependencies.Instance.GetDependancy<CameraTilt>().mouseSensitivity;
-        _input = new Vector3(Input.GetAxis("Horizontal"),0, Input.GetAxis("Vertical"));
+        _input = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
         float mouseX = Input.GetAxis("Mouse X");
-        // Use shared rotation from state machine
-        _stateMachine.CurrentRotationAngle += mouseX * _mouseSens * 300 * Time.fixedDeltaTime;
+        _stateMachine.CurrentRotationAngle += mouseX * _mouseSens * 300 * Time.fixedDeltaTime * Time.timeScale;
 
-        Vector3 moveDirection = _stateMachine.transform.TransformDirection(_input) * _CurrentmovementSpeed * Time.fixedDeltaTime;
+        // FIX: Use mainBody's rotation to calculate movement direction
+        Vector3 moveDirection = Quaternion.Euler(0, _stateMachine.CurrentRotationAngle, 0) * _input;
+        moveDirection = moveDirection.normalized * _CurrentmovementSpeed * Time.fixedDeltaTime;
         moveDirection.y = _rb.linearVelocity.y;
-       
-        _rb.linearVelocity = moveDirection  ;
+        _rb.linearVelocity = moveDirection;
 
-        // Apply shared rotation
+        // Apply rotation to the same transform we use for movement
         mainBody.rotation = Quaternion.Euler(0, _stateMachine.CurrentRotationAngle, 0);
 
         if (Input.GetButtonDown("Jump"))

@@ -34,6 +34,8 @@ public class NoteBookManager : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(Time.timeScale);
+
         if(!isWriting)
             ProcessInputs();
     }
