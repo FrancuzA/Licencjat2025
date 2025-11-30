@@ -32,7 +32,6 @@ public class Interactor : MonoBehaviour
 
     private void RotationChanged()
     {
-        Debug.DrawRay(gameObject.transform.position, playerCamera.transform.forward * interactRange, Color.red, 5f);
         if (Physics.Raycast(gameObject.transform.position, playerCamera.transform.forward, out RaycastHit hitInfo, interactRange))
         {
             if (hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObj))

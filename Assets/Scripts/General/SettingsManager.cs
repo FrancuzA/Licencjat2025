@@ -38,7 +38,6 @@ public class SettingsManager : MonoBehaviour
     {
         Dependencies.Instance.GetDependancy<CameraTilt>().ChangeSens(value);
         PlayerPrefs.SetFloat("sensitivity", value);
-        Debug.Log("sensitivity " + value);
     }
 
     public void SetFOV(float value)
@@ -46,7 +45,6 @@ public class SettingsManager : MonoBehaviour
         float fovValue = Mathf.Lerp(fovMin, fovMax, value);
         _camera.GetComponent<CinemachineCamera>().Lens.FieldOfView = fovValue;
         PlayerPrefs.SetFloat("FOV", value);
-        Debug.Log("FOV " + value + " " + fovValue);
     }
 
     public void SetMusicVolume(float value)
@@ -121,7 +119,6 @@ public class SettingsManager : MonoBehaviour
         PlayerPrefs.SetInt("ResolutionHeight", selectedResolution.height);
         PlayerPrefs.SetInt("ResolutionIndex", dropdownIndex);
 
-        Debug.Log($"Resolution changed to: {selectedResolution.width}x{selectedResolution.height}");
     }
 
     private void LoadResolutionSettings()

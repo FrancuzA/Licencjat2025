@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class CameraTilt : MonoBehaviour
 {
@@ -27,7 +28,6 @@ public class CameraTilt : MonoBehaviour
         float mouseY = Input.GetAxis("Mouse Y");
         tiltAngle -= mouseY * mouseSensitivity * 300  * Time.fixedDeltaTime;
         tiltAngle = Mathf.Clamp(tiltAngle, minTilt, maxTilt);
-
         if (followTarget != null && !InMenu)
         {
             Vector3 euler = followTarget.localEulerAngles;
