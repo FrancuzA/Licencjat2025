@@ -28,8 +28,8 @@ public class NoteBookManager : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         LoadAllPages();
-        StartCoroutine(TryToRegister());
         CommandsManager.Instance.RegisterInstance(this);
+        Dependencies.Instance.RegisterDependency<NoteBookManager>(this);
     }
 
     void Update()
@@ -146,10 +146,6 @@ public class NoteBookManager : MonoBehaviour
             return;
         }
     }
-    IEnumerator TryToRegister()
-    {
-        yield return new WaitUntil(() => Dependencies.Instance != null);
-        Dependencies.Instance.RegisterDependency<NoteBookManager>(this);
-    }
+   
 
 }

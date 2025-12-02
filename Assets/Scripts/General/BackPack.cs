@@ -24,6 +24,9 @@ public class BackPack : MonoBehaviour
 
     public void AddToBackpack(GameObject item)
     {
+        AudioManager Audio = Dependencies.Instance.GetDependancy<AudioManager>();
+        Audio.PickDrop = "PickUp";
+        Audio.PlayPickDrop();
         ItemInfo IItem = item.GetComponent<PickableObject>()._itemInfo;
         collected.Add(IItem);
     }
@@ -36,6 +39,10 @@ public class BackPack : MonoBehaviour
 
         Vector3 dropPosition = CalculateDropPosition();
         Instantiate(SpawnObject, dropPosition, Quaternion.identity);
+
+        AudioManager Audio = Dependencies.Instance.GetDependancy<AudioManager>();
+        Audio.PickDrop = "Drop";
+        Audio.PlayPickDrop();
     }
 
     private Vector3 CalculateDropPosition()

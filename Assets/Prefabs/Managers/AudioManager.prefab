@@ -44,3 +44,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97129252343c9e847b72062e5f7d2eda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerJump:
+    Guid:
+      Data1: -2098702182
+      Data2: 1111213772
+      Data3: -731609695
+      Data4: -968051210
+    Path: event:/SFX/Jump
+  PlayerStep:
+    Guid:
+      Data1: -1139651378
+      Data2: 1076684997
+      Data3: -544381808
+      Data4: -99736342
+    Path: event:/SFX/Walking
+  PlayerPickUp:
+    Guid:
+      Data1: 250884114
+      Data2: 1298418304
+      Data3: 8893849
+      Data4: -120655596
+    Path: event:/SFX/PickUp
+  GroundType: Sand
+  JumpPhase: Jump
+  PickDrop: PickUp

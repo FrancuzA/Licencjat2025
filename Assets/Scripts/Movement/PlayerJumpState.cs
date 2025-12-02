@@ -6,11 +6,15 @@ public class PlayerJumpState : State
     private Transform mainBody;
     private float _timer;
     private float _mouseSens = 0.5f;
+    private AudioManager audio;
 
     public PlayerJumpState(StateMachine stateMachine) : base(stateMachine) { }
 
     public override void Enter()
     {
+        audio = Dependencies.Instance.GetDependancy<AudioManager>();
+        audio.JumpPhase = "Jump";
+        audio.PlayJump();
         _rb = _stateMachine.GetComponent<Rigidbody>();
         _rb.AddForce(Vector3.up * 5f, ForceMode.Impulse);
         mainBody = _rb.GetComponent<Transform>();
@@ -36,6 +40,8 @@ public class PlayerJumpState : State
 
         if (Physics.Raycast(_stateMachine.transform.position, Vector3.down, 1f))
         {
+            audio.JumpPhase = "Land";
+            audio.PlayJump();
             _stateMachine.SetState(new PlayerGroundedState(_stateMachine));
         }
     }
