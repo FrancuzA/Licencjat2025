@@ -11,7 +11,7 @@ public class BackPack : MonoBehaviour
 
     public void Start()
     {
-        StartCoroutine(TryToRegister());
+        Dependencies.Instance.RegisterDependency<BackPack>(this);
     }
 
     public void Update()
@@ -55,11 +55,5 @@ public class BackPack : MonoBehaviour
         dropPosition.y += dropHeight;
 
         return dropPosition;
-    }
-
-    IEnumerator TryToRegister()
-    {
-        yield return new WaitUntil(() => Dependencies.Instance != null);
-        Dependencies.Instance.RegisterDependency<BackPack>(this);
     }
 }

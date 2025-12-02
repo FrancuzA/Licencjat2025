@@ -10,6 +10,7 @@ public class NoteBookManager : MonoBehaviour
     [Header("General")]
     public GameObject noteBookObject;
     public GameObject settingsObject;
+    public GameObject inventoryObject;
     private GameObject currentActivePage;
     public GameObject pagePrefab;
     public List<GameObject> pages;
@@ -34,8 +35,6 @@ public class NoteBookManager : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(Time.timeScale);
-
         if(!isWriting)
             ProcessInputs();
     }
@@ -119,7 +118,8 @@ public class NoteBookManager : MonoBehaviour
     public void OpenCloseNotebook()
     {
         NotebookSoundInstance = RuntimeManager.CreateInstance(NotebookSoundRef);
-        if (noteBookObject.activeInHierarchy || settingsObject.activeInHierarchy)
+        if (noteBookObject.activeInHierarchy || settingsObject.activeInHierarchy || inventoryObject.activeInHierarchy)
+
         {
             NotebookSoundInstance.setParameterByName("NoteBookState", 1);
             NotebookSoundInstance.start();
@@ -127,12 +127,13 @@ public class NoteBookManager : MonoBehaviour
             Time.timeScale = 1f;
             noteBookObject.SetActive(false);
             settingsObject.SetActive(false);
+            inventoryObject.SetActive(false);
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
             return;
         }
 
-        if (!noteBookObject.activeInHierarchy && !settingsObject.activeInHierarchy)
+        if (!noteBookObject.activeInHierarchy && !settingsObject.activeInHierarchy && !inventoryObject.activeInHierarchy)
         {
             NotebookSoundInstance.setParameterByName("NoteBookState", 0);
             NotebookSoundInstance.start();
