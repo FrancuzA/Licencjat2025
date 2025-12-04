@@ -1,6 +1,7 @@
-using Mono.Cecil;
-using System;
+using System.Collections.Generic;
 using System.Linq;
+using DialogueSystem.Editor.Nodes;
+using DialogueSystem.Runtime.Nodes;
 using Unity.GraphToolkit.Editor;
 using UnityEditor.AssetImporters;
 using UnityEngine;
@@ -23,14 +24,33 @@ public class DialogueImporter : ScriptedImporter
 
         while (nextNode != null)
         {
-            var runtimeNodes = TranslateNodeToRuntimeNode(nextNode);
+            var runtimeNodes = TranslateNodeModelToRuntimeNodes(nextNode);
+            runtimeAsset.Nodes.Add(runtimeNodes);
+
+            nextNode = GetNextNode(nextNode);
         }
-        
+
+        ctx.AddObjectToAsset("RuntimeAsset", runtimeAsset);
+        ctx.SetMainObject(runtimeAsset);
     }
 
     private DialogueRuntimeNodes TranslateNodeToRuntimeNode(INode nextNode)
     {
-        return null;
+        DialogueRuntimeNode node = null;
+        switch (nextNode)
+        {
+            case MessageNode messageNode:
+                messageNode.GetNodeOptionByName(messageNode.actorField).TryGetValue(out Actor actor);
+                messageNode.GetNodeOptionByName(messageNode.msgField).TryGetValue(out string msg);
+                node = new MessageRuntimeNode()
+                {
+                    Actor = actor,
+                    Message = msg,
+                };
+                break;
+        }
+
+        return node;
     }
 
     static INode GetNextNode(INode currentNode)

@@ -4,26 +4,42 @@ using UnityEngine.UI;
 
 public class DialogueRunner : MonoBehaviour
 {
-    public DialogueRuntimeGraph DialogueGRaph;
+    [SerializeField] private DialogueRuntimeGraph graph;
 
-    public Image actorImage;
-    public TextMeshProUGUI actorname;
-    public TextMeshProUGUI message;
-    public Button nextButton;
+    [Space, SerializeField] private Image actorImage;
+    [SerializeField] private TextMeshProUGUI actorNameLabel;
+    [SerializeField] private TextMeshProUGUI messageLabel;
+    [SerializeField] private Button continueButton;
+
+    private int _currentNodeIndex = 0;
 
     private void Start()
     {
-       // UpdateUI(DialogueGRaph.nodes)
+        UpdateUI(graph.Nodes[_currentNodeIndex]);
+        continueButton.onClick.AddListener(MoveNext);
     }
 
-    private void UpdateUI(DialogueRuntimeNodes node)
+    private void MoveNext()
+    {
+        _currentNodeIndex++;
+
+        if (_currentNodeIndex >= graph.Nodes.Count)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
+
+        UpdateUI(graph.Nodes[_currentNodeIndex]);
+    }
+
+    private void UpdateUI(DialogueRuntimeNode node)
     {
         switch (node)
         {
             case MessageRuntimeNode messageNode:
-                actorImage.sprite = messageNode.avatar;
-                actorname.text = messageNode._actor._name;
-                message.text = messageNode.message;
+                actorImage.sprite = messageNode.Actor.Sprite;
+                messageLabel.text = messageNode.Message;
+                actorNameLabel.text = messageNode.Actor.Name;
                 break;
         }
     }
