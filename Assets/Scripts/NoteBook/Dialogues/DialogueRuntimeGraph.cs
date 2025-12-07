@@ -6,5 +6,5 @@ using UnityEngine;
 [Serializable]
 public class DialogueRuntimeGraph : ScriptableObject
 {
-    public List<DialogueRuntimeNodes> nodes = new();
+    [SerializeReference] public DialogueRuntimeNodes StartingNode;
 }
