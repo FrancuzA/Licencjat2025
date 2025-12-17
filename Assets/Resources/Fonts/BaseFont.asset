@@ -73,9 +73,9 @@ Material:
     - _OutlineWidth: 0
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
-    - _ScaleRatioA: 1
-    - _ScaleRatioB: 1
-    - _ScaleRatioC: 1
+    - _ScaleRatioA: 0.9
+    - _ScaleRatioB: 0.73125
+    - _ScaleRatioC: 0.73125
     - _ScaleX: 1
     - _ScaleY: 1
     - _ShaderFlags: 0
@@ -149,7 +149,7 @@ Texture2D:
   m_ColorSpace: 1
   m_PlatformBlob: 
   image data: 1
-  _typelessdata: cd
+  _typelessdata: 00
   m_StreamData:
     serializedVersion: 2
     offset: 0
@@ -170,28 +170,28 @@ MonoBehaviour:
   m_Version: 1.1.0
   m_FaceInfo:
     m_FaceIndex: 0
-    m_FamilyName: Liberation Sans
+    m_FamilyName: Inter
     m_StyleName: Regular
     m_PointSize: 90
     m_Scale: 1
-    m_UnitsPerEM: 2048
-    m_LineHeight: 103.49121
-    m_AscentLine: 81.47461
-    m_CapLine: 62
-    m_MeanLine: 48
+    m_UnitsPerEM: 2816
+    m_LineHeight: 108.920456
+    m_AscentLine: 87.1875
+    m_CapLine: 66
+    m_MeanLine: 49
     m_Baseline: 0
-    m_DescentLine: -19.072266
-    m_SuperscriptOffset: 81.47461
+    m_DescentLine: -21.732954
+    m_SuperscriptOffset: 87.1875
     m_SuperscriptSize: 0.5
-    m_SubscriptOffset: -19.072266
+    m_SubscriptOffset: -21.732954
     m_SubscriptSize: 0.5
-    m_UnderlineOffset: -12.832031
-    m_UnderlineThickness: 6.591797
-    m_StrikethroughOffset: 19.2
-    m_StrikethroughThickness: 6.591797
+    m_UnderlineOffset: -17.897728
+    m_UnderlineThickness: 6.1363635
+    m_StrikethroughOffset: 19.6
+    m_StrikethroughThickness: 6.1363635
     m_TabWidth: 25
   m_Material: {fileID: -7340514540951726668}
-  m_SourceFontFileGUID: 91d373c7666f1204f89789998c73beee
+  m_SourceFontFileGUID: 
   m_CreationSettings:
     sourceFontFileName: 
     sourceFontFileGUID: 91d373c7666f1204f89789998c73beee
@@ -211,7 +211,7 @@ MonoBehaviour:
     fontStyleModifier: 0
     renderMode: 4165
     includeFontFeatures: 0
-  m_SourceFontFile: {fileID: 12800000, guid: 91d373c7666f1204f89789998c73beee, type: 3}
+  m_SourceFontFile: {fileID: 0}
   m_SourceFontFilePath: 
   m_AtlasPopulationMode: 1
   InternalDynamicOS: 0
