@@ -7,7 +7,7 @@ public class DialogueRunner : MonoBehaviour
 {
     [SerializeField] private DialogueRuntimeGraph graph;
 
-    [Space, SerializeField] private Image actorImage;
+    [SerializeField] private ButtonSpawner buttonSpawner;
     [SerializeField] private TextMeshProUGUI actorNameLabel;
     [SerializeField] private TextMeshProUGUI messageLabel;
     [SerializeField] private Button continueButton;
@@ -53,8 +53,7 @@ public class DialogueRunner : MonoBehaviour
         switch (node)
         {
             case MessageRuntimeNode messageNode:
-                actorImage.sprite = messageNode._actor._avatar;
-                messageLabel.text = messageNode.message;
+                buttonSpawner.ReciveMessage(messageNode.message);
                 actorNameLabel.text = messageNode._actor._name;
 
                 choiceButtonsParent.gameObject.SetActive(false);
