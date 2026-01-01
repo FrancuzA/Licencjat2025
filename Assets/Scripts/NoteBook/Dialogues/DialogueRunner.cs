@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class DialogueRunner : MonoBehaviour
 {
+    public GameObject dialogueScreen;
     [SerializeField] private DialogueRuntimeGraph graph;
 
     [SerializeField] private ButtonSpawner buttonSpawner;
@@ -19,9 +20,8 @@ public class DialogueRunner : MonoBehaviour
 
     private void Start()
     {
-        _currentNode = graph.StartingNode;
-        UpdateUI(graph.StartingNode);
         continueButton.onClick.AddListener(MoveNext);
+        Dependencies.Instance.RegisterDependency<DialogueRunner>(this);
     }
 
     private void MoveNext()
@@ -78,5 +78,18 @@ public class DialogueRunner : MonoBehaviour
                 }
                 break;
         }
+    }
+
+    public void ChangeDialogue(DialogueRuntimeGraph DialogueGraph)
+    {
+        graph = DialogueGraph;
+    }
+
+    public void OpenDialogue(DialogueRuntimeGraph DialogueGraph)
+    {
+        ChangeDialogue(DialogueGraph);
+        dialogueScreen.SetActive(true);
+        _currentNode = graph.StartingNode;
+        UpdateUI(graph.StartingNode);
     }
 }

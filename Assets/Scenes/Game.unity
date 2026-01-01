@@ -451,7 +451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1651008b083587e49ba8ed6ba5f6b5c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TextPanel: {fileID: 1276163278}
+  NPCDialogue: {fileID: 0}
 --- !u!1 &244366529
 GameObject:
   m_ObjectHideFlags: 0
@@ -464,6 +464,7 @@ GameObject:
   - component: {fileID: 244366533}
   - component: {fileID: 244366532}
   - component: {fileID: 244366531}
+  - component: {fileID: 244366534}
   m_Layer: 0
   m_Name: DialogCanva
   m_TagString: Untagged
@@ -554,6 +555,26 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &244366534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 244366529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 527e46aff6e490344986293178bd1632, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: NoteBookAssembly::DialogueRunner
+  dialogueScreen: {fileID: 0}
+  graph: {fileID: 2841676755933307327, guid: 8f13f3307cfaa794592d551a337ef860, type: 3}
+  buttonSpawner: {fileID: 1276163282}
+  actorNameLabel: {fileID: 527210752}
+  messageLabel: {fileID: 140326297}
+  continueButton: {fileID: 52878532}
+  choiceButtonPrefab: {fileID: 3851972042652224812, guid: c120e2d4a4cef2b4287d5ee02aba6ae8, type: 3}
+  choiceButtonsParent: {fileID: 1234769944}
 --- !u!1 &265409749
 GameObject:
   m_ObjectHideFlags: 0
@@ -707,7 +728,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 506753701}
-  - component: {fileID: 506753702}
   m_Layer: 0
   m_Name: DialogueScreen
   m_TagString: Untagged
@@ -739,25 +759,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &506753702
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 506753700}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 527e46aff6e490344986293178bd1632, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: NoteBookAssembly::DialogueRunner
-  graph: {fileID: 2841676755933307327, guid: 8f13f3307cfaa794592d551a337ef860, type: 3}
-  buttonSpawner: {fileID: 1276163282}
-  actorNameLabel: {fileID: 527210752}
-  messageLabel: {fileID: 140326297}
-  continueButton: {fileID: 52878532}
-  choiceButtonPrefab: {fileID: 3851972042652224812, guid: c120e2d4a4cef2b4287d5ee02aba6ae8, type: 3}
-  choiceButtonsParent: {fileID: 1234769944}
 --- !u!224 &510050549 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3979485314396611842, guid: 714fdb2aca0872249975d0eb4ef15a0a, type: 3}
@@ -1190,7 +1191,7 @@ GameObject:
   - component: {fileID: 1276163282}
   - component: {fileID: 1276163283}
   m_Layer: 0
-  m_Name: DialogBackGorund
+  m_Name: DialogBackGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

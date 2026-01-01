@@ -3,20 +3,9 @@ using UnityEngine;
 
 public class NPCScript : MonoBehaviour, IInteractable
 {
-    public GameObject TextPanel; 
-
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
-
+    public DialogueRuntimeGraph NPCDialogue;
     public void Interact()
     {
-        TextPanel.SetActive(true);
+        Dependencies.Instance.GetDependancy<DialogueRunner>().OpenDialogue(NPCDialogue);
     }
 }
