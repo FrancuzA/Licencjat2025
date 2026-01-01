@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PageManager : MonoBehaviour
@@ -19,9 +20,10 @@ public class PageManager : MonoBehaviour
         }
         currentSide = sides[0];
     }
-    public void AddNewWord(GameObject word)
+    public void AddNewWord(GameObject wordPref,string originalWord)
     {
-        Instantiate(word,currentSide.transform);
+        GameObject addedWord = Instantiate(wordPref,currentSide.transform);
+        addedWord.GetComponentInChildren<TextMeshProUGUI>().text = originalWord;
         numberOfWords++;
     }
     public void Update()

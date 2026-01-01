@@ -28,7 +28,9 @@ public class DialogueRunner : MonoBehaviour
     {
         if (_currentNode.OutputPorts.Count == 0)
         {
-            gameObject.SetActive(false);
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            dialogueScreen.SetActive(false);
             return;
         }
 
@@ -87,6 +89,8 @@ public class DialogueRunner : MonoBehaviour
 
     public void OpenDialogue(DialogueRuntimeGraph DialogueGraph)
     {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
         ChangeDialogue(DialogueGraph);
         dialogueScreen.SetActive(true);
         _currentNode = graph.StartingNode;
