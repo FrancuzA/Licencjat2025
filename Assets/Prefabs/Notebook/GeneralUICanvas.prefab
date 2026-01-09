@@ -3588,7 +3588,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6085921879713155516}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: SaveSystemManager, NoteBookAssembly
+        m_MethodName: SaveGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7044322996015813370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6547,6 +6559,54 @@ RectTransform:
   m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &6955910798082534353
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7383307093758972946}
+  - component: {fileID: 5578303586447505937}
+  m_Layer: 5
+  m_Name: SaveSystemControlls
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7383307093758972946
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6955910798082534353}
+  m_LocalRotation: {x: -0, y: -0, z: -0.5242593, w: -0.85155874}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4852658401644970859}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 9783.237}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5578303586447505937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6955910798082534353}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6acc75c323772db4f94add1c1104c9c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: NoteBookAssembly::SaveSystemManager
 --- !u!1 &7243585943532635301
 GameObject:
   m_ObjectHideFlags: 0
@@ -7894,6 +7954,7 @@ RectTransform:
   - {fileID: 4875457092534698301}
   - {fileID: 270905304003457309}
   - {fileID: 5458574328542473008}
+  - {fileID: 7383307093758972946}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -7980,7 +8041,9 @@ MonoBehaviour:
   settingsObject: {fileID: 8972798503373130062}
   inventoryObject: {fileID: 5392655208994267036}
   pagePrefab: {fileID: 8581090527380531942, guid: cf6872ca03818b9428ee748af2c2789e, type: 3}
+  wordPref: {fileID: 0}
   pages: []
+  wordsToAdd: []
   isWriting: 0
   NotebookSoundRef:
     Guid:
@@ -8580,7 +8643,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7269786688113749388}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5578303586447505937}
+        m_TargetAssemblyTypeName: SaveSystemManager, NoteBookAssembly
+        m_MethodName: SaveGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &4135172704777912647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9700,6 +9775,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7725507672089902626, guid: c0cf9a397d4c85643a05848b810ca764, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5578303586447505937}
     - target: {fileID: 8173743767285590596, guid: c0cf9a397d4c85643a05848b810ca764, type: 3}
       propertyPath: m_Enabled
       value: 0

@@ -1,7 +1,9 @@
+using System;
 using Unity.GraphToolkit.Editor;
 using UnityEngine;
 using static Unity.GraphToolkit.Editor.Node;
 
+[Serializable]
 public class MessageNode : Node
 {
     public string actorField = "actorField";
