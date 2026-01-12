@@ -1,46 +1,99 @@
+using DialogueSystem.Runtime.Nodes;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class DialogueRunner : MonoBehaviour
 {
+    public GameObject dialogueScreen;
     [SerializeField] private DialogueRuntimeGraph graph;
 
-    [Space, SerializeField] private Image actorImage;
+    [SerializeField] private ButtonSpawner buttonSpawner;
     [SerializeField] private TextMeshProUGUI actorNameLabel;
     [SerializeField] private TextMeshProUGUI messageLabel;
     [SerializeField] private Button continueButton;
 
-    private int _currentNodeIndex = 0;
+    [SerializeField] private Button choiceButtonPrefab;
+    [SerializeField] private RectTransform choiceButtonsParent;
+
+    private DialogueRuntimeNodes _currentNode;
 
     private void Start()
     {
-        UpdateUI(graph.Nodes[_currentNodeIndex]);
         continueButton.onClick.AddListener(MoveNext);
+        Dependencies.Instance.RegisterDependency<DialogueRunner>(this);
     }
 
     private void MoveNext()
     {
-        _currentNodeIndex++;
+        if (_currentNode.OutputPorts.Count == 0)
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            dialogueScreen.SetActive(false);
+            return;
+        }
 
-        if (_currentNodeIndex >= graph.Nodes.Count)
+        _currentNode = _currentNode.OutputPorts[0];
+        UpdateUI(_currentNode);
+    }
+
+    private void MoveToOutput(int index)
+    {
+        if (_currentNode.OutputPorts.Count == 0)
         {
             gameObject.SetActive(false);
             return;
         }
 
-        UpdateUI(graph.Nodes[_currentNodeIndex]);
+        _currentNode = _currentNode.OutputPorts[index];
+        UpdateUI(_currentNode);
     }
 
-    private void UpdateUI(DialogueRuntimeNode node)
+    private void UpdateUI(DialogueRuntimeNodes node)
     {
         switch (node)
         {
             case MessageRuntimeNode messageNode:
-                actorImage.sprite = messageNode.Actor.Sprite;
-                messageLabel.text = messageNode.Message;
-                actorNameLabel.text = messageNode.Actor.Name;
+                buttonSpawner.ReciveMessage(messageNode.message);
+                actorNameLabel.text = messageNode._actor._name;
+
+                choiceButtonsParent.gameObject.SetActive(false);
+                continueButton.gameObject.SetActive(true);
+                break;
+            case ChoiceRuntimeNode choiceNode:
+                choiceButtonsParent.DestroyAllChildren();
+
+                choiceButtonsParent.gameObject.SetActive(true);
+                continueButton.gameObject.SetActive(false);
+
+                for (var i = 0; i < choiceNode.OutputPorts.Count; i++)
+                {
+                    int outputIndex = i;
+                    Button spawnedButton = Instantiate(choiceButtonPrefab, choiceButtonsParent);
+                    spawnedButton.GetComponentInChildren<TextMeshProUGUI>().text = $"{choiceNode.ChoiceAsset.Choices[i]}";
+
+                    spawnedButton.onClick.AddListener(() =>
+                    {
+                        MoveToOutput(outputIndex);
+                    });
+                }
                 break;
         }
+    }
+
+    public void ChangeDialogue(DialogueRuntimeGraph DialogueGraph)
+    {
+        graph = DialogueGraph;
+    }
+
+    public void OpenDialogue(DialogueRuntimeGraph DialogueGraph)
+    {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        ChangeDialogue(DialogueGraph);
+        dialogueScreen.SetActive(true);
+        _currentNode = graph.StartingNode;
+        UpdateUI(graph.StartingNode);
     }
 }

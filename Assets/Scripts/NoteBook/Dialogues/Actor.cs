@@ -4,7 +4,6 @@ using UnityEngine;
 public class Actor : ScriptableObject
 {
     public string _name;
-    public Sprite _avatar;
 
     
 }

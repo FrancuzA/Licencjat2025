@@ -13,7 +13,9 @@ public class NoteBookManager : MonoBehaviour
     public GameObject inventoryObject;
     private GameObject currentActivePage;
     public GameObject pagePrefab;
+    public GameObject wordPref;
     public List<GameObject> pages;
+    public List<string> wordsToAdd = new List<string>();
     private int currentPageIndex = 0;
     public bool isWriting = false;
 
@@ -110,10 +112,10 @@ public class NoteBookManager : MonoBehaviour
         LoadAllPages();
     }
 
-    public void SendWordToAdd(GameObject word)
+    public void SendWordToAdd(string originalWord)
     {
         PageManager currentPage = Dependencies.Instance.GetDependancy<PageManager>();
-        currentPage.AddNewWord(word);
+        currentPage.AddNewWord(wordPref, originalWord);
     }
     public void OpenCloseNotebook()
     {
@@ -142,11 +144,28 @@ public class NoteBookManager : MonoBehaviour
             noteBookObject.SetActive(true);
             LoadAllPages();
             Openpage(currentPageIndex);
+            StartCoroutine(CheckForNewWords());
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
             return;
         }
     }
    
+    public IEnumerator CheckForNewWords()
+    {
+        yield return new WaitUntil(() => Dependencies.Instance.GetDependancy<PageManager>() != null);
+        if (wordsToAdd.Count > 0)
+        {
+            foreach (var word in wordsToAdd)
+            {
+               SendWordToAdd(word);
+            }
+            wordsToAdd.Clear();
+        }
+    }
 
+    public void AddWordToList(string word)
+    {
+        wordsToAdd.Add(word);
+    }
 }

@@ -1,53 +1,60 @@
 using System.Collections.Generic;
 using System.Linq;
+using DialogueSystem;
 using DialogueSystem.Editor.Nodes;
 using DialogueSystem.Runtime.Nodes;
 using Unity.GraphToolkit.Editor;
 using UnityEditor.AssetImporters;
 using UnityEngine;
 
+
 [ScriptedImporter(1, DialogueGraph.AssetExtension)]
 public class DialogueImporter : ScriptedImporter
 {
     public override void OnImportAsset(AssetImportContext ctx)
     {
-        var Graph = GraphDatabase.LoadGraphForImporter<DialogueGraph>(ctx.assetPath);
+        var graph = GraphDatabase.LoadGraphForImporter<DialogueGraph>(ctx.assetPath);
+        if (graph == null) return;
 
-        if(Graph == null)
-            return;
 
-        var startNode = Graph.GetNodes().OfType<StartNode>().FirstOrDefault();
-        if(startNode == null) return;
+        var startNodeModel = graph.GetNodes().OfType<StartNode>().FirstOrDefault();
+        if (startNodeModel == null) return;
 
         var runtimeAsset = ScriptableObject.CreateInstance<DialogueRuntimeGraph>();
-        var nextNode = GetNextNode(startNode);
-
-        while (nextNode != null)
-        {
-            var runtimeNodes = TranslateNodeModelToRuntimeNodes(nextNode);
-            runtimeAsset.Nodes.Add(runtimeNodes);
-
-            nextNode = GetNextNode(nextNode);
-        }
+        runtimeAsset.StartingNode = TranslateNodeModelToRuntimeNodes(startNodeModel.GetOutputPort(0).firstConnectedPort.GetNode());
 
         ctx.AddObjectToAsset("RuntimeAsset", runtimeAsset);
         ctx.SetMainObject(runtimeAsset);
     }
 
-    private DialogueRuntimeNodes TranslateNodeToRuntimeNode(INode nextNode)
+    private DialogueRuntimeNodes TranslateNodeModelToRuntimeNodes(INode nextNodeModel)
     {
-        DialogueRuntimeNode node = null;
-        switch (nextNode)
+        DialogueRuntimeNodes node = null;
+        switch (nextNodeModel)
         {
             case MessageNode messageNode:
                 messageNode.GetNodeOptionByName(messageNode.actorField).TryGetValue(out Actor actor);
                 messageNode.GetNodeOptionByName(messageNode.msgField).TryGetValue(out string msg);
                 node = new MessageRuntimeNode()
                 {
-                    Actor = actor,
-                    Message = msg,
+                    _actor = actor,
+                    message = msg,
                 };
                 break;
+            case ChoiceNode choiceNode:
+                choiceNode.GetNodeOptionByName(choiceNode.choiceAsset).TryGetValue(out GameChoice gameChoice);
+
+                node = new ChoiceRuntimeNode()
+                {
+                    ChoiceAsset = gameChoice,
+                };
+                break;
+        }
+
+        foreach (var outputPort in nextNodeModel.GetOutputPorts())
+        {
+            if (!outputPort.isConnected) continue;
+            node.OutputPorts.Add(TranslateNodeModelToRuntimeNodes(outputPort.firstConnectedPort.GetNode()));
         }
 
         return node;
@@ -55,10 +62,21 @@ public class DialogueImporter : ScriptedImporter
 
     static INode GetNextNode(INode currentNode)
     {
-        var outputPort = currentNode.GetOutputPortByName(DialogueGraph.DefaultOutputName);
-        var nextNodePort = outputPort.firstConnectedPort;
-        var nextNode = nextNodePort?.GetNode();
-        return nextNode;
+        var outputPorts = currentNode.GetOutputPorts();
+
+        if (outputPorts.Count() == 1)
+        {
+            var outputPort = currentNode.GetOutputPortByName(DialogueGraph.DefaultOutputPortName);
+            var nextNodePort = outputPort.firstConnectedPort;
+            return nextNodePort?.GetNode();
+        }
+
+        if (outputPorts.Count() > 1)
+        {
+
+        }
+
+        return null;
     }
 
 }

@@ -1,22 +1,32 @@
 using TMPro;
 using UnityEngine;
 
-public class NPCScript : MonoBehaviour, IInteractable
+public class NPCScript : MonoBehaviour, IInteractable, ISaveSystemElement
 {
-    public GameObject TextPanel; 
+    public DialogueRuntimeGraph NPCDialogue;
+    public string NPCName = " ";
+    private Transform NPCtransform;
 
-    void Start()
+    private void Start()
     {
-        
+        NPCtransform = transform;
     }
-
-    void Update()
-    {
-        
-    }
-
     public void Interact()
     {
-        TextPanel.SetActive(true);
+        Dependencies.Instance.GetDependancy<DialogueRunner>().OpenDialogue(NPCDialogue);
+    }
+
+    public void LoadData(SaveData saveData)
+    {
+        if (saveData.NPCPositions.ContainsKey(NPCName))
+        {
+            NPCtransform.position = saveData.NPCPositions[NPCName];
+        }
+           
+    }
+
+    public void SaveData(SaveData saveData)
+    {
+        saveData.NPCPositions[NPCName] = NPCtransform.position;
     }
 }
