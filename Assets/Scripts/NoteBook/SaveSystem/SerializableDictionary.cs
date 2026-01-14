@@ -7,9 +7,11 @@ public class SerializableDictionary<TKey, TValue> : Dictionary<TKey, TValue>, IS
 {
     [SerializeField]private List<TKey> _keys = new();
     [SerializeField]private List<TValue> _values = new();
-    public void OnBeforeDeserialize()
+     
+
+    public void OnBeforeSerialize()
     {
-       _keys.Clear();
+        _keys.Clear();
         _values.Clear();
 
         foreach (KeyValuePair<TKey, TValue> pair in this)
@@ -19,11 +21,11 @@ public class SerializableDictionary<TKey, TValue> : Dictionary<TKey, TValue>, IS
         }
     }
 
-    public void OnAfterSerialize()
+    public void OnAfterDeserialize()
     {
         this.Clear();
-        
-        if (_keys.Count != _values.Count) 
+
+        if (_keys.Count != _values.Count)
         {
             Debug.Log("not good");
             _keys.Clear();
@@ -31,11 +33,9 @@ public class SerializableDictionary<TKey, TValue> : Dictionary<TKey, TValue>, IS
             return;
         }
 
-        for(int i = 0; i < _keys.Count; i++)
+        for (int i = 0; i < _keys.Count; i++)
         {
             Add(_keys[i], _values[i]);
         }
     }
-
-    
 }

@@ -7,7 +7,7 @@ public class StartPlayerMovement : StateMachine,ISaveSystemElement
     private SaveData _saveData;
     private void Awake()
     {
-        Dependencies.Instance.GetDependancy<SaveSystemManager>().RegisterToSaveList(this);
+       // Dependencies.Instance.GetDependancy<SaveSystemManager>().RegisterToSaveList(this);
     }
     private void Start()
     {
