@@ -30,6 +30,8 @@ public class DialogueRunner : MonoBehaviour
         {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
+            Dependencies.Instance.GetDependancy<CameraTilt>().inDialogue = false;
+            Time.timeScale = 1f;
             dialogueScreen.SetActive(false);
             return;
         }
@@ -42,6 +44,10 @@ public class DialogueRunner : MonoBehaviour
     {
         if (_currentNode.OutputPorts.Count == 0)
         {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            Dependencies.Instance.GetDependancy<CameraTilt>().inDialogue = false;
+            Time.timeScale = 1f;
             gameObject.SetActive(false);
             return;
         }
@@ -91,9 +97,13 @@ public class DialogueRunner : MonoBehaviour
     {
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+        Time.timeScale = 0;
+        Dependencies.Instance.GetDependancy<CameraTilt>().inDialogue = true;
         ChangeDialogue(DialogueGraph);
         dialogueScreen.SetActive(true);
         _currentNode = graph.StartingNode;
         UpdateUI(graph.StartingNode);
+        
+
     }
 }

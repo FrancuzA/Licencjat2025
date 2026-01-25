@@ -35,7 +35,6 @@ namespace Commands
 
                     foreach (CommandAttribute attribute in attributes)
                     {
-                        Debug.Log($"{attribute.CommandName} | {methodInfo.Name}");
                         _commands.Add(attribute.CommandName, methodInfo);
                     }
                 }
