@@ -4,6 +4,7 @@ using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NoteBookManager : MonoBehaviour
 {
@@ -127,6 +128,7 @@ public class NoteBookManager : MonoBehaviour
             NotebookSoundInstance.start();
             NotebookSoundInstance.release();
             Time.timeScale = 1f;
+            Dependencies.Instance.GetDependancy<CameraTilt>().inMenu = false;
             noteBookObject.SetActive(false);
             settingsObject.SetActive(false);
             inventoryObject.SetActive(false);
@@ -141,6 +143,7 @@ public class NoteBookManager : MonoBehaviour
             NotebookSoundInstance.start();
             NotebookSoundInstance.release();
             Time.timeScale = 0f;
+            Dependencies.Instance.GetDependancy<CameraTilt>().inMenu = true;
             noteBookObject.SetActive(true);
             LoadAllPages();
             Openpage(currentPageIndex);
@@ -167,5 +170,17 @@ public class NoteBookManager : MonoBehaviour
     public void AddWordToList(string word)
     {
         wordsToAdd.Add(word);
+    }
+
+    public void ExitToMenu()
+    {
+        Time.timeScale = 1f;
+        Dependencies.Instance.GetDependancy<CameraTilt>().inMenu = false;
+        noteBookObject.SetActive(false);
+        settingsObject.SetActive(false);
+        inventoryObject.SetActive(false);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        SceneManager.LoadSceneAsync(0);
     }
 }

@@ -50,7 +50,7 @@ public class StateMachine : MonoBehaviour
         CurrentState.Enter();
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         if (CurrentState == null)
             return;

@@ -8,15 +8,18 @@ public class BackPack : MonoBehaviour
     public List<ItemInfo> collected;
     public float dropOffset;
     public float dropHeight;
+    private NoteBookManager notebookManager;
 
     public void Start()
     {
         Dependencies.Instance.RegisterDependency<BackPack>(this);
+        notebookManager = Dependencies.Instance.GetDependancy<NoteBookManager>();
+        
     }
 
     public void Update()
     {
-        if (Input.GetKeyUp(KeyCode.F))
+        if (Input.GetKeyUp(KeyCode.F) && notebookManager.inventoryObject.activeInHierarchy && collected.Count >0)
         {
             DropFromBackPack(collected[0].ItemPrefab);
         }

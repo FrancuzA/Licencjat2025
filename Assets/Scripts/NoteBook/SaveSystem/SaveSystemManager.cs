@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SaveSystemManager : MonoBehaviour
 {
-    private SaveData _saveData;
+    public SaveData _saveData;
     private List<ISaveSystemElement> _saveSystemElem = new();
 
     public bool UseEncr;
@@ -13,6 +13,11 @@ public class SaveSystemManager : MonoBehaviour
     private void Awake()
     {
         Dependencies.Instance.RegisterDependency(this);
+    }
+
+    private void Start()
+    {
+        LoadGame();
     }
 
     public void LoadGame()
