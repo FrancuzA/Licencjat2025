@@ -2248,9 +2248,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: TestPlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 5590001188009523905, guid: 1dbfc229ab1de464f8e1741f55f18e8a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5657762918923560474, guid: 1dbfc229ab1de464f8e1741f55f18e8a, type: 3}
       propertyPath: m_LinearDamping
       value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 7399366314292436943, guid: 1dbfc229ab1de464f8e1741f55f18e8a, type: 3}
+      propertyPath: walkSpeed
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 7399366314292436943, guid: 1dbfc229ab1de464f8e1741f55f18e8a, type: 3}
+      propertyPath: baseStepTime
+      value: 0.9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

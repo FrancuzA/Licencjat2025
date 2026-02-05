@@ -6,7 +6,9 @@ public class PlayerJumpState : State
     private Transform mainBody;
     private float _timer;
     private float _mouseSens = 0.5f;
+    private float jumpForce = 5f;
     private AudioManager audio;
+    
 
     public PlayerJumpState(StateMachine stateMachine) : base(stateMachine) { }
 
@@ -15,8 +17,9 @@ public class PlayerJumpState : State
         audio = Dependencies.Instance.GetDependancy<AudioManager>();
         audio.JumpPhase = "Jump";
         audio.PlayJump();
+        jumpForce = Dependencies.Instance.GetDependancy<StartPlayerMovement>().jumpForce;
         _rb = _stateMachine.GetComponent<Rigidbody>();
-        _rb.AddForce(Vector3.up * 5f, ForceMode.Impulse);
+        _rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         mainBody = _rb.GetComponent<Transform>();
         _timer = 0f;
     }

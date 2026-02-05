@@ -13,6 +13,7 @@ public class PlayerGroundedState : State
     public override void Enter()
     {
         _mouseSens = Dependencies.Instance.GetDependancy<CameraTilt>().mouseSensitivity;
+        _CurrentmovementSpeed = Dependencies.Instance.GetDependancy<StartPlayerMovement>().walkSpeed;
         _rb = _stateMachine.GetComponent<Rigidbody>();
         mainBody = _rb.GetComponent<Transform>();
         Cursor.lockState = CursorLockMode.Locked;

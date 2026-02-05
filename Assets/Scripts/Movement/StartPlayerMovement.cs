@@ -3,10 +3,18 @@ using UnityEngine;
 
 public class StartPlayerMovement : StateMachine,ISaveSystemElement
 {
+    [Header("PlayerStats")] 
+    [SerializeField] public float walkSpeed = 300;
+    [SerializeField] public float jumpForce = 5;
+    [SerializeField] public float baseStepTime = 0.6f;
+
+
     private Transform playerTransform;
     private SaveSystemManager SSM;
+
     private void Awake()
     {
+        Dependencies.Instance.RegisterDependency<StartPlayerMovement>(this);
         SSM = Dependencies.Instance.GetDependancy<SaveSystemManager>();
        SSM.RegisterToSaveList(this);
        playerTransform = transform;
@@ -17,12 +25,6 @@ public class StartPlayerMovement : StateMachine,ISaveSystemElement
         Begin(new PlayerGroundedState(this));
     }
 
-    /*
-    protected override void Update()
-    {
-        base.Update();
-        
-    }*/
 
 
     public void LoadData(SaveData saveData)
