@@ -9,7 +9,7 @@
 [LOG] Thread::initThread                       : Init FMOD stream thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFB, Stack Size: 98304, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 0
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Affinity: 0x4000000000000001, Priority: 0xFFFF7FFA, Stack Size: 81920, Semaphore: No, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 000002AA4DA87868 isAsync 0 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 0000029C6A3F8EF8 isAsync 0 updatePeriod 0.02
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
 [LOG] Thread::initThread                       : Init FMOD Studio sample load thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
@@ -20,6 +20,171 @@
 [LOG] BankLoader::serializeBank                : fileversion = 146, compatVersion = 146 (oldest = 44, newest = 146)
 [LOG] BankLoader::serializeBank                : fileversion = 146, compatVersion = 146 (oldest = 44, newest = 146)
 [LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
+[LOG] SystemI::createSound                     : filename = Assets/MusicAndSounds/LicencjatAudio/Build/Desktop/Master.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::getAsyncThread              : index = 0 / 5
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000029C969E4A68, queue head = 0000029B2046A9E8, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000029C969E4A68
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/MusicAndSounds/LicencjatAudio/Build/Desktop/Master.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 7708896
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 26144
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000029CC4F511A8
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='Step_Grass_4', format=5, channels=2, frequency=48000, lengthbytes=28928, lengthpcm=4507612, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.062347.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000029C969E4A68
+[LOG] SystemI::createSound                     : filename = Assets/MusicAndSounds/LicencjatAudio/Build/Desktop/Master.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::getAsyncThread              : index = 0 / 5
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000029CCD8A0CC8, queue head = 0000029B2046A9E8, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000029CCD8A0CC8
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/MusicAndSounds/LicencjatAudio/Build/Desktop/Master.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 7708896
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 26144
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000029C9B7FE488
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='Step_Grass_3', format=5, channels=2, frequency=48000, lengthbytes=29024, lengthpcm=4507612, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.074158.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000029CCD8A0CC8
+[LOG] SoundI::release                          : Step_Grass_4 (0000029C969E4A68)
+[LOG] SoundI::release                          :     Step_Grass_4 (0000029C9701B6E8)
+[LOG] SoundI::release                          :     Step_Grass_4 (0000029C684B0288)
+[LOG] SystemI::createSound                     : filename = Assets/MusicAndSounds/LicencjatAudio/Build/Desktop/Master.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::getAsyncThread              : index = 0 / 5
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000029C8CEF8DB8, queue head = 0000029B2046A9E8, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000029C8CEF8DB8
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/MusicAndSounds/LicencjatAudio/Build/Desktop/Master.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 7708896
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 26144
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000029C69A4C318
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='Step_Grass_2', format=5, channels=2, frequency=48000, lengthbytes=26048, lengthpcm=4507612, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.078064.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000029C8CEF8DB8
+[LOG] SoundI::release                          : Step_Grass_3 (0000029CCD8A0CC8)
+[LOG] SoundI::release                          :     Step_Grass_3 (0000029C9701BB68)
+[LOG] SoundI::release                          :     Step_Grass_3 (0000029C96C86518)
+[LOG] SystemI::createSound                     : filename = Assets/MusicAndSounds/LicencjatAudio/Build/Desktop/Master.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::getAsyncThread              : index = 0 / 5
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000029C96AEF298, queue head = 0000029B2046A9E8, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000029C96AEF298
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/MusicAndSounds/LicencjatAudio/Build/Desktop/Master.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 7708896
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 26144
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000029CC4F51B48
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='Step_Grass_6', format=5, channels=2, frequency=48000, lengthbytes=28672, lengthpcm=4507612, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.077087.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000029C96AEF298
+[LOG] SoundI::release                          : Step_Grass_2 (0000029C8CEF8DB8)
+[LOG] SoundI::release                          :     Step_Grass_2 (0000029C9701A968)
+[LOG] SoundI::release                          :     Step_Grass_2 (0000029CCD988B48)
+[LOG] SystemI::createSound                     : filename = Assets/MusicAndSounds/LicencjatAudio/Build/Desktop/Master.bank : mode 02010082
+[LOG] SystemI::createSound                     : FMOD_NONBLOCKING specified.  Putting into queue to be opened asynchronously!
+[LOG] AsyncThread::getAsyncThread              : index = 0 / 5
+[LOG] AsyncThread::add                         : add sound to async queue : soundi = 0000029C6F0A3EC8, queue head = 0000029B2046A9E8, queue count = 0
+[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 0000029C6F0A3EC8
+[LOG] SystemI::createSoundInternal             :     Create name='Assets/MusicAndSounds/LicencjatAudio/Build/Desktop/Master.bank', mode=0x02010082
+[LOG] SystemI::createSoundInternal             :     exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             :     exinfo->length             = 7708896
+[LOG] SystemI::createSoundInternal             :     exinfo->fileoffset         = 26144
+[LOG] SystemI::createSoundInternal             :     exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlist      = 0000029C6F653728
+[LOG] SystemI::createSoundInternal             :     exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             :     exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             :     exinfo->initialseekpostype = 1
+[LOG] SystemI::createSoundInternal             :     Stream 0/1: name='Step_Grass_3', format=5, channels=2, frequency=48000, lengthbytes=29024, lengthpcm=4507612, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.074158.
+[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 0000029C6F0A3EC8
+[LOG] SoundI::release                          : Step_Grass_6 (0000029C96AEF298)
+[LOG] SoundI::release                          :     Step_Grass_6 (0000029C9701C468)
+[LOG] SoundI::release                          :     Step_Grass_6 (0000029C872133D8)
+[LOG] SoundI::release                          : Step_Grass_3 (0000029C6F0A3EC8)
+[LOG] SoundI::release                          :     Step_Grass_3 (0000029C9701C2E8)
+[LOG] SoundI::release                          :     Step_Grass_3 (0000029C73E33168)
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 7708896
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 26144
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 000000D2960FF2E8
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFE7111D530
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFE7111D4F0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFE7111D610
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFE7111D6D0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000029B2F194638
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 4
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='PageTurnSound', format=5, channels=2, frequency=48000, lengthbytes=8800, lengthpcm=48000, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.053589.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 7708896
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 26144
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 000000D2960FF2E8
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFE7111D530
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFE7111D4F0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFE7111D610
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFE7111D6D0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000029B2F194638
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 4
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='NotebookOpeningSound', format=5, channels=2, frequency=48000, lengthbytes=12032, lengthpcm=50583, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.053314.
+[LOG] SystemI::createSoundInternal             : Create name='', mode=0x02000202
+[LOG] SystemI::createSoundInternal             : exinfo->cbsize             = 224
+[LOG] SystemI::createSoundInternal             : exinfo->length             = 7708896
+[LOG] SystemI::createSoundInternal             : exinfo->fileoffset         = 26144
+[LOG] SystemI::createSoundInternal             : exinfo->numsubsounds       = 1
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlist      = 000000D2960FF2E8
+[LOG] SystemI::createSoundInternal             : exinfo->inclusionlistnum   = 1
+[LOG] SystemI::createSoundInternal             : exinfo->suggestedsoundtype = 5
+[LOG] SystemI::createSoundInternal             : exinfo->useropen           = 00007FFE7111D530
+[LOG] SystemI::createSoundInternal             : exinfo->userclose          = 00007FFE7111D4F0
+[LOG] SystemI::createSoundInternal             : exinfo->userread           = 00007FFE7111D610
+[LOG] SystemI::createSoundInternal             : exinfo->userseek           = 00007FFE7111D6D0
+[LOG] SystemI::createSoundInternal             : exinfo->fileuserdata       = 0000029B2F194638
+[LOG] SystemI::createSoundInternal             : exinfo->initialseekpostype = 1
+[LOG] SystemI::DSPCodecPoolRegister            : register codec pool for pool type 4
+[LOG] SystemI::createSoundInternal             : Sample 0/1: name='NotebookClosingSound', format=5, channels=2, frequency=48000, lengthbytes=12864, lengthpcm=60502, pcmblocksize=0, loopstart=0, loopend=0, mode=0x00000000, channelmask=0x00000000, channelorder=0, peakvolume=0.252777.
+[WRN] EventInstance::updateForStart            : Event {2c1be251-932a-4a99-b12e-f5c05429096a} waited 53 milliseconds for sample data to load.  Preload sample data to avoid this delay.
+[WRN] OutputWASAPI::mixerThread                : Starvation detected in WASAPI output buffer!
+[WRN] OutputWASAPI::mixerThread                : Starvation detected in WASAPI output buffer!
+[LOG] SoundI::release                          : 532237__shaunhillyard__british-woods-ambient-noise - Trimmed (0000029B2046B068)
+[LOG] SoundI::release                          :     532237__shaunhillyard__british-woods-ambient-noise - Trimmed (0000029C970174E8)
+[LOG] SoundI::release                          :     532237__shaunhillyard__british-woods-ambient-noise - Trimmed (0000029C684A96B8)
+[LOG] SoundI::release                          :  (0000029B1B2B3598)
+[LOG] SoundI::release                          :     NotebookClosingSound (0000029C9701B6E8)
+[LOG] SoundI::release                          :  (0000029B1B2B23B8)
+[LOG] SoundI::release                          :     NotebookOpeningSound (0000029C9701BFE8)
+[LOG] SoundI::release                          :  (0000029B1B2B3438)
+[LOG] SoundI::release                          :     PageTurnSound (0000029C9701AC68)
+[LOG] Thread::callback                         : FMOD Studio update thread finished.
+[LOG] Thread::callback                         : FMOD Studio bank load thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
+[LOG] Thread::callback                         : FMOD Studio sample load thread finished.
+[LOG] LiveUpdate::release                      : 
+[LOG] LiveUpdate::reset                        : Reset connection (reason Disconnected)
+[LOG] Thread::callback                         : FMOD stream thread finished.
+[LOG] Thread::callback                         : FMOD mixer thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
+[LOG] SystemI::closeInternal                   : Closed.
 [LOG] Thread::callback                         : FMOD Studio bank load thread finished.
 [LOG] Thread::callback                         : FMOD Studio sample load thread finished.
 [LOG] LiveUpdate::release                      : 
@@ -27,3 +192,5 @@
 [LOG] Thread::callback                         : FMOD stream thread finished.
 [LOG] Thread::callback                         : FMOD mixer thread finished.
 [LOG] SystemI::closeInternal                   : Closed.
+[LOG] Thread::callback                         : FMOD nonblocking thread (0) finished.
+[LOG] Thread::callback                         : FMOD file thread finished.
