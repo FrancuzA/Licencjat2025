@@ -89,7 +89,7 @@ public class PrefabBrushTool : EditorWindow
                 GameObject go = (GameObject)PrefabUtility.InstantiatePrefab(prefab);
 
                 float scale = Random.Range(randomScale.x, randomScale.y);
-                go.transform.localScale *= scale;
+                go.transform.localScale = prefab.transform.localScale * scale;
 
                 Quaternion rot =
                     prefab.transform.rotation *
