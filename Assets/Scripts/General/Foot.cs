@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Foot : MonoBehaviour
@@ -6,11 +7,12 @@ public class Foot : MonoBehaviour
     private AudioManager Audio;
     private bool onGround;
     private float _timer;
+    private float maxTimer = 0.6f;
     private Rigidbody _rb;
     void Start()
     {
         _rb = gameObject.GetComponent<Rigidbody>();
-        
+        maxTimer = Dependencies.Instance.GetDependancy<StartPlayerMovement>().baseStepTime / (Dependencies.Instance.GetDependancy<StartPlayerMovement>().walkSpeed/300);
         Audio = Dependencies.Instance.GetDependancy<AudioManager>();
         distToGround = GetComponent<Collider>().bounds.extents.y;
     }
@@ -31,7 +33,7 @@ public class Foot : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (_timer < 0.6f)
+        if (_timer < maxTimer)
         {
             _timer += Time.deltaTime;
             return;

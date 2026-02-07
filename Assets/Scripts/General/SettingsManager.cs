@@ -19,6 +19,8 @@ public class SettingsManager : MonoBehaviour
     private Resolution[] resolutions;
     private float fovMin = 40f;
     private float fovMax = 100f;
+    public float resOptionsSpacing = 2;
+    public float resOptionsHight = 5;
     private int currentResolutionIndex = 0;
 
 
@@ -29,6 +31,7 @@ public class SettingsManager : MonoBehaviour
         MusicVolume.onValueChanged.AddListener(SetMusicVolume);
         SFXVolume.onValueChanged.AddListener(SetSFXVolume);
         UIVolume.onValueChanged.AddListener(SetUIVolume);
+        resolutionDropdown.onValueChanged.AddListener(OnResolutionChanged);
         StartCoroutine(TryGetDep());
         SetFOV(0f);
         InitializeResolutions();
@@ -103,7 +106,6 @@ public class SettingsManager : MonoBehaviour
         resolutionDropdown.AddOptions(options);
         resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
-        
         resolutionDropdown.onValueChanged.AddListener(OnResolutionChanged);
     }
 
@@ -147,6 +149,7 @@ public class SettingsManager : MonoBehaviour
         yield return new WaitUntil(() => Dependencies.Instance.GetDependancy<CameraTilt>() != null);
         SetSensitivity(0.1f);
     }
+
 
 }
 
