@@ -371,6 +371,7 @@ GameObject:
   - component: {fileID: 8623106251097256552}
   - component: {fileID: 6400588635762493508}
   - component: {fileID: 8676940369085029212}
+  - component: {fileID: 7925479011004299650}
   m_Layer: 0
   m_Name: drzewo v1 purple
   m_TagString: Untagged
@@ -464,6 +465,28 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &7925479011004299650
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4020127616976928642}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -6870825046075287653, guid: f52b87c9090472e4e8cf0eb7c629fe23, type: 3}
 --- !u!1 &4269061154224318785
 GameObject:
   m_ObjectHideFlags: 0
