@@ -17,6 +17,10 @@ public class ButtonSetter : MonoBehaviour
 
     public void SetButtonText(string word)
     {
+        if (Dependencies.Instance.GetDependancy<NameScript>().namesMatch())
+        {
+            GetComponentInChildren<TMP_Text>().spriteAsset = null;
+        }
         buttonText.text = word;
         wordOnButton = word;
         SetButtonWidth(word);
