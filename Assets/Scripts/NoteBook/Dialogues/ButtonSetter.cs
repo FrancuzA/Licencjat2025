@@ -15,12 +15,18 @@ public class ButtonSetter : MonoBehaviour
         gameObject.GetComponent<Button>().onClick.AddListener(AddWordToNotebook);
     }
 
-    public void SetButtonText(string word)
+    private void FixedUpdate()
     {
-        if (Dependencies.Instance.GetDependancy<NameScript>().namesMatch())
+        if (Dependencies.Instance.GetDependancy<NameScript>().namesMatch() && GetComponentInChildren<TMP_Text>().spriteAsset != null)
         {
+            Debug.Log("Changing font");
             GetComponentInChildren<TMP_Text>().spriteAsset = null;
         }
+    }
+
+    public void SetButtonText(string word)
+    {
+        
         buttonText.text = word;
         wordOnButton = word;
         SetButtonWidth(word);

@@ -174,6 +174,7 @@ public class NoteBookManager : MonoBehaviour
 
     public void ExitToMenu()
     {
+        Debug.Log("Exiting to main menu");
         Time.timeScale = 1f;
         Dependencies.Instance.GetDependancy<CameraTilt>().inMenu = false;
         noteBookObject.SetActive(false);
