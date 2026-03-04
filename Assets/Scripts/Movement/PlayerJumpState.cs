@@ -29,10 +29,9 @@ public class PlayerJumpState : State
         _mouseSens = Dependencies.Instance.GetDependancy<CameraTilt>().mouseSensitivity;
         float mouseX = Input.GetAxis("Mouse X");
 
-        // Use the SAME shared rotation from state machine
+      
         _stateMachine.CurrentRotationAngle += mouseX * _mouseSens * 300 * Time.fixedDeltaTime;
 
-        // Apply shared rotation
         mainBody.rotation = Quaternion.Euler(0, _stateMachine.CurrentRotationAngle, 0);
 
         if (_timer < 0.2f)
@@ -41,7 +40,7 @@ public class PlayerJumpState : State
             return;
         }
 
-        if (Physics.Raycast(_stateMachine.transform.position, Vector3.down, 1f))
+        if (Physics.Raycast(_stateMachine.transform.position, Vector3.down, 1.1f))
         {
             audio.JumpPhase = "Land";
             audio.PlayJump();

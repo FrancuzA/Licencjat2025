@@ -7,11 +7,15 @@ public class PlayerGroundedState : State
     public float _mouseSens = 0.5f;
     private Rigidbody _rb;
     private Transform mainBody;
+    private Animator _animator;
+    private bool isRunning = false;
 
     public PlayerGroundedState(StateMachine stateMachine) : base(stateMachine) { }
 
     public override void Enter()
     {
+        _animator = Dependencies.Instance.GetDependancy<StartPlayerMovement>().gameObject.GetComponent<Animator>();
+        _animator.SetInteger("MoveState", 0);
         _mouseSens = Dependencies.Instance.GetDependancy<CameraTilt>().mouseSensitivity;
         _CurrentmovementSpeed = Dependencies.Instance.GetDependancy<StartPlayerMovement>().walkSpeed;
         _rb = _stateMachine.GetComponent<Rigidbody>();
@@ -33,6 +37,7 @@ public class PlayerGroundedState : State
        
         if (_input.magnitude > 0.1f)
         {
+             if(!isRunning) _animator.SetInteger("MoveState", 1);
             Vector3 moveDirection = Quaternion.Euler(0, _stateMachine.CurrentRotationAngle, 0) * _input;
             moveDirection = moveDirection.normalized * _CurrentmovementSpeed * Time.fixedDeltaTime;
             moveDirection.y = _rb.linearVelocity.y;
@@ -40,11 +45,25 @@ public class PlayerGroundedState : State
         }
         else
         {
+            _animator.SetInteger("MoveState", 0);
             _rb.linearVelocity = new Vector3(0, _rb.linearVelocity.y, 0);
+        }
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            isRunning = true;
+            _CurrentmovementSpeed *= 2;
+            _animator.SetInteger("MoveState", 2);
+        }
+
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            isRunning = false;
+            _CurrentmovementSpeed /= 2;
         }
 
         if (Input.GetButtonDown("Jump"))
         {
+            _animator.SetInteger("MoveState", 0);
             _stateMachine.SetState(new PlayerJumpState(_stateMachine));
         }
     }

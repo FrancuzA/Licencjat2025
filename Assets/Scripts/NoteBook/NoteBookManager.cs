@@ -44,7 +44,7 @@ public class NoteBookManager : MonoBehaviour
 
     public void ProcessInputs()
     {
-        if(Input.GetKeyDown(KeyCode.N))
+        if(Input.GetKeyDown(KeyCode.J))
         {
           OpenCloseNotebook();
         }
@@ -68,6 +68,11 @@ public class NoteBookManager : MonoBehaviour
                 Openpage(currentPageIndex);
             }
             else return;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape)) 
+        {
+            ExitToMenu();
         }
     }
 
@@ -174,7 +179,7 @@ public class NoteBookManager : MonoBehaviour
 
     public void ExitToMenu()
     {
-        Debug.Log("Exiting to main menu");
+        Dependencies.Instance.GetDependancy<SaveSystemManager>().SaveGame();
         Time.timeScale = 1f;
         Dependencies.Instance.GetDependancy<CameraTilt>().inMenu = false;
         noteBookObject.SetActive(false);
