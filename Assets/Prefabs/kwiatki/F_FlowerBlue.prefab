@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8611778882689258942
+--- !u!1 &7774247513482586813
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,9 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5595009893838093146}
-  - component: {fileID: 4257053597875240904}
-  - component: {fileID: 2691828567318773003}
+  - component: {fileID: 3421429056607531584}
+  - component: {fileID: 124117862275658753}
+  - component: {fileID: 3921114015548372051}
   m_Layer: 0
   m_Name: F_FlowerBlue
   m_TagString: Untagged
@@ -18,36 +18,36 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5595009893838093146
+--- !u!4 &3421429056607531584
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8611778882689258942}
+  m_GameObject: {fileID: 7774247513482586813}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -70.51526, y: -1.4329965, z: -41.41803}
+  m_LocalPosition: {x: -99.92734, y: -19.7, z: -52.97}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &4257053597875240904
+--- !u!33 &124117862275658753
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8611778882689258942}
+  m_GameObject: {fileID: 7774247513482586813}
   m_Mesh: {fileID: 6023963305329233989, guid: 03dc10d0daab47945a5383543ad9e41d, type: 3}
---- !u!23 &2691828567318773003
+--- !u!23 &3921114015548372051
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8611778882689258942}
+  m_GameObject: {fileID: 7774247513482586813}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
