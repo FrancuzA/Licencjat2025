@@ -36,12 +36,13 @@ public class Interactor : MonoBehaviour
         {
             if (hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObj))
             {
-                interactText.SetActive(true);
+               
+                if(interactText != null) interactText.SetActive(true);
                 interactable = interactObj;
                 interactableInRange = true;
             }
-            else { interactText.SetActive(false); interactableInRange = false; }
+            else { if (interactText != null) interactText.SetActive(false); interactableInRange = false; }
         }
-        else { interactText.SetActive(false); interactableInRange = false ; }
+        else { if (interactText != null) interactText.SetActive(false); interactableInRange = false ; }
     }
 }

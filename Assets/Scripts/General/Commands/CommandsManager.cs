@@ -40,7 +40,7 @@ namespace Commands
                 }
             }
 
-            textField.onSubmit.AddListener(OnSubmit);
+            if(textField!= null) textField.onSubmit.AddListener(OnSubmit);
         }
 
         private void OnSubmit(string text)

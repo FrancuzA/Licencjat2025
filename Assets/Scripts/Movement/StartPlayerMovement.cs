@@ -16,7 +16,10 @@ public class StartPlayerMovement : StateMachine,ISaveSystemElement
     {
         Dependencies.Instance.RegisterDependency<StartPlayerMovement>(this);
         SSM = Dependencies.Instance.GetDependancy<SaveSystemManager>();
-       SSM.RegisterToSaveList(this);
+        if (SSM != null)
+        {
+            SSM.RegisterToSaveList(this);
+        }
        playerTransform = transform;
        Time.timeScale = 1;
     }

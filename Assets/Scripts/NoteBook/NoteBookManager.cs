@@ -29,16 +29,19 @@ public class NoteBookManager : MonoBehaviour
     
     private void Start()
     {
+        
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         LoadAllPages();
+        if (CommandsManager.Instance == null || Dependencies.Instance == null) return;
         CommandsManager.Instance.RegisterInstance(this);
         Dependencies.Instance.RegisterDependency<NoteBookManager>(this);
     }
 
     void Update()
     {
-        if(!isWriting)
+        if (noteBookObject == null || settingsObject == null || inventoryObject == null) return;
+        if (!isWriting)
             ProcessInputs();
     }
 

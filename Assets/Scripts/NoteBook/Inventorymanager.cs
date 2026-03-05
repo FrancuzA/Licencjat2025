@@ -42,11 +42,7 @@ public class Inventorymanager : MonoBehaviour
     {
         foreach (Transform cell in Cells)
         {
-            foreach (Transform child in cell)
-            {
-                Debug.Log("clearing...");
-                Destroy(child.gameObject);
-            }
+            cell.DestroyAllChildren();
         }
     }
 
