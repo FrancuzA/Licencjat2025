@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7871725217825795227}
   - component: {fileID: 6457475558956711325}
   - component: {fileID: 5133417087148518060}
+  - component: {fileID: 470518681554853542}
   m_Layer: 0
   m_Name: F_Palms
   m_TagString: Untagged
@@ -91,3 +92,24 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &470518681554853542
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5198869025335902633}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.3274765, y: 13.169434, z: 12.715698}
+  m_Center: {x: 0.015377045, y: 5.9360085, z: 0.7822075}
