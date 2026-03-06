@@ -1809,6 +1809,68 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 903870792}
   m_Mesh: {fileID: -4918641412572354393, guid: b471deeabe80bb24a8c1b5c57f0a0b40, type: 3}
+--- !u!1 &915409636
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 915409638}
+  - component: {fileID: 915409637}
+  m_Layer: 0
+  m_Name: GrassGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &915409637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 915409636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 494b4f2aad2ec024c999c6ec8f770760, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlantGeneration
+  _mesh: {fileID: 3736498397910106463, guid: 3c52b94f3f4583f49b59865719913040, type: 3}
+  material: {fileID: 2100000, guid: 13a1419749903f94bb82a9515e4a1b42, type: 2}
+  meshScale: 0.3
+  corners:
+  - {x: 100, y: 0, z: 94.5}
+  - {x: -50, y: 0, z: 140}
+  - {x: 50, y: 0, z: 124}
+  - {x: 100, y: 0, z: 28}
+  - {x: 80, y: 0, z: -90}
+  - {x: -145, y: 0, z: -121}
+  spacing: 3
+  jitterAmount: 0.5
+  rayLength: 100
+  raycastDirectionUp: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  regenerateOnUpdate: 0
+--- !u!4 &915409638
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 915409636}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10.27699, y: 27.94713, z: 11.96738}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &974931832
 Mesh:
   m_ObjectHideFlags: 0
@@ -2336,10 +2398,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Island
       objectReference: {fileID: 0}
-    - target: {fileID: 5681612970096921279, guid: 59b233c9bd57eca44856fc015199629a, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: eaac25fcee3e89b46852fbe23478b2ca, type: 2}
     - target: {fileID: 5757274192944174468, guid: 59b233c9bd57eca44856fc015199629a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3401,11 +3459,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2039110805409694633, guid: 1dbfc229ab1de464f8e1741f55f18e8a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -222.73
+      value: -188.6
       objectReference: {fileID: 0}
     - target: {fileID: 2039110805409694633, guid: 1dbfc229ab1de464f8e1741f55f18e8a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -33.48
+      value: -26.84
       objectReference: {fileID: 0}
     - target: {fileID: 2039110805409694633, guid: 1dbfc229ab1de464f8e1741f55f18e8a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4151,11 +4209,11 @@ PrefabInstance:
       objectReference: {fileID: 1961408619}
     - target: {fileID: 8091398742794939721, guid: ca723ff9834559f4886ff96ade4ede03, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -222.73
+      value: -188.6
       objectReference: {fileID: 0}
     - target: {fileID: 8091398742794939721, guid: ca723ff9834559f4886ff96ade4ede03, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -32.48
+      value: -25.84
       objectReference: {fileID: 0}
     - target: {fileID: 8091398742794939721, guid: ca723ff9834559f4886ff96ade4ede03, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4305,3 +4363,4 @@ SceneRoots:
   - {fileID: 755625563}
   - {fileID: 281532401}
   - {fileID: 779763397}
+  - {fileID: 915409638}
