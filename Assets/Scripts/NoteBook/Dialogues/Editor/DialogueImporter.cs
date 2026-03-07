@@ -49,6 +49,13 @@ public class DialogueImporter : ScriptedImporter
                     ChoiceAsset = gameChoice,
                 };
                 break;
+            case RNGNode rNode:
+                rNode.GetNodeOptionByName(rNode.rngAsset).TryGetValue(out RandomDialogue randomDialogue);
+                node = new RandomRuntimeNode()
+                {
+                    rngAsset = randomDialogue,
+                };
+                break;
         }
 
         foreach (var outputPort in nextNodeModel.GetOutputPorts())

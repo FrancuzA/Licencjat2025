@@ -85,6 +85,10 @@ public class DialogueRunner : MonoBehaviour
                     });
                 }
                 break;
+            case RandomRuntimeNode randomNode:
+                int portNumbers = randomNode.OutputPorts.Count;
+                MoveToOutput(Custom_RNG.Range(0, portNumbers));
+                break;
         }
     }
 
