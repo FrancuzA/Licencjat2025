@@ -10,7 +10,7 @@ public class SettingsManager : MonoBehaviour
     [Header("UI References")]
     public TMP_Dropdown resolutionDropdown;
     public Slider sensitivitySlider;
-    public Slider FOWSlider;
+    public Slider FOVSlider;
     public Slider MusicVolume;
     public Slider SFXVolume;
     public Slider UIVolume;
@@ -27,7 +27,7 @@ public class SettingsManager : MonoBehaviour
     private void Start()
     {
         sensitivitySlider.onValueChanged.AddListener(SetSensitivity);
-        FOWSlider.onValueChanged.AddListener(SetFOV);
+        FOVSlider.onValueChanged.AddListener(SetFOV);
         MusicVolume.onValueChanged.AddListener(SetMusicVolume);
         SFXVolume.onValueChanged.AddListener(SetSFXVolume);
         UIVolume.onValueChanged.AddListener(SetUIVolume);
