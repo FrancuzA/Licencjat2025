@@ -61,7 +61,7 @@ public class DialogueRunner : MonoBehaviour
         switch (node)
         {
             case MessageRuntimeNode messageNode:
-                buttonSpawner.ReciveMessage(messageNode.message);
+                buttonSpawner.ReciveMessage(messageNode.message, messageNode._actor._name);
                 actorNameLabel.text = messageNode._actor._name;
 
                 choiceButtonsParent.gameObject.SetActive(false);

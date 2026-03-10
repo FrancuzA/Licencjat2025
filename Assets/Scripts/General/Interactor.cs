@@ -4,45 +4,40 @@ using UnityEngine;
 public class Interactor : MonoBehaviour
 {
     public float interactRange;
-    private Quaternion lastRotation;
     public GameObject interactText;
     public GameObject playerCamera;
+    public GameObject noteBookObject;
+    public GameObject settingsObject;
+    public GameObject inventoryObject;
     private bool interactableInRange;
     private IInteractable interactable;
 
 
-    public void Start()
-    {
-        lastRotation = playerCamera.transform.rotation;
-    }
     private void Update()
     {
-        if (transform.rotation != lastRotation)
-        {
-            RotationChanged();
-            lastRotation = transform.rotation;
-        }
-
-        if (Input.GetKeyDown(KeyCode.E) && interactableInRange)
+        if (Input.GetKeyDown(KeyCode.E) && interactableInRange && noteBookObject.activeInHierarchy == false && settingsObject.activeInHierarchy == false && inventoryObject.activeInHierarchy == false) ;
         {
             interactable.Interact();
         }
 
     }
 
-    private void RotationChanged()
+    private void OnTriggerEnter(Collider other)
     {
-        if (Physics.Raycast(gameObject.transform.position, playerCamera.transform.forward, out RaycastHit hitInfo, interactRange))
+        if(other.gameObject.TryGetComponent(out IInteractable interactObj))
         {
-            if (hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObj))
-            {
-               
-                if(interactText != null) interactText.SetActive(true);
-                interactable = interactObj;
-                interactableInRange = true;
-            }
-            else { if (interactText != null) interactText.SetActive(false); interactableInRange = false; }
+            if (interactText != null) interactText.SetActive(true);
+            interactable = interactObj;
+            interactableInRange = true;
         }
-        else { if (interactText != null) interactText.SetActive(false); interactableInRange = false ; }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.TryGetComponent(out IInteractable interactObj))
+        {
+            if (interactText != null) interactText.SetActive(false); 
+            interactableInRange = false;
+        }
     }
 }

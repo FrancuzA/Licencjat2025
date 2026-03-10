@@ -30,9 +30,7 @@ public class TutorialManager : MonoBehaviour
         TutorialCanva.SetActive(true);
         TutorialTxt.text = TutorialMessages[1];
         yield return new WaitUntil(() => DialogueCanva.activeInHierarchy == false);
-        yield return null;
-        yield return null;
-        yield return null;
+        yield return new WaitUntil(() => Time.timeScale == 1);
         StopTime();
         TutorialCanva.SetActive(true);
         TutorialTxt.text = TutorialMessages[2];

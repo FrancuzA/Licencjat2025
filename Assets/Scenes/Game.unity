@@ -1591,8 +1591,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3705,6 +3705,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: NoteBookAssembly::ButtonSpawner
   buttonPrefab: {fileID: 6436807626177024928, guid: fac4b2bc6d436a042a40afe8f83d51f4, type: 3}
   textRowPref: {fileID: 5821635605241402459, guid: f67c07d63fa85e544aadc8b8505c3cf7, type: 3}
+  plainTextPref: {fileID: 9093596497301054431, guid: 6908648cd9611bc479f571c663064727, type: 3}
   currentTextRow: {fileID: 0}
   maxWordCount: 9
 --- !u!114 &1276163283
@@ -6888,7 +6889,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8091398742794939721, guid: ca723ff9834559f4886ff96ade4ede03, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -25.84
+      value: -26.04
       objectReference: {fileID: 0}
     - target: {fileID: 8091398742794939721, guid: ca723ff9834559f4886ff96ade4ede03, type: 3}
       propertyPath: m_LocalPosition.z

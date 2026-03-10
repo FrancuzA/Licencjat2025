@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,21 +16,20 @@ public class ButtonSetter : MonoBehaviour
         gameObject.GetComponent<Button>().onClick.AddListener(AddWordToNotebook);
     }
 
-    private void FixedUpdate()
-    {
-        if (Dependencies.Instance.GetDependancy<NameScript>().namesMatch() && GetComponentInChildren<TMP_Text>().spriteAsset != null)
-        {
-            Debug.Log("Changing font");
-            GetComponentInChildren<TMP_Text>().spriteAsset = null;
-        }
-    }
-
     public void SetButtonText(string word)
     {
-        
+        if (!Char.IsLetter(word, 1)) SetButtonOff();
         buttonText.text = word;
         wordOnButton = word;
         SetButtonWidth(word);
+    }
+
+    private void SetButtonOff()
+    {
+        Color buttonColor = gameObject.GetComponent<Image>().color;
+        buttonColor.a = 0;
+        gameObject.GetComponent<Image>().color = buttonColor;
+        gameObject.GetComponent<Button>().interactable = false;
     }
 
     private void SetButtonWidth(string word)
