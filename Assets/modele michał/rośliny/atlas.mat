@@ -24,23 +24,24 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: atlas
-  m_Shader: {fileID: 4800000, guid: 6e4ae4064600d784cac1e41a9e6f2e59, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: beae2c8d9ebe3b5418e9effeb0e13f43, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-  - _ALPHATEST_ON
   - _DISABLE_DECALS
   - _DISABLE_SSR_TRANSPARENT
   - _DOUBLESIDED_ON
+  - _SURFACE_TYPE_TRANSPARENT
+  m_InvalidKeywords:
+  - _ALPHATEST_ON
   - _NORMALMAP_TANGENT_SPACE
-  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2450
+  m_CustomRenderQueue: 3005
   stringTagMap:
     MotionVector: User
-    RenderType: TransparentCutout
+    RenderType: Transparent
   disabledShaderPasses:
   - MOTIONVECTORS
   - TransparentDepthPostpass
@@ -96,7 +97,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTexture:
-        m_Texture: {fileID: 2800000, guid: 175c4cf64b564a642b6555fcd2e8379b, type: 3}
+        m_Texture: {fileID: 2800000, guid: c7c574475290636438fb35f8a207adaf, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskMap:
@@ -163,7 +164,7 @@ Material:
     - _AlphaCutoffPostpass: 0.5
     - _AlphaCutoffPrepass: 0.5
     - _AlphaCutoffShadow: 0.5
-    - _AlphaDstBlend: 0
+    - _AlphaDstBlend: 10
     - _AlphaRemapMax: 1
     - _AlphaRemapMin: 0
     - _AlphaSrcBlend: 1
@@ -188,8 +189,8 @@ Material:
     - _DoubleSidedEnable: 1
     - _DoubleSidedGIMode: 2
     - _DoubleSidedNormalMode: 0
-    - _DstBlend: 0
-    - _DstBlend2: 0
+    - _DstBlend: 10
+    - _DstBlend2: 10
     - _EmissiveColorMode: 1
     - _EmissiveExposureWeight: 1
     - _EmissiveIntensity: 1
@@ -239,7 +240,7 @@ Material:
     - _ReceivesSSR: 1
     - _ReceivesSSRTransparent: 0
     - _RefractionModel: 0
-    - _RenderQueueType: 3
+    - _RenderQueueType: 4
     - _RequireSplitLighting: 0
     - _Smoothness: 0.21
     - _SmoothnessRemapMax: 1
@@ -252,10 +253,10 @@ Material:
     - _Speed: 0.2
     - _SrcBlend: 1
     - _StencilRef: 0
-    - _StencilRefDepth: 8
+    - _StencilRefDepth: 0
     - _StencilRefDistortionVec: 4
-    - _StencilRefGBuffer: 10
-    - _StencilRefMV: 40
+    - _StencilRefGBuffer: 2
+    - _StencilRefMV: 32
     - _StencilWriteMask: 6
     - _StencilWriteMaskDepth: 9
     - _StencilWriteMaskDistortionVec: 4
@@ -264,7 +265,7 @@ Material:
     - _Strength: 0.4
     - _SubsurfaceMask: 1
     - _SupportDecals: 0
-    - _SurfaceType: 0
+    - _SurfaceType: 1
     - _TexWorldScale: 1
     - _TexWorldScaleEmissive: 1
     - _Thickness: 1
@@ -284,10 +285,10 @@ Material:
     - _UseEmissiveIntensity: 0
     - _UseShadowThreshold: 0
     - _WindScale: 3
-    - _ZTestDepthEqualForOpaque: 3
+    - _ZTestDepthEqualForOpaque: 4
     - _ZTestGBuffer: 3
     - _ZTestTransparent: 4
-    - _ZWrite: 1
+    - _ZWrite: 0
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
