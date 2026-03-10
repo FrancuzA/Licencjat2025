@@ -15,7 +15,7 @@ public class Interactor : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && interactableInRange && noteBookObject.activeInHierarchy == false && settingsObject.activeInHierarchy == false && inventoryObject.activeInHierarchy == false) ;
+        if (Input.GetKeyDown(KeyCode.E) && interactableInRange && noteBookObject.activeInHierarchy == false && settingsObject.activeInHierarchy == false && inventoryObject.activeInHierarchy == false)
         {
             interactable.Interact();
         }

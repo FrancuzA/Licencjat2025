@@ -18,7 +18,7 @@ public class ButtonSetter : MonoBehaviour
 
     public void SetButtonText(string word)
     {
-        if (!Char.IsLetter(word, 1)) SetButtonOff();
+        if(!string.IsNullOrEmpty(word)) if (!Char.IsLetter(word, 0)) SetButtonOff();
         buttonText.text = word;
         wordOnButton = word;
         SetButtonWidth(word);

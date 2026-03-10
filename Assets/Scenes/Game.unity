@@ -186,7 +186,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &52878531
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1306,6 +1306,11 @@ Transform:
   - {fileID: 345295568}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -1.615, y: 180, z: 0}
+--- !u!1 &448662690 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8972798503373130062, guid: 714fdb2aca0872249975d0eb4ef15a0a, type: 3}
+  m_PrefabInstance: {fileID: 4708598272016943307}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &506753700
 GameObject:
   m_ObjectHideFlags: 0
@@ -4495,6 +4500,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cdde3887df11db409e9361e0fae0ff5, type: 3}
+--- !u!1 &1736197555 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5392655208994267036, guid: 714fdb2aca0872249975d0eb4ef15a0a, type: 3}
+  m_PrefabInstance: {fileID: 4708598272016943307}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1765141194
 GameObject:
   m_ObjectHideFlags: 0
@@ -5751,6 +5761,18 @@ PrefabInstance:
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 8833194581994791010}
+    - target: {fileID: 3621734134455226562, guid: 1dbfc229ab1de464f8e1741f55f18e8a, type: 3}
+      propertyPath: noteBookObject
+      value: 
+      objectReference: {fileID: 1631663710}
+    - target: {fileID: 3621734134455226562, guid: 1dbfc229ab1de464f8e1741f55f18e8a, type: 3}
+      propertyPath: settingsObject
+      value: 
+      objectReference: {fileID: 448662690}
+    - target: {fileID: 3621734134455226562, guid: 1dbfc229ab1de464f8e1741f55f18e8a, type: 3}
+      propertyPath: inventoryObject
+      value: 
+      objectReference: {fileID: 1736197555}
     - target: {fileID: 4872235731070662818, guid: 1dbfc229ab1de464f8e1741f55f18e8a, type: 3}
       propertyPath: m_Name
       value: TestPlayer

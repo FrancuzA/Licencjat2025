@@ -24,6 +24,10 @@ public class DialogueRunner : MonoBehaviour
         Dependencies.Instance.RegisterDependency<DialogueRunner>(this);
     }
 
+    private void Update()
+    {
+        Debug.Log(continueButton.gameObject.activeInHierarchy);
+    }
     private void MoveNext()
     {
         if (_currentNode.OutputPorts.Count == 0)
@@ -107,7 +111,5 @@ public class DialogueRunner : MonoBehaviour
         dialogueScreen.SetActive(true);
         _currentNode = graph.StartingNode;
         UpdateUI(graph.StartingNode);
-        
-
     }
 }
