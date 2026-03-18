@@ -26,16 +26,18 @@ public class NoteBookManager : MonoBehaviour
     private EventInstance NotebookSoundInstance;
     private EventInstance PageTurnSoundInstance;
 
-    
+    private Dependencies _dependencies;
+    private DictionaryManager _dictionary;
     private void Start()
     {
-        
+        _dependencies = Dependencies.Instance;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         LoadAllPages();
         if (CommandsManager.Instance == null || Dependencies.Instance == null) return;
         CommandsManager.Instance.RegisterInstance(this);
-        Dependencies.Instance.RegisterDependency<NoteBookManager>(this);
+        _dependencies.RegisterDependency<NoteBookManager>(this);
+        _dictionary = DictionaryManager.Instance;
     }
 
     void Update()
@@ -114,7 +116,7 @@ public class NoteBookManager : MonoBehaviour
     [Command("AddPage", "Adds an Page")]
     public void AddPage()
     {
-        GameObject lastPage = Dependencies.Instance.GetDependancy<PageManager>().gameObject;
+        GameObject lastPage = _dependencies.GetDependancy<PageManager>().gameObject;
         lastPage.GetComponent<PageManager>().enabled = false;
         GameObject newPage = Instantiate(pagePrefab,noteBookObject.transform.position,Quaternion.identity,noteBookObject.transform);
         newPage.AddComponent<PageManager>();
@@ -123,7 +125,14 @@ public class NoteBookManager : MonoBehaviour
 
     public void SendWordToAdd(string originalWord)
     {
-        PageManager currentPage = Dependencies.Instance.GetDependancy<PageManager>();
+        if (_dictionary.Contains(originalWord))
+        {
+            Debug.Log("word already in dictionary");
+            return;
+        }
+        Translation translationEmpty = new Translation(" ", " ");
+        _dictionary.AddOrUpdate(originalWord, translationEmpty);
+        PageManager currentPage = _dependencies.GetDependancy<PageManager>();
         currentPage.AddNewWord(wordPref, originalWord);
     }
     public void OpenCloseNotebook()
@@ -136,7 +145,7 @@ public class NoteBookManager : MonoBehaviour
             NotebookSoundInstance.start();
             NotebookSoundInstance.release();
             Time.timeScale = 1f;
-            Dependencies.Instance.GetDependancy<CameraTilt>().inMenu = false;
+            _dependencies.GetDependancy<CameraTilt>().inMenu = false;
             noteBookObject.SetActive(false);
             settingsObject.SetActive(false);
             inventoryObject.SetActive(false);
@@ -151,7 +160,7 @@ public class NoteBookManager : MonoBehaviour
             NotebookSoundInstance.start();
             NotebookSoundInstance.release();
             Time.timeScale = 0f;
-            Dependencies.Instance.GetDependancy<CameraTilt>().inMenu = true;
+            _dependencies.GetDependancy<CameraTilt>().inMenu = true;
             noteBookObject.SetActive(true);
             LoadAllPages();
             Openpage(currentPageIndex);
@@ -164,7 +173,7 @@ public class NoteBookManager : MonoBehaviour
    
     public IEnumerator CheckForNewWords()
     {
-        yield return new WaitUntil(() => Dependencies.Instance.GetDependancy<PageManager>() != null);
+        yield return new WaitUntil(() => _dependencies.GetDependancy<PageManager>() != null);
         if (wordsToAdd.Count > 0)
         {
             foreach (var word in wordsToAdd)
@@ -182,9 +191,9 @@ public class NoteBookManager : MonoBehaviour
 
     public void ExitToMenu()
     {
-        Dependencies.Instance.GetDependancy<SaveSystemManager>().SaveGame();
+        _dependencies.GetDependancy<SaveSystemManager>().SaveGame();
         Time.timeScale = 1f;
-        Dependencies.Instance.GetDependancy<CameraTilt>().inMenu = false;
+        _dependencies.GetDependancy<CameraTilt>().inMenu = false;
         noteBookObject.SetActive(false);
         settingsObject.SetActive(false);
         inventoryObject.SetActive(false);
