@@ -4943,6 +4943,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4268788080620287409, guid: 75b56578741ff084d846428933aaaa80, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 62.20044
+      objectReference: {fileID: 0}
+    - target: {fileID: 7412342103448657075, guid: 75b56578741ff084d846428933aaaa80, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 159.59998
+      objectReference: {fileID: 0}
+    - target: {fileID: 7412342103448657075, guid: 75b56578741ff084d846428933aaaa80, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 19.599976
+      objectReference: {fileID: 0}
     - target: {fileID: 9212000275497307075, guid: 75b56578741ff084d846428933aaaa80, type: 3}
       propertyPath: m_Name
       value: DialogCanva
@@ -6367,6 +6379,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1850984539379571379, guid: 099b2dcdfc44f1145929927443bf46db, type: 3}
+      propertyPath: m_margin.w
+      value: 157.9975
+      objectReference: {fileID: 0}
+    - target: {fileID: 1850984539379571379, guid: 099b2dcdfc44f1145929927443bf46db, type: 3}
+      propertyPath: m_margin.y
+      value: 856.28015
+      objectReference: {fileID: 0}
+    - target: {fileID: 1850984539379571379, guid: 099b2dcdfc44f1145929927443bf46db, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 3885694747028085784, guid: 099b2dcdfc44f1145929927443bf46db, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4433955170494138589, guid: 099b2dcdfc44f1145929927443bf46db, type: 3}
       propertyPath: NotebookUI
       value: 
@@ -6375,9 +6403,25 @@ PrefabInstance:
       propertyPath: DialogueCanva
       value: 
       objectReference: {fileID: 506753700}
+    - target: {fileID: 4682809121096154561, guid: 099b2dcdfc44f1145929927443bf46db, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 164.0289
+      objectReference: {fileID: 0}
+    - target: {fileID: 4682809121096154561, guid: 099b2dcdfc44f1145929927443bf46db, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -82.014465
+      objectReference: {fileID: 0}
+    - target: {fileID: 7753694849633901383, guid: 099b2dcdfc44f1145929927443bf46db, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8185597112813280591, guid: 099b2dcdfc44f1145929927443bf46db, type: 3}
       propertyPath: m_Name
       value: TutorialManger
+      objectReference: {fileID: 0}
+    - target: {fileID: 8324769960331960046, guid: 099b2dcdfc44f1145929927443bf46db, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
