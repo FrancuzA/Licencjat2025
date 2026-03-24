@@ -9,12 +9,13 @@ public class BackPack : MonoBehaviour
     public float dropOffset;
     public float dropHeight;
     private NoteBookManager notebookManager;
+    private PopUpManager popUpmanager;
 
     public void Start()
     {
         Dependencies.Instance.RegisterDependency<BackPack>(this);
         notebookManager = Dependencies.Instance.GetDependancy<NoteBookManager>();
-        
+        popUpmanager = Dependencies.Instance.GetDependancy<PopUpManager>();
     }
 
     public void Update()
@@ -31,6 +32,7 @@ public class BackPack : MonoBehaviour
         Audio.PickDrop = "PickUp";
         Audio.PlayPickDrop();
         ItemInfo IItem = item.GetComponent<PickableObject>()._itemInfo;
+        popUpmanager.StartPopUp($"{IItem.ItemName} added to inventory");
         collected.Add(IItem);
     }
 

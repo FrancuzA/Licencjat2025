@@ -19,6 +19,22 @@ MonoBehaviour:
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
+    - rid: 57701808918233446
+      type: {class: 'Constant`1[[Actor, UIAssembly]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
+      data:
+        m_Value: {fileID: 11400000, guid: 6bda2ea45667ccb4386e72dfae252bbd, type: 2}
+    - rid: 57701808918233447
+      type: {class: 'Constant`1[[Actor, UIAssembly]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
+      data:
+        m_Value: {fileID: 11400000, guid: 60e50a31c5ec5b0428234a5f4cdc5703, type: 2}
+    - rid: 57701808918233448
+      type: {class: 'Constant`1[[Actor, UIAssembly]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
+      data:
+        m_Value: {fileID: 11400000, guid: 6bda2ea45667ccb4386e72dfae252bbd, type: 2}
+    - rid: 57701808918233449
+      type: {class: 'Constant`1[[Actor, UIAssembly]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
+      data:
+        m_Value: {fileID: 11400000, guid: 60e50a31c5ec5b0428234a5f4cdc5703, type: 2}
     - rid: 1877259052608389200
       type: {class: GraphModelImp, ns: Unity.GraphToolkit.Editor.Implementation, asm: Unity.GraphToolkit.Editor}
       data:
@@ -328,11 +344,11 @@ MonoBehaviour:
         m_State: 0
         m_InputConstantsById:
           m_KeyList:
-          - __option_actorField
           - __option_Message
+          - __option_actorField
           m_ValueList:
-          - rid: 8786905700116201766
           - rid: 8786905700116201767
+          - rid: 57701808918233446
         m_InputPortInfos:
           expandedPortsById:
             m_KeyList: []
@@ -348,10 +364,6 @@ MonoBehaviour:
           m_HasUserColor: 0
         m_Node:
           rid: 8786905700116201768
-    - rid: 8786905700116201766
-      type: {class: 'Constant`1[[Actor, NoteBookAssembly]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
-      data:
-        m_Value: {fileID: 11400000, guid: 6bda2ea45667ccb4386e72dfae252bbd, type: 2}
     - rid: 8786905700116201767
       type: {class: 'Constant`1[[System.String, mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
       data:
@@ -379,11 +391,11 @@ MonoBehaviour:
         m_State: 0
         m_InputConstantsById:
           m_KeyList:
-          - __option_actorField
           - __option_Message
+          - __option_actorField
           m_ValueList:
-          - rid: 8786905700116201774
           - rid: 8786905700116201775
+          - rid: 57701808918233447
         m_InputPortInfos:
           expandedPortsById:
             m_KeyList: []
@@ -399,10 +411,6 @@ MonoBehaviour:
           m_HasUserColor: 0
         m_Node:
           rid: 8786905700116201776
-    - rid: 8786905700116201774
-      type: {class: 'Constant`1[[Actor, NoteBookAssembly]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
-      data:
-        m_Value: {fileID: 11400000, guid: 60e50a31c5ec5b0428234a5f4cdc5703, type: 2}
     - rid: 8786905700116201775
       type: {class: 'Constant`1[[System.String, mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
       data:
@@ -430,11 +438,11 @@ MonoBehaviour:
         m_State: 0
         m_InputConstantsById:
           m_KeyList:
-          - __option_actorField
           - __option_Message
+          - __option_actorField
           m_ValueList:
-          - rid: 8786905700116201781
           - rid: 8786905700116201782
+          - rid: 57701808918233448
         m_InputPortInfos:
           expandedPortsById:
             m_KeyList: []
@@ -450,10 +458,6 @@ MonoBehaviour:
           m_HasUserColor: 0
         m_Node:
           rid: 8786905700116201783
-    - rid: 8786905700116201781
-      type: {class: 'Constant`1[[Actor, NoteBookAssembly]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
-      data:
-        m_Value: {fileID: 11400000, guid: 6bda2ea45667ccb4386e72dfae252bbd, type: 2}
     - rid: 8786905700116201782
       type: {class: 'Constant`1[[System.String, mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
       data:
@@ -482,11 +486,11 @@ MonoBehaviour:
         m_State: 0
         m_InputConstantsById:
           m_KeyList:
-          - __option_actorField
           - __option_Message
+          - __option_actorField
           m_ValueList:
-          - rid: 8786905700116201788
           - rid: 8786905700116201789
+          - rid: 57701808918233449
         m_InputPortInfos:
           expandedPortsById:
             m_KeyList: []
@@ -502,10 +506,6 @@ MonoBehaviour:
           m_HasUserColor: 0
         m_Node:
           rid: 8786905700116201790
-    - rid: 8786905700116201788
-      type: {class: 'Constant`1[[Actor, NoteBookAssembly]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
-      data:
-        m_Value: {fileID: 11400000, guid: 60e50a31c5ec5b0428234a5f4cdc5703, type: 2}
     - rid: 8786905700116201789
       type: {class: 'Constant`1[[System.String, mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
       data:
