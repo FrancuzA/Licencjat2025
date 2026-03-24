@@ -10,10 +10,15 @@ public class ButtonSetter : MonoBehaviour
     private char[] Letters;
     private string wordOnButton;
     private int buttonWidth = 0;
+
+    private DictionaryManager _dictionary;
+    private PopUpManager _popUpmanager;
     public void Awake()
     {
         buttonTransform = gameObject.GetComponent<RectTransform>();
         gameObject.GetComponent<Button>().onClick.AddListener(AddWordToNotebook);
+        _dictionary = DictionaryManager.Instance;
+        _popUpmanager = Dependencies.Instance.GetDependancy<PopUpManager>();
     }
 
     public void SetButtonText(string word)
@@ -41,6 +46,13 @@ public class ButtonSetter : MonoBehaviour
 
     private void AddWordToNotebook()
     {
+
+        if (_dictionary.Contains(wordOnButton))
+        {
+            Debug.Log("word already in dictionary");
+            return;
+        }
+        _popUpmanager.StartPopUp($"NEW WORD ADDED TO JURNAL - {wordOnButton}");
         Dependencies.Instance.GetDependancy<NoteBookManager>().AddWordToList(wordOnButton);
     }
 }

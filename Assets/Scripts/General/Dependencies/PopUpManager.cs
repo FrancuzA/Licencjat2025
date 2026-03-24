@@ -20,9 +20,9 @@ public class PopUpManager : MonoBehaviour
     private IEnumerator PopUpEvent(string messgage)
     {
         GameObject newPopUp = Instantiate(popUpPref, gameObject.transform.position, Quaternion.identity, gameObject.transform);
-        newPopUp.GetComponentInChildren<TextMeshPro>().text = messgage;
+        newPopUp.GetComponentInChildren<TextMeshProUGUI>().text = messgage;
         newPopUp.GetComponent<Animator>().SetTrigger("In");
-        yield return new WaitForSecondsRealtime(5);
+        yield return new WaitForSecondsRealtime(10);
         newPopUp.GetComponent<Animator>().SetTrigger("Out");
         yield return new WaitForSeconds(2);
         Destroy(newPopUp);
