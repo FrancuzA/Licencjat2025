@@ -51,6 +51,13 @@ public class BackPack : MonoBehaviour
 
         Vector3 dropPosition = CalculateDropPosition();
         Instantiate(SpawnObject, dropPosition, Quaternion.identity);
+        if (popUpmanager == null)
+            popUpmanager = Dependencies.Instance.GetDependancy<PopUpManager>();
+
+        if (popUpmanager != null)
+        {
+            popUpmanager.StartPopUp($"{IItem.ItemName} DROPED FROM INVENTORY");
+        }
 
         AudioManager Audio = Dependencies.Instance.GetDependancy<AudioManager>();
         Audio.PickDrop = "Drop";
