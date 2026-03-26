@@ -15,11 +15,24 @@ public class Interactor : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && interactableInRange && noteBookObject.activeInHierarchy == false && settingsObject.activeInHierarchy == false && inventoryObject.activeInHierarchy == false)
+        if (Input.GetKeyDown(KeyCode.E) && interactableInRange &&
+            noteBookObject.activeInHierarchy == false &&
+            settingsObject.activeInHierarchy == false &&
+            inventoryObject.activeInHierarchy == false)
         {
-            interactable.Interact();
+            MonoBehaviour mb = interactable as MonoBehaviour;
+            if (mb != null && mb.gameObject != null)
+            {
+                interactable.Interact();
+                if (interactText != null) interactText.SetActive(false);
+            }
+            else
+            {
+                interactableInRange = false;
+                interactable = null;
+                if (interactText != null) interactText.SetActive(false);
+            }
         }
-
     }
 
     private void OnTriggerEnter(Collider other)

@@ -5,8 +5,9 @@ public class PickableObject : MonoBehaviour, IInteractable
     public ItemInfo _itemInfo;
    public void Interact()
     {
-        BackPack Backpack = Dependencies.Instance.GetDependancy<BackPack>();
-        Backpack.AddToBackpack(gameObject);
+        BackPack Backup = Dependencies.Instance.GetDependancy<BackPack>();
+        Backup.AddToBackpack(gameObject);
+        GetComponent<Collider>().enabled = false;
         Destroy(gameObject);
     }
 }

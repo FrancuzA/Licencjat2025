@@ -32,7 +32,14 @@ public class BackPack : MonoBehaviour
         Audio.PickDrop = "PickUp";
         Audio.PlayPickDrop();
         ItemInfo IItem = item.GetComponent<PickableObject>()._itemInfo;
-        popUpmanager.StartPopUp($"{IItem.ItemName} ADDED TO INVENTORY");
+        // Upewnij siê, ¿e PopUpManager jest dostêpny
+        if (popUpmanager == null)
+            popUpmanager = Dependencies.Instance.GetDependancy<PopUpManager>();
+
+        if (popUpmanager != null)
+        {
+            popUpmanager.StartPopUp($"{IItem.ItemName} ADDED TO INVENTORY");
+        }
         collected.Add(IItem);
     }
 
