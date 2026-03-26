@@ -3,10 +3,10 @@
         <ui:Label text="Screen Camera Positioner" name="TitleLabel" style="bottom: auto; top: auto; justify-content: center; align-self: center; -unity-text-align: upper-center;"/>
         <ui:Label text="Pos:" name="PosLabel"/>
         <ui:Label text="Rot:" name="RotLabel"/>
-        <ui:TextField label="Preset Name:" placeholder-text="filler text" name="presetNameField"/>
+        <ui:TextField label="Preset Name:" placeholder-text="name" name="presetNameField"/>
         <ui:Button text="Save" name="SaveButton"/>
         <ui:VisualElement name="Separator" style="flex-grow: 0; height: 10px;"/>
         <ui:Label text="Presets" name="Presets" style="align-self: center; -unity-text-align: upper-center;"/>
-        <ui:ListView name="PresetList"/>
+        <ui:ListView name="PresetList" fixed-item-height="50" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;"/>
     </ui:VisualElement>
 </ui:UXML>
