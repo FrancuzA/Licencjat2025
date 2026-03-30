@@ -513,7 +513,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &281532400
 MeshFilter:
@@ -813,7 +812,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &345295571
 MeshFilter:
@@ -926,7 +924,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &349830097
 MeshFilter:
@@ -1243,7 +1240,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &572635707
 MeshFilter:
@@ -1413,7 +1409,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &675277916
 MeshFilter:
@@ -1526,7 +1521,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &754586159
 MeshFilter:
@@ -1639,7 +1633,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &755625562
 MeshFilter:
@@ -1665,6 +1658,63 @@ Transform:
   - {fileID: 982463432}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -1.615, y: 232.26001, z: 0}
+--- !u!1001 &766885693
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1512016112866379437, guid: 56132f93efa55b6419390ef1283f9539, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -179.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 1512016112866379437, guid: 56132f93efa55b6419390ef1283f9539, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -14.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1512016112866379437, guid: 56132f93efa55b6419390ef1283f9539, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -51.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 1512016112866379437, guid: 56132f93efa55b6419390ef1283f9539, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.058562357
+      objectReference: {fileID: 0}
+    - target: {fileID: 1512016112866379437, guid: 56132f93efa55b6419390ef1283f9539, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.065843694
+      objectReference: {fileID: 0}
+    - target: {fileID: 1512016112866379437, guid: 56132f93efa55b6419390ef1283f9539, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.9958745
+      objectReference: {fileID: 0}
+    - target: {fileID: 1512016112866379437, guid: 56132f93efa55b6419390ef1283f9539, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.021655103
+      objectReference: {fileID: 0}
+    - target: {fileID: 1512016112866379437, guid: 56132f93efa55b6419390ef1283f9539, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 2.914
+      objectReference: {fileID: 0}
+    - target: {fileID: 1512016112866379437, guid: 56132f93efa55b6419390ef1283f9539, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -173.458
+      objectReference: {fileID: 0}
+    - target: {fileID: 1512016112866379437, guid: 56132f93efa55b6419390ef1283f9539, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -7.399
+      objectReference: {fileID: 0}
+    - target: {fileID: 3915634480273443714, guid: 56132f93efa55b6419390ef1283f9539, type: 3}
+      propertyPath: m_Name
+      value: Stragan rybak
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 56132f93efa55b6419390ef1283f9539, type: 3}
 --- !u!1 &779763392
 GameObject:
   m_ObjectHideFlags: 0
@@ -1768,7 +1818,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &779763396
 MeshFilter:
@@ -1897,7 +1946,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &821848916
 MeshFilter:
@@ -2026,7 +2074,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &903870796
 MeshFilter:
@@ -2201,7 +2248,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &932575690
 MeshFilter:
@@ -2330,7 +2376,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &962333340
 MeshFilter:
@@ -2637,7 +2682,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &982463435
 MeshFilter:
@@ -2921,7 +2965,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &1134199165
 MeshFilter:
@@ -3197,7 +3240,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &1361499006
 MeshFilter:
@@ -3326,7 +3368,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &1383745259
 MeshFilter:
@@ -3439,7 +3480,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &1404947701
 MeshFilter:
@@ -3609,7 +3649,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &1551042068
 MeshFilter:
@@ -3699,7 +3738,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &1561630419
 MeshFilter:
@@ -3818,9 +3856,6 @@ MonoBehaviour:
   m_LuxAtDistance: 1
   m_Intensity: 0
   m_InnerSpotPercent: -1
-  m_ShapeWidth: 0.01
-  m_ShapeHeight: 0.01
-  m_AspectRatio: 1
   m_SpotIESCutoffPercent: 100
   m_LightDimmer: 1
   m_VolumetricDimmer: 1.72
@@ -3829,6 +3864,9 @@ MonoBehaviour:
   m_AffectDiffuse: 1
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
+  m_ShapeWidth: 0.01
+  m_ShapeHeight: 0.01
+  m_AspectRatio: 1
   m_ShapeRadius: 0.025
   m_SoftnessScale: 1
   m_UseCustomSpotLightShadowCone: 0
@@ -3948,14 +3986,14 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1744271713}
   m_Enabled: 1
-  serializedVersion: 12
+  serializedVersion: 11
   m_Type: 1
   m_Color: {r: 0.9622642, g: 0.57935566, b: 0.12255252, a: 1}
   m_Intensity: 4.6101074
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 0
-  m_CookieSize2D: {x: 10, y: 10}
+  m_CookieSize: 10
   m_Shadows:
     m_Type: 1
     m_Resolution: -1
@@ -4191,7 +4229,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &1845717937
 MeshFilter:
@@ -4377,7 +4414,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &1913395300
 MeshFilter:
@@ -4495,7 +4531,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &1989012825
 MeshFilter:
@@ -4640,7 +4675,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &2079357989
 MeshFilter:
@@ -4769,7 +4803,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &2091317186
 MeshFilter:
@@ -4898,7 +4931,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &2137904124
 MeshFilter:
@@ -5072,7 +5104,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &141467754906533057
 GameObject:
@@ -5472,7 +5503,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1001 &4708598272016943307
 PrefabInstance:
@@ -6080,11 +6110,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7966737372583905876, guid: 714fdb2aca0872249975d0eb4ef15a0a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.000076294
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7966737372583905876, guid: 714fdb2aca0872249975d0eb4ef15a0a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000043869
+      value: 0.000061035156
       objectReference: {fileID: 0}
     - target: {fileID: 8115910441681720339, guid: 714fdb2aca0872249975d0eb4ef15a0a, type: 3}
       propertyPath: m_AnchorMax.y
@@ -6990,3 +7020,4 @@ SceneRoots:
   - {fileID: 1030027896}
   - {fileID: 1885642771}
   - {fileID: 1031031797}
+  - {fileID: 766885693}
