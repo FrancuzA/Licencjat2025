@@ -1,5 +1,5 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
-    <ui:VisualElement style="flex-grow: 0; flex-wrap: wrap-reverse; flex-direction: row; height: 50px; align-items: center; justify-content: space-between; align-content: auto; align-self: stretch;">
+    <ui:VisualElement style="flex-grow: 0; flex-wrap: wrap-reverse; flex-direction: row; height: 60px; align-items: center; justify-content: space-between; align-content: auto; align-self: stretch;">
         <ui:Label text="PresetName" name="PresetName" style="font-size: 18px; -unity-font-style: italic;"/>
         <ui:Label text="Pos:" name="Position" style="font-size: 16px;"/>
         <ui:VisualElement style="flex-grow: 0; flex-direction: row-reverse;">
