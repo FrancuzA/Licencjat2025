@@ -49,7 +49,8 @@ public class Interactor : MonoBehaviour
     {
         if (other.gameObject.TryGetComponent(out IInteractable interactObj))
         {
-            if (interactText != null) interactText.SetActive(false); 
+            if (interactText != null) interactText.SetActive(false);
+            interactable.EndInteraction();
             interactableInRange = false;
         }
     }

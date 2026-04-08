@@ -29,4 +29,9 @@ public class NPCScript : MonoBehaviour, IInteractable, ISaveSystemElement
     {
         saveData.NPCPositions[NPCName] = NPCtransform.position;
     }
+
+    public void EndInteraction()
+    {
+        
+    }
 }

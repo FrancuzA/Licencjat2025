@@ -23,7 +23,10 @@ public class SettingsManager : MonoBehaviour
     public float resOptionsHight = 5;
     private int currentResolutionIndex = 0;
 
-
+    private void Awake()
+    {
+        Dependencies.Instance.RegisterDependency<SettingsManager>(this);
+    }
     private void Start()
     {
         sensitivitySlider.onValueChanged.AddListener(SetSensitivity);
@@ -46,8 +49,15 @@ public class SettingsManager : MonoBehaviour
     public void SetFOV(float value)
     {
         float fovValue = Mathf.Lerp(fovMin, fovMax, value);
+        Debug.Log($"setting lens to {fovValue}");
         _camera.GetComponent<CinemachineCamera>().Lens.FieldOfView = fovValue;
         PlayerPrefs.SetFloat("FOV", value);
+    }
+
+    public void HardSetFOV(float lensValue)
+    {
+        Debug.Log($"setting lens to {lensValue}");
+        _camera.GetComponent<CinemachineCamera>().Lens.FieldOfView = lensValue;
     }
 
     public void SetMusicVolume(float value)
