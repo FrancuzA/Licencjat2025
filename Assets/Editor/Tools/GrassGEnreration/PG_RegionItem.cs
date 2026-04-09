@@ -11,6 +11,6 @@ public class PG_RegionItem
     public float spacing = 1f;
     public float jitterAmount = 0.2f;
     public LayerMask groundLayer = 1;
-    public List<Vector3> corners;
+    public List<Vector3> corners = new();
 
 }

@@ -6,7 +6,7 @@
         </ui:VisualElement>
         <ui:VisualElement name="YValue" style="flex-grow: 1; flex-direction: row; width: auto; min-width: 100px; justify-content: space-between;">
             <ui:Label text="Y:" style="-unity-text-align: middle-left;"/>
-            <ui:FloatField label="" value="0" name="YValueField" enabled="true" readonly="true" style="flex-grow: 1;"/>
+            <ui:FloatField label="" value="0" name="YValueField" enabled="true" readonly="false" style="flex-grow: 1;"/>
         </ui:VisualElement>
         <ui:VisualElement name="ZValue" style="flex-grow: 1; flex-direction: row; width: auto; min-width: 100px; justify-content: space-between;">
             <ui:Label text="Z:" style="-unity-text-align: middle-left;"/>
