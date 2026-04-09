@@ -1,0 +1,16 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <ui:VisualElement style="flex-grow: 0; flex-direction: row; justify-content: space-between; height: 30px;">
+        <ui:VisualElement name="XValue" style="flex-grow: 1; flex-direction: row; width: auto; min-width: 100px; justify-content: space-between;">
+            <ui:Label text="X:" style="-unity-text-align: middle-left;"/>
+            <ui:FloatField label="" value="0" name="XValueField" style="flex-grow: 1;"/>
+        </ui:VisualElement>
+        <ui:VisualElement name="YValue" style="flex-grow: 1; flex-direction: row; width: auto; min-width: 100px; justify-content: space-between;">
+            <ui:Label text="Y:" style="-unity-text-align: middle-left;"/>
+            <ui:FloatField label="" value="0" name="YValueField" enabled="true" readonly="true" style="flex-grow: 1;"/>
+        </ui:VisualElement>
+        <ui:VisualElement name="ZValue" style="flex-grow: 1; flex-direction: row; width: auto; min-width: 100px; justify-content: space-between;">
+            <ui:Label text="Z:" style="-unity-text-align: middle-left;"/>
+            <ui:FloatField label="" value="0" name="ZValueField" style="flex-grow: 1;"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

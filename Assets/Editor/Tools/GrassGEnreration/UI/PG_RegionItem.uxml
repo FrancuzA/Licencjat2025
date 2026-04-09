@@ -1,0 +1,19 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <ui:VisualElement style="flex-grow: 1;">
+        <ui:VisualElement style="flex-grow: 0; height: 3px; background-color: rgb(255, 255, 255); margin-top: 15px; margin-bottom: 15px;"/>
+        <ui:TextField label="Region Name" placeholder-text="Region" name="RegionName" style="font-size: 12px;"/>
+        <ui:Foldout text="Parameters">
+            <uie:ObjectField label="Plant Mesh" type="UnityEngine.Mesh, UnityEngine.CoreModule" name="Mesh"/>
+            <uie:ObjectField label="Material" type="UnityEngine.Material, UnityEngine.CoreModule" name="Material"/>
+            <ui:FloatField label="Mesh Scale" value="1" name="MeshScale"/>
+            <uie:ColorField label="Color" value="rgb(255, 0, 0)" name="LineColor"/>
+            <ui:FloatField label="Spacing" value="1" name="Spacing"/>
+            <ui:FloatField label="Jitter" value="0" name="JitterAmount"/>
+            <uie:LayerMaskField label="LayerMask" name="Layermask"/>
+            <ui:Label text="Corners" name="Listlabel"/>
+            <ui:ListView name="CornerList" header-title=""/>
+        </ui:Foldout>
+        <ui:Button text="Add Corner" name="AddCorner"/>
+        <ui:Button text="Change Corners" name="ChangeCorners"/>
+    </ui:VisualElement>
+</ui:UXML>
