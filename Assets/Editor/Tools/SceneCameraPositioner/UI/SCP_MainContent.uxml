@@ -7,6 +7,6 @@
         <ui:Button text="Save" name="SaveButton"/>
         <ui:VisualElement name="Separator" style="flex-grow: 0; height: 10px;"/>
         <ui:Label text="Presets" name="Presets" style="align-self: center; -unity-text-align: upper-center;"/>
-        <ui:ListView name="PresetList" fixed-item-height="50" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;"/>
+        <ui:ListView name="PresetList" fixed-item-height="50" virtualization-method="DynamicHeight" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;"/>
     </ui:VisualElement>
 </ui:UXML>

@@ -1133,6 +1133,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7487367129497547347, guid: c0cf9a397d4c85643a05848b810ca764, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 24.299988
+      objectReference: {fileID: 0}
+    - target: {fileID: 7710457720402376163, guid: c0cf9a397d4c85643a05848b810ca764, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 12.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -1588,10 +1596,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 494b4f2aad2ec024c999c6ec8f770760, type: 3}
   m_Name: 
   m_EditorClassIdentifier: EnviroAssembly::PlantGeneration
-  _mesh: {fileID: 0}
-  material: {fileID: 0}
-  meshScale: 0
-  corners: []
+  _mesh: {fileID: -7665291454435810938, guid: ef910aff3f044b14caf601370a353ec3, type: 3}
+  material: {fileID: 2100000, guid: 13a1419749903f94bb82a9515e4a1b42, type: 2}
+  meshScale: 1
+  corners:
+  - {x: -25.448837, y: 0, z: -39.374878}
+  - {x: 39.272755, y: 0, z: -29.720198}
+  - {x: 33.709095, y: 0, z: 15.032568}
+  - {x: -16.808983, y: 0, z: 5.3562384}
   polygonColor: {r: 0, g: 1, b: 1, a: 1}
   spacing: 1
   jitterAmount: 0.2
@@ -1610,7 +1622,7 @@ Transform:
   m_GameObject: {fileID: 1571424408}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.49473, y: 4.01597, z: -8.47999}
+  m_LocalPosition: {x: 6.49473, y: 26.9, z: -8.47999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1895,7 +1907,7 @@ Transform:
   m_GameObject: {fileID: 2104241805976595568}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -40.58, z: 0}
   m_LocalScale: {x: 4.493, y: 4.493, z: 4.493}
   m_ConstrainProportionsScale: 0
   m_Children:
