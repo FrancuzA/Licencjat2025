@@ -1377,67 +1377,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9dc38a683fd2984a88af782dfca0a5d, type: 3}
---- !u!1 &277573647
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 277573649}
-  - component: {fileID: 277573648}
-  m_Layer: 0
-  m_Name: GrassGenerator (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &277573648
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 277573647}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 494b4f2aad2ec024c999c6ec8f770760, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlantGeneration
-  _mesh: {fileID: 3736498397910106463, guid: 3c52b94f3f4583f49b59865719913040, type: 3}
-  material: {fileID: 2100000, guid: 13a1419749903f94bb82a9515e4a1b42, type: 2}
-  meshScale: 0.3
-  corners:
-  - {x: 82.99262, y: 0, z: -112.08888}
-  - {x: 91.909, y: 0, z: -185.84119}
-  - {x: 15.095204, y: 0, z: -174.22948}
-  - {x: 20.684086, y: 0, z: -138.46555}
-  polygonColor: {r: 0.06172607, g: 0.5, b: 0.021226406, a: 1}
-  spacing: 3
-  jitterAmount: 0.5
-  rayLength: 100
-  raycastDirectionUp: 0
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  regenerateOnUpdate: 0
---- !u!4 &277573649
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 277573647}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 43.7, y: 27.94713, z: -155.2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &281532396
 GameObject:
   m_ObjectHideFlags: 0
@@ -6382,7 +6321,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 915409638}
-  - component: {fileID: 915409637}
+  - component: {fileID: 915409639}
   m_Layer: 0
   m_Name: GrassGenerator
   m_TagString: Untagged
@@ -6390,7 +6329,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &915409637
+--- !u!4 &915409638
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 915409636}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -27.8, y: 27.94713, z: 24.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &915409639
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6401,43 +6355,15 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 494b4f2aad2ec024c999c6ec8f770760, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlantGeneration
-  _mesh: {fileID: 3736498397910106463, guid: 3c52b94f3f4583f49b59865719913040, type: 3}
-  material: {fileID: 2100000, guid: 13a1419749903f94bb82a9515e4a1b42, type: 2}
-  meshScale: 0.3
+  m_EditorClassIdentifier: EnviroAssembly::PlantGeneration
   corners:
-  - {x: -93.858765, y: 0, z: 64.646225}
-  - {x: -35.726997, y: 0, z: 133.27309}
-  - {x: 67.40488, y: 0, z: 95.931}
-  - {x: 108.38556, y: 0, z: 19.00204}
-  - {x: 72.386765, y: 0, z: -92.49086}
-  - {x: -129.46835, y: 0, z: -126.63916}
-  - {x: -137.98163, y: 0, z: -66.41055}
-  - {x: -128.53625, y: 0, z: -20.969112}
-  polygonColor: {r: 0.06172607, g: 0.5, b: 0.021226406, a: 1}
-  spacing: 3
-  jitterAmount: 0.5
-  rayLength: 100
+  - {x: 24.695248, y: 0, z: -23.053375}
+  - {x: -17.003708, y: 0, z: 59.67581}
+  - {x: 68.80514, y: 0, z: 58.892044}
+  polygonColor: {r: 0, g: 1, b: 0.263525, a: 1}
   raycastDirectionUp: 0
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 8
   regenerateOnUpdate: 0
---- !u!4 &915409638
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 915409636}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -45.1, y: 27.94713, z: -8}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  saveData: {fileID: 11400000, guid: 64e49b57d8d5c2649b55712d3596bbd0, type: 2}
 --- !u!1001 &916764779
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19528,7 +19454,6 @@ SceneRoots:
   - {fileID: 281532401}
   - {fileID: 779763397}
   - {fileID: 915409638}
-  - {fileID: 277573649}
   - {fileID: 1361499007}
   - {fileID: 2079357990}
   - {fileID: 821848917}

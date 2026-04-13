@@ -3,30 +3,28 @@ using UnityEngine;
 
 public class PlantGeneration : MonoBehaviour
 {
-    [Header("Mesh i material")]
-    public Mesh _mesh;
-    public Material material;
-    public float meshScale;
-
-    [Header("Obszar generacji (dowolny wielok¹t)")]
-    public List<Vector3> corners = new List<Vector3>();
-
-    [Header("Wizualizacja w edytorze")]
-    public Color polygonColor = Color.cyan;
-
-    [Header("Parametry siatki")]
-    public float spacing = 1f;
-    public float jitterAmount = 0.2f;
-
-    [Header("Raycast")]
-    public float rayLength = 100f;
-    public bool raycastDirectionUp = false;
-    public LayerMask groundLayer = 1;
-
     [Header("Automatyczne odœwie¿anie")]
     public bool regenerateOnUpdate;
 
-    private List<Matrix4x4> instances = new List<Matrix4x4>();
+    [HideInInspector]
+    public PG_SaveData saveData;
+
+    public float rayLength = 100f;
+    public bool raycastDirectionUp = false;
+
+    private class RegionData
+    {
+        public Mesh mesh;
+        public Material material;
+        public float meshScale;
+        public List<Vector3> corners;
+        public float spacing;
+        public float jitterAmount;
+        public LayerMask groundLayer;
+        public List<Matrix4x4> instances = new List<Matrix4x4>();
+    }
+
+    private Dictionary<int, RegionData> regionDataMap = new Dictionary<int, RegionData>();
 
     private void Awake()
     {
@@ -35,105 +33,94 @@ public class PlantGeneration : MonoBehaviour
 
     private void Start()
     {
-        Generate();
+        if (saveData != null)
+            GenerateAll();
     }
 
     private void Update()
     {
         if (regenerateOnUpdate)
-        {
-            instances.Clear();
-            Generate();
-        }
+            GenerateAll();
 
-        if (_mesh != null && material != null && instances.Count > 0)
+        foreach (var kvp in regionDataMap)
         {
-            Graphics.DrawMeshInstanced(_mesh, 0, material, instances.ToArray());
-        }
-    }
-
-    private void OnValidate()
-    {
-        SetCornersYZero();
-    }
-
-    public void SetCornersYZero()
-    {
-        if (corners == null) return;
-        for (int i = 0; i < corners.Count; i++)
-        {
-            Vector3 p = corners[i];
-            p.y = 0f;
-            corners[i] = p;
+            var data = kvp.Value;
+            if (data.mesh != null && data.material != null && data.instances.Count > 0)
+                Graphics.DrawMeshInstanced(data.mesh, 0, data.material, data.instances.ToArray());
         }
     }
 
-    [ContextMenu("Generuj")]
-    public void Generate()
+    public void GenerateAll()
     {
-        if (corners.Count < 3)
-        {
-            Debug.LogWarning("Musisz podaæ co najmniej 3 rogi n-k¹ta.");
-            return;
-        }
+        if (saveData == null) return;
+        for (int i = 0; i < saveData._regions.Count; i++)
+            Generate(i);
+    }
 
-        instances.Clear();
+    public void Generate(int index)
+    {
+        if (saveData == null || index < 0 || index >= saveData._regions.Count) return;
 
-        Bounds bounds = new Bounds(corners[0], Vector3.zero);
-        foreach (var c in corners)
-            bounds.Encapsulate(c);
+        var region = saveData._regions[index];
+        if (region.corners.Count < 3) return;
+
+        if (!regionDataMap.ContainsKey(index))
+            regionDataMap[index] = new RegionData();
+
+        var data = regionDataMap[index];
+
+        // Kopiuj dane
+        data.mesh = region.mesh;
+        data.material = region.material;
+        data.meshScale = region.meshScale;
+        data.corners = region.corners;
+        data.spacing = region.spacing;
+        data.jitterAmount = region.jitterAmount;
+        data.groundLayer = region.groundLayer;
+
+        data.instances.Clear();
+
+        Bounds bounds = new Bounds(data.corners[0], Vector3.zero);
+        foreach (var c in data.corners) bounds.Encapsulate(c);
 
         float rayStartY = transform.position.y;
-        int candidateCount = 0, insideCount = 0, hitCount = 0;
 
-        for (float x = bounds.min.x; x <= bounds.max.x; x += spacing)
+        for (float x = bounds.min.x; x <= bounds.max.x; x += data.spacing)
         {
-            for (float z = bounds.min.z; z <= bounds.max.z; z += spacing)
+            for (float z = bounds.min.z; z <= bounds.max.z; z += data.spacing)
             {
-                candidateCount++;
                 Vector3 candidate = new Vector3(x, 0, z);
-
-                if (!IsPointInPolygon(candidate))
-                    continue;
-
-                insideCount++;
+                if (!IsPointInPolygon(candidate, data.corners)) continue;
 
                 Vector3 rayStart = new Vector3(x, rayStartY, z);
-                Vector3 rayDirection = raycastDirectionUp ? Vector3.up : Vector3.down;
+                Vector3 rayDir = raycastDirectionUp ? Vector3.up : Vector3.down;
 
-                if (Physics.Raycast(rayStart, rayDirection, out RaycastHit hit, rayLength, groundLayer))
+                if (Physics.Raycast(rayStart, rayDir, out RaycastHit hit, rayLength, data.groundLayer))
                 {
-                    hitCount++;
-
-                    float jitterX = Custom_RNG.Range(-jitterAmount, jitterAmount);
-                    float jitterZ = Custom_RNG.Range(-jitterAmount, jitterAmount);
-
+                    float jitterX = Custom_RNG.Range(-data.jitterAmount, data.jitterAmount);
+                    float jitterZ = Custom_RNG.Range(-data.jitterAmount, data.jitterAmount);
                     Vector3 finalPos = hit.point + new Vector3(jitterX, 0, jitterZ);
-                    Quaternion rot = Quaternion.identity;
-                    Vector3 scale = new Vector3(meshScale, meshScale, meshScale);
-
-                    instances.Add(Matrix4x4.TRS(finalPos, rot, scale));
+                    Vector3 scale = Vector3.one * data.meshScale;
+                    data.instances.Add(Matrix4x4.TRS(finalPos, Quaternion.identity, scale));
                 }
             }
         }
 
-        Debug.Log($"Kandydatów: {candidateCount}, wewn¹trz: {insideCount}, trafieñ: {hitCount}, instancji: {instances.Count}");
     }
 
-    private bool IsPointInPolygon(Vector3 point)
+    private bool IsPointInPolygon(Vector3 point, List<Vector3> corners)
     {
         int j = corners.Count - 1;
         bool inside = false;
-
         for (int i = 0; i < corners.Count; i++)
         {
             if ((corners[i].z > point.z) != (corners[j].z > point.z) &&
                 (point.x < (corners[j].x - corners[i].x) * (point.z - corners[i].z) / (corners[j].z - corners[i].z) + corners[i].x))
-            {
                 inside = !inside;
-            }
             j = i;
         }
         return inside;
     }
+
+    public void ClearAll() => regionDataMap.Clear();
 }
