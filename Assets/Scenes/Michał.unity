@@ -2642,6 +2642,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5458574328542473008, guid: 714fdb2aca0872249975d0eb4ef15a0a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.24023438
+      objectReference: {fileID: 0}
     - target: {fileID: 5460439340531771881, guid: 714fdb2aca0872249975d0eb4ef15a0a, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -4602,147 +4606,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 335f688250f66154e8e6cc24b98647e9, type: 3}
---- !u!1001 &8556940970807424968
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 439872929364295973, guid: 5030036fba3cb9848979935236784574, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -127.42408
-      objectReference: {fileID: 0}
-    - target: {fileID: 439872929364295973, guid: 5030036fba3cb9848979935236784574, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -6.42
-      objectReference: {fileID: 0}
-    - target: {fileID: 439872929364295973, guid: 5030036fba3cb9848979935236784574, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -154.40607
-      objectReference: {fileID: 0}
-    - target: {fileID: 439872929364295973, guid: 5030036fba3cb9848979935236784574, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.991011
-      objectReference: {fileID: 0}
-    - target: {fileID: 439872929364295973, guid: 5030036fba3cb9848979935236784574, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.049559165
-      objectReference: {fileID: 0}
-    - target: {fileID: 439872929364295973, guid: 5030036fba3cb9848979935236784574, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.1152134
-      objectReference: {fileID: 0}
-    - target: {fileID: 439872929364295973, guid: 5030036fba3cb9848979935236784574, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.046549592
-      objectReference: {fileID: 0}
-    - target: {fileID: 439872929364295973, guid: 5030036fba3cb9848979935236784574, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -5.02
-      objectReference: {fileID: 0}
-    - target: {fileID: 439872929364295973, guid: 5030036fba3cb9848979935236784574, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -13.525
-      objectReference: {fileID: 0}
-    - target: {fileID: 439872929364295973, guid: 5030036fba3cb9848979935236784574, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 5.974
-      objectReference: {fileID: 0}
-    - target: {fileID: 1124879157468624705, guid: 5030036fba3cb9848979935236784574, type: 3}
-      propertyPath: lengthInSec
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1124879157468624705, guid: 5030036fba3cb9848979935236784574, type: 3}
-      propertyPath: InitialModule.maxNumParticles
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 1124879157468624705, guid: 5030036fba3cb9848979935236784574, type: 3}
-      propertyPath: EmissionModule.rateOverTime.scalar
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 1124879157468624705, guid: 5030036fba3cb9848979935236784574, type: 3}
-      propertyPath: InitialModule.startLifetime.scalar
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1124879157468624705, guid: 5030036fba3cb9848979935236784574, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.b
-      value: 0.17829116
-      objectReference: {fileID: 0}
-    - target: {fileID: 1124879157468624705, guid: 5030036fba3cb9848979935236784574, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.17829116
-      objectReference: {fileID: 0}
-    - target: {fileID: 1124879157468624705, guid: 5030036fba3cb9848979935236784574, type: 3}
-      propertyPath: InitialModule.startColor.maxColor.r
-      value: 0.19245279
-      objectReference: {fileID: 0}
-    - target: {fileID: 1124879157468624705, guid: 5030036fba3cb9848979935236784574, type: 3}
-      propertyPath: InitialModule.startColor.minColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1124879157468624705, guid: 5030036fba3cb9848979935236784574, type: 3}
-      propertyPath: InitialModule.startColor.minColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1124879157468624705, guid: 5030036fba3cb9848979935236784574, type: 3}
-      propertyPath: InitialModule.startColor.minColor.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1124879157468624705, guid: 5030036fba3cb9848979935236784574, type: 3}
-      propertyPath: InitialModule.startColor.minMaxState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1124879157468624705, guid: 5030036fba3cb9848979935236784574, type: 3}
-      propertyPath: ColorModule.gradient.maxGradient.atime0
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1124879157468624705, guid: 5030036fba3cb9848979935236784574, type: 3}
-      propertyPath: ColorModule.gradient.maxGradient.atime1
-      value: 12259
-      objectReference: {fileID: 0}
-    - target: {fileID: 1124879157468624705, guid: 5030036fba3cb9848979935236784574, type: 3}
-      propertyPath: ColorModule.gradient.maxGradient.key0.a
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1124879157468624705, guid: 5030036fba3cb9848979935236784574, type: 3}
-      propertyPath: ColorModule.gradient.maxGradient.key0.b
-      value: 0.16226411
-      objectReference: {fileID: 0}
-    - target: {fileID: 1124879157468624705, guid: 5030036fba3cb9848979935236784574, type: 3}
-      propertyPath: ColorModule.gradient.maxGradient.key0.g
-      value: 0.16226411
-      objectReference: {fileID: 0}
-    - target: {fileID: 1124879157468624705, guid: 5030036fba3cb9848979935236784574, type: 3}
-      propertyPath: ColorModule.gradient.maxGradient.key0.r
-      value: 0.16226411
-      objectReference: {fileID: 0}
-    - target: {fileID: 1585496994077229337, guid: 5030036fba3cb9848979935236784574, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: b7feaf66547d75d47a8061b03f66a4c0, type: 2}
-    - target: {fileID: 3499122104272876944, guid: 5030036fba3cb9848979935236784574, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 85ae16886b6bcf24f99b224a2277f21f, type: 2}
-    - target: {fileID: 3970868485940905917, guid: 5030036fba3cb9848979935236784574, type: 3}
-      propertyPath: m_Name
-      value: Stragan blacksmith
-      objectReference: {fileID: 0}
-    - target: {fileID: 5562761222134011849, guid: 5030036fba3cb9848979935236784574, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: b7feaf66547d75d47a8061b03f66a4c0, type: 2}
-    - target: {fileID: 5661958576288368619, guid: 5030036fba3cb9848979935236784574, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 85ae16886b6bcf24f99b224a2277f21f, type: 2}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 5030036fba3cb9848979935236784574, type: 3}
 --- !u!1001 &8656449863855280658
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5042,6 +4905,63 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 2354544209432534461, guid: ca723ff9834559f4886ff96ade4ede03, type: 3}
   m_PrefabInstance: {fileID: 8833194581994791009}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8834054353186063853
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1540524351181648600, guid: 5030036fba3cb9848979935236784574, type: 3}
+      propertyPath: m_Name
+      value: Stragan blacksmith
+      objectReference: {fileID: 0}
+    - target: {fileID: 8956774193019859365, guid: 5030036fba3cb9848979935236784574, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -127.42408
+      objectReference: {fileID: 0}
+    - target: {fileID: 8956774193019859365, guid: 5030036fba3cb9848979935236784574, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -6.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 8956774193019859365, guid: 5030036fba3cb9848979935236784574, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -154.40607
+      objectReference: {fileID: 0}
+    - target: {fileID: 8956774193019859365, guid: 5030036fba3cb9848979935236784574, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.991011
+      objectReference: {fileID: 0}
+    - target: {fileID: 8956774193019859365, guid: 5030036fba3cb9848979935236784574, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.049559165
+      objectReference: {fileID: 0}
+    - target: {fileID: 8956774193019859365, guid: 5030036fba3cb9848979935236784574, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.1152134
+      objectReference: {fileID: 0}
+    - target: {fileID: 8956774193019859365, guid: 5030036fba3cb9848979935236784574, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.046549592
+      objectReference: {fileID: 0}
+    - target: {fileID: 8956774193019859365, guid: 5030036fba3cb9848979935236784574, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -5.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 8956774193019859365, guid: 5030036fba3cb9848979935236784574, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -13.525
+      objectReference: {fileID: 0}
+    - target: {fileID: 8956774193019859365, guid: 5030036fba3cb9848979935236784574, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 5.974
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5030036fba3cb9848979935236784574, type: 3}
 --- !u!1001 &9072791960918141972
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5288,7 +5208,7 @@ SceneRoots:
   - {fileID: 588295102}
   - {fileID: 5598114759129562664}
   - {fileID: 6558404283672679309}
-  - {fileID: 8556940970807424968}
+  - {fileID: 8834054353186063853}
   - {fileID: 364231421}
   - {fileID: 312307726860150931}
   - {fileID: 3931105625914330922}

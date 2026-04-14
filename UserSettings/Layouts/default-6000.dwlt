@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 3440
     height: 1349
   m_ShowMode: 4
-  m_Title: Game
+  m_Title: Scene
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -594,7 +594,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - "Assets/modele micha\u0142/kryszta\u0142y"
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -604,19 +604,22 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes
+  - "Assets/modele micha\u0142/kryszta\u0142y"
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\GitHub\Licencjat2025
   m_LockTracker:
     m_IsLocked: 0
   m_LastLocalAssetsSearchArea: 1
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 114}
+    scrollPos: {x: 0, y: 98}
     m_SelectedIDs:
-    - m_Data: 162464
+    - m_Data: 301574
     m_LastClickedID:
-      m_Data: 162464
-    m_ExpandedIDs: []
+      m_Data: 301574
+    m_ExpandedIDs:
+    - m_Data: 0
+    - m_Data: 203446
+    - m_Data: 203448
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -647,7 +650,10 @@ MonoBehaviour:
     m_SelectedIDs: []
     m_LastClickedID:
       m_Data: 0
-    m_ExpandedIDs: []
+    m_ExpandedIDs:
+    - m_Data: 0
+    - m_Data: 203446
+    - m_Data: 203448
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -675,8 +681,8 @@ MonoBehaviour:
       m_ResourceFile: 
   m_ListAreaState:
     m_SelectedInstanceIDs:
-    - m_Data: 162572
-    m_LastClickedInstanceID: 162572
+    - m_Data: -211184
+    m_LastClickedInstanceID: -211184
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: []
     m_RenameOverlay:
@@ -696,7 +702,7 @@ MonoBehaviour:
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_TrimLeadingAndTrailingWhitespace: 0
-      m_ClientGUIView: {fileID: 0}
+      m_ClientGUIView: {fileID: 5}
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0
@@ -804,8 +810,11 @@ MonoBehaviour:
       m_LastClickedID:
         m_Data: 0
       m_ExpandedIDs:
-      - m_Data: -208938
-      - m_Data: -205484
+      - m_Data: -341764
+      - m_Data: -319470
+      - m_Data: -211184
+      - m_Data: -208676
+      - m_Data: -205482
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1356,9 +1365,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: 0, y: 0, z: 0}
+    m_Target: {x: -132.32176, y: -1.0917984, z: -129.78635}
     speed: 2
-    m_Value: {x: -143.63441, y: -21.962044, z: -99.70024}
+    m_Value: {x: -132.32176, y: -1.0917984, z: -129.78635}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1404,13 +1413,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.08717229, y: 0.89959055, z: -0.21045254, w: -0.3726226}
+    m_Target: {x: 0.052638523, y: 0.94366413, z: -0.2706424, w: 0.18341666}
     speed: 2
-    m_Value: {x: -0.36908653, y: 0.6230636, z: -0.4210771, w: -0.54613805}
+    m_Value: {x: 0.052638523, y: 0.9436641, z: -0.2706424, w: 0.18341666}
   m_Size:
-    m_Target: 10
+    m_Target: 12.411399
     speed: 2
-    m_Value: 10
+    m_Value: 12.411399
   m_Ortho:
     m_Target: 0
     speed: 2
