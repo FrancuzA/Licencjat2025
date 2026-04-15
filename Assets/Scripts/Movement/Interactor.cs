@@ -9,6 +9,7 @@ public class Interactor : MonoBehaviour
     public GameObject noteBookObject;
     public GameObject settingsObject;
     public GameObject inventoryObject;
+    public GameObject dialogueScreen;
     private bool interactableInRange;
     private IInteractable interactable;
 
@@ -16,21 +17,21 @@ public class Interactor : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.E) && interactableInRange &&
-            noteBookObject.activeInHierarchy == false &&
-            settingsObject.activeInHierarchy == false &&
-            inventoryObject.activeInHierarchy == false)
+            noteBookObject?.activeInHierarchy == false &&
+            settingsObject?.activeInHierarchy == false &&
+            inventoryObject?.activeInHierarchy == false && dialogueScreen?.activeInHierarchy == false)
         {
             MonoBehaviour mb = interactable as MonoBehaviour;
             if (mb != null && mb.gameObject != null)
             {
-                interactable.Interact();
-                if (interactText != null) interactText.SetActive(false);
+                interactable?.Interact();
+                interactText?.SetActive(false);
             }
             else
             {
                 interactableInRange = false;
                 interactable = null;
-                if (interactText != null) interactText.SetActive(false);
+                interactText?.SetActive(false);
             }
         }
     }
@@ -39,7 +40,7 @@ public class Interactor : MonoBehaviour
     {
         if(other.gameObject.TryGetComponent(out IInteractable interactObj))
         {
-            if (interactText != null) interactText.SetActive(true);
+            interactText?.SetActive(true);
             interactable = interactObj;
             interactableInRange = true;
         }
@@ -49,8 +50,8 @@ public class Interactor : MonoBehaviour
     {
         if (other.gameObject.TryGetComponent(out IInteractable interactObj))
         {
-            if (interactText != null) interactText.SetActive(false);
-            interactable.EndInteraction();
+            interactText?.SetActive(false);
+            interactable?.EndInteraction();
             interactableInRange = false;
         }
     }
