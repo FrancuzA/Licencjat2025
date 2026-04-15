@@ -9,6 +9,7 @@ public class PlayerGroundedState : State
     private Transform mainBody;
     private Animator _animator;
     private bool isRunning = false;
+    private bool isMoving = false;
 
     public PlayerGroundedState(StateMachine stateMachine) : base(stateMachine) { }
 
@@ -40,6 +41,7 @@ public class PlayerGroundedState : State
         if (_input.magnitude > 0.1f)
         {
              if(!isRunning && _animator != null) _animator.SetInteger("MoveState", 1);
+            isMoving = true;
             Vector3 moveDirection = Quaternion.Euler(0, _stateMachine.CurrentRotationAngle, 0) * _input;
             moveDirection = moveDirection.normalized * _CurrentmovementSpeed * Time.fixedDeltaTime;
             moveDirection.y = _rb.linearVelocity.y;
@@ -47,10 +49,12 @@ public class PlayerGroundedState : State
         }
         else
         {
+            if (isMoving) StopedMoving();
             if (_animator != null) _animator.SetInteger("MoveState", 0);
+            isMoving = false;
             _rb.linearVelocity = new Vector3(0, _rb.linearVelocity.y, 0);
         }
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift) && isMoving)
         {
             isRunning = true;
             _CurrentmovementSpeed *= 2;
@@ -66,7 +70,13 @@ public class PlayerGroundedState : State
         if (Input.GetButtonDown("Jump"))
         {
             if (_animator != null) _animator.SetInteger("MoveState", 0);
+            isMoving = false;   
             _stateMachine.SetState(new PlayerJumpState(_stateMachine));
         }
+    }
+
+    private void StopedMoving()
+    {
+        _rb.linearVelocity = new Vector3(0, 0, 0);
     }
 }
