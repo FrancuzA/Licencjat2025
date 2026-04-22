@@ -17,11 +17,14 @@ public class DialogueRunner : MonoBehaviour
     [SerializeField] private RectTransform choiceButtonsParent;
 
     private DialogueRuntimeNodes _currentNode;
+    private Dependencies _dependencies;
 
     private void Start()
     {
+
+        _dependencies = Dependencies.Instance;
         continueButton.onClick.AddListener(MoveNext);
-        Dependencies.Instance.RegisterDependency<DialogueRunner>(this);
+        _dependencies.RegisterDependency<DialogueRunner>(this);
     }
 
     private void MoveNext()
@@ -30,8 +33,7 @@ public class DialogueRunner : MonoBehaviour
         {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
-            Dependencies.Instance.GetDependancy<CameraTilt>().inDialogue = false;
-            Time.timeScale = 1f;
+            _dependencies.GetDependancy<CameraTilt>().UILock = false;
             dialogueScreen.SetActive(false);
             return;
         }
@@ -46,8 +48,7 @@ public class DialogueRunner : MonoBehaviour
         {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
-            Dependencies.Instance.GetDependancy<CameraTilt>().inDialogue = false;
-            Time.timeScale = 1f;
+            _dependencies.GetDependancy<CameraTilt>().UILock = false;
             gameObject.SetActive(false);
             return;
         }
@@ -101,8 +102,7 @@ public class DialogueRunner : MonoBehaviour
     {
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-        Time.timeScale = 0;
-        Dependencies.Instance.GetDependancy<CameraTilt>().inDialogue = true;
+        _dependencies.GetDependancy<CameraTilt>().UILock = true;
         ChangeDialogue(DialogueGraph);
         dialogueScreen.SetActive(true);
         _currentNode = graph.StartingNode;

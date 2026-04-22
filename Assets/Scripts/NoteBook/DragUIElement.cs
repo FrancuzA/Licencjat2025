@@ -30,11 +30,15 @@ public class DragUIElement : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     private float originalZPosition;
     private bool isDragging = false;
     private Image image;
+    private Dependencies _dep;
+    private NoteBookManager _notebook;
 
     private void Awake()
     {
+        _dep = Dependencies.Instance;
+        _notebook = _dep.GetDependancy<NoteBookManager>();
         rectTransform = GetComponent<RectTransform>();
-        canvas = GetComponentInParent<Canvas>();
+        canvas = _notebook.gameObject.GetComponent<Canvas>();
         originalScale = rectTransform.localScale;
         targetScale = originalScale;
         originalZPosition = rectTransform.position.z;
@@ -62,13 +66,13 @@ public class DragUIElement : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     {
         if (eventData.button == PointerEventData.InputButton.Left)
         {
-            
+          
 
             if (canvas.renderMode == RenderMode.ScreenSpaceOverlay )
             {
                 originalParent = gameObject.transform.parent;
-                Dependencies.Instance.UnregisterDependency<DragUIElement>();
-                Dependencies.Instance.RegisterDependency<DragUIElement>(this);
+                _dep.UnregisterDependency<DragUIElement>();
+                _dep.RegisterDependency<DragUIElement>(this);
                 originalZPosition = rectTransform.position.z;
                 RectTransformUtility.ScreenPointToWorldPointInRectangle(
                     rectTransform,

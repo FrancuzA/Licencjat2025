@@ -9,10 +9,9 @@ public class CameraTilt : MonoBehaviour
     [SerializeField] private float sensitivityMax = 1f;
     [SerializeField] private float minTilt = -45f;
     [SerializeField] private float maxTilt = 75f;
-    [SerializeField] public bool inMenu = false;
-    [SerializeField] public bool inDialogue = false;
 
     private float tiltAngle = 0f;
+    public bool UILock  = false;
 
     public void Start()
     {
@@ -25,11 +24,11 @@ public class CameraTilt : MonoBehaviour
     }
     void Update()
     {
-        if (Time.timeScale == 0) return;
+        if (UILock) return;
         float mouseY = Input.GetAxis("Mouse Y");
         tiltAngle -= mouseY * mouseSensitivity * 300  * Time.fixedDeltaTime;
         tiltAngle = Mathf.Clamp(tiltAngle, minTilt, maxTilt);
-        if (followTarget != null && !inMenu && !inDialogue)
+        if (followTarget != null && !UILock)
         {
             Vector3 euler = followTarget.localEulerAngles;
             euler.x = tiltAngle;

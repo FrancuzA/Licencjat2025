@@ -10,16 +10,23 @@ public class PlayerGroundedState : State
     private Animator _animator;
     private bool isRunning = false;
     private bool isMoving = false;
+    private Dependencies _dep;
+    private StartPlayerMovement _startP;
+    private CameraTilt _cameraT;
 
     public PlayerGroundedState(StateMachine stateMachine) : base(stateMachine) { }
 
     public override void Enter()
     {
-        _animator = Dependencies.Instance.GetDependancy<StartPlayerMovement>().gameObject.GetComponent<Animator>();
+        _dep = Dependencies.Instance;
+        _startP = _dep.GetDependancy<StartPlayerMovement>();
+        _cameraT = _dep.GetDependancy<CameraTilt>();
+
+        _animator = _startP.gameObject.GetComponent<Animator>();
         
          if(_animator != null) _animator.SetInteger("MoveState", 0);
-        _mouseSens = Dependencies.Instance.GetDependancy<CameraTilt>().mouseSensitivity;
-        _CurrentmovementSpeed = Dependencies.Instance.GetDependancy<StartPlayerMovement>().walkSpeed;
+        _mouseSens = _cameraT.mouseSensitivity;
+        _CurrentmovementSpeed = _startP.walkSpeed;
         _rb = _stateMachine.GetComponent<Rigidbody>();
         mainBody = _rb.GetComponent<Transform>();
         Cursor.lockState = CursorLockMode.Locked;
@@ -29,8 +36,13 @@ public class PlayerGroundedState : State
 
     public override void Update()
     {
-        if (Time.timeScale == 0) return;
-        _mouseSens = Dependencies.Instance.GetDependancy<CameraTilt>().mouseSensitivity;
+        if(_cameraT.UILock == true)
+        {
+            if (_animator != null) _animator.SetInteger("MoveState", 0);
+            isMoving = false;
+            _stateMachine.SetState(new PlayerPauseState(_stateMachine));
+        }
+        _mouseSens = _cameraT.mouseSensitivity;
         _input = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
         float mouseX = Input.GetAxis("Mouse X");
@@ -40,7 +52,7 @@ public class PlayerGroundedState : State
        
         if (_input.magnitude > 0.1f)
         {
-             if(!isRunning && _animator != null) _animator.SetInteger("MoveState", 1);
+            _animator?.SetInteger("MoveState", 1);
             isMoving = true;
             Vector3 moveDirection = Quaternion.Euler(0, _stateMachine.CurrentRotationAngle, 0) * _input;
             moveDirection = moveDirection.normalized * _CurrentmovementSpeed * Time.fixedDeltaTime;
@@ -50,7 +62,7 @@ public class PlayerGroundedState : State
         else
         {
             if (isMoving) StopedMoving();
-            if (_animator != null) _animator.SetInteger("MoveState", 0);
+            _animator?.SetInteger("MoveState", 0);
             isMoving = false;
             _rb.linearVelocity = new Vector3(0, _rb.linearVelocity.y, 0);
         }
@@ -58,7 +70,7 @@ public class PlayerGroundedState : State
         {
             isRunning = true;
             _CurrentmovementSpeed *= 2;
-            if (_animator != null) _animator.SetInteger("MoveState", 2);
+             _animator?.SetInteger("MoveState", 2);
         }
 
         if (Input.GetKeyUp(KeyCode.LeftShift))
@@ -69,7 +81,7 @@ public class PlayerGroundedState : State
 
         if (Input.GetButtonDown("Jump"))
         {
-            if (_animator != null) _animator.SetInteger("MoveState", 0);
+            _animator?.SetInteger("MoveState", 0);
             isMoving = false;   
             _stateMachine.SetState(new PlayerJumpState(_stateMachine));
         }

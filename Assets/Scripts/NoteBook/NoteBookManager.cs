@@ -144,8 +144,7 @@ public class NoteBookManager : MonoBehaviour
             NotebookSoundInstance.setParameterByName("NoteBookState", 1);
             NotebookSoundInstance.start();
             NotebookSoundInstance.release();
-            Time.timeScale = 1f;
-            _dependencies.GetDependancy<CameraTilt>().inMenu = false;
+            _dependencies.GetDependancy<CameraTilt>().UILock = false;
             noteBookObject.SetActive(false);
             settingsObject.SetActive(false);
             inventoryObject.SetActive(false);
@@ -159,8 +158,7 @@ public class NoteBookManager : MonoBehaviour
             NotebookSoundInstance.setParameterByName("NoteBookState", 0);
             NotebookSoundInstance.start();
             NotebookSoundInstance.release();
-            Time.timeScale = 0f;
-            _dependencies.GetDependancy<CameraTilt>().inMenu = true;
+            _dependencies.GetDependancy<CameraTilt>().UILock = true;
             noteBookObject.SetActive(true);
             LoadAllPages();
             Openpage(currentPageIndex);
@@ -192,8 +190,7 @@ public class NoteBookManager : MonoBehaviour
     public void ExitToMenu()
     {
         _dependencies.GetDependancy<SaveSystemManager>().SaveGame();
-        Time.timeScale = 1f;
-        _dependencies.GetDependancy<CameraTilt>().inMenu = false;
+        _dependencies.GetDependancy<CameraTilt>().UILock = false;
         noteBookObject.SetActive(false);
         settingsObject.SetActive(false);
         inventoryObject.SetActive(false);

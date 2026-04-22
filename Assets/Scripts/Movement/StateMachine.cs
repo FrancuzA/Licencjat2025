@@ -34,6 +34,14 @@ public class StateMachine : MonoBehaviour
         CurrentState.Enter();
     }
 
+    public void ReturnToState()
+    {
+        CurrentState?.Exit();
+        CurrentState = _stack.Peek();
+        _stack.Push(CurrentState);
+        CurrentState.Enter();
+    }
+
     public void Dispose()
     {
         if (_stack.Count() == 0)
@@ -52,9 +60,7 @@ public class StateMachine : MonoBehaviour
 
     protected virtual void Update()
     {
-        if (CurrentState == null)
-            return;
 
-        CurrentState.Update();
+        CurrentState?.Update();
     }
 }

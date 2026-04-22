@@ -7,26 +7,37 @@ public class PlayerJumpState : State
     private float _timer;
     private float _mouseSens = 0.5f;
     private float jumpForce = 5f;
+    private float HeightOfModel = 1;
     private AudioManager audio;
+    private Dependencies _dep;
+    private CameraTilt _cameraT;
     
 
     public PlayerJumpState(StateMachine stateMachine) : base(stateMachine) { }
 
+
     public override void Enter()
     {
-        audio = Dependencies.Instance.GetDependancy<AudioManager>();
+        _dep = Dependencies.Instance;
+        audio = _dep.GetDependancy<AudioManager>();
+        _cameraT = _dep.GetDependancy<CameraTilt>();
+        jumpForce = _dep.GetDependancy<StartPlayerMovement>().jumpForce;
+        _rb = _stateMachine.GetComponent<Rigidbody>();
+        mainBody = _rb.GetComponent<Transform>();
+        var Player = _stateMachine.gameObject;
+        var Model = Player.GetComponent<MeshFilter>();
+        HeightOfModel = Model.mesh.bounds.size.y *Player.transform.localScale.y;
+        if (!Physics.Raycast(_stateMachine.transform.position, Vector3.down, HeightOfModel / 2 + 0.1f)) return;
         audio.JumpPhase = "Jump";
         audio.PlayJump();
-        jumpForce = Dependencies.Instance.GetDependancy<StartPlayerMovement>().jumpForce;
-        _rb = _stateMachine.GetComponent<Rigidbody>();
         _rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-        mainBody = _rb.GetComponent<Transform>();
         _timer = 0f;
     }
 
     public override void Update()
     {
-        _mouseSens = Dependencies.Instance.GetDependancy<CameraTilt>().mouseSensitivity;
+        if(_cameraT.UILock == true) _stateMachine.SetState(new PlayerPauseState(_stateMachine));
+        _mouseSens = _cameraT.mouseSensitivity;
         float mouseX = Input.GetAxis("Mouse X");
 
       
@@ -40,7 +51,7 @@ public class PlayerJumpState : State
             return;
         }
 
-        if (Physics.Raycast(_stateMachine.transform.position, Vector3.down, 1.1f))
+        if (Physics.Raycast(_stateMachine.transform.position, Vector3.down, HeightOfModel/2 + 0.1f))
         {
             audio.JumpPhase = "Land";
             audio.PlayJump();

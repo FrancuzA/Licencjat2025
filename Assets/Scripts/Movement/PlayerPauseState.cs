@@ -1,27 +1,28 @@
 using UnityEngine;
-/*
+
 public class PlayerPauseState : State
 {
-
+    public Dependencies _dependencies;
+    public CameraTilt _cameraTilt;
     public PlayerPauseState(StateMachine stateMachine) : base(stateMachine) { }
 
 
     public override void Enter()
     {
-        Time.timeScale = 0f;
+        _dependencies = Dependencies.Instance;
+        _cameraTilt = _dependencies?.GetDependancy<CameraTilt>();
     }
 
     public override void Update()
     {
-        if (Input.GetKeyDown(KeyCode.N)) 
+        if (_cameraTilt.UILock == false) 
         {
-            _stateMachine.SetState(new PlayerGroundedState(_stateMachine));
+            _stateMachine.ReturnToState();
         }
     }
 
 
     public override void Exit() 
     {
-        Time.timeScale = 1f;
     }
-}*/
+}

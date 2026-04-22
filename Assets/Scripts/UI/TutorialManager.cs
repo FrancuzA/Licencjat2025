@@ -10,6 +10,15 @@ public class TutorialManager : MonoBehaviour
     public GameObject NotebookUI;
     public TextMeshProUGUI TutorialTxt;
     public List<string> TutorialMessages;
+    private Dependencies _dep;
+    private CameraTilt _cameraT;
+
+
+    private void Start()
+    {
+        _dep = Dependencies.Instance;
+        _cameraT = _dep.GetDependancy<CameraTilt>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -30,7 +39,7 @@ public class TutorialManager : MonoBehaviour
         TutorialCanva.SetActive(true);
         TutorialTxt.text = TutorialMessages[1];
         yield return new WaitUntil(() => DialogueCanva.activeInHierarchy == false);
-        yield return new WaitUntil(() => Time.timeScale == 1);
+        yield return new WaitForSeconds(2);
         StopTime();
         TutorialCanva.SetActive(true);
         TutorialTxt.text = TutorialMessages[2];
@@ -45,14 +54,14 @@ public class TutorialManager : MonoBehaviour
     public void RevertTimeAndMouse()
     {
         if (DialogueCanva.activeInHierarchy == true || NotebookUI.activeInHierarchy == true) return;
-        Time.timeScale = 1.0f;
+        _cameraT.UILock = false;   
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void StopTime()
     {
-        Time.timeScale = 0f;
+        _cameraT.UILock = true;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
     }

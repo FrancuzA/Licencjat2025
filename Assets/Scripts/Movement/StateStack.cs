@@ -21,12 +21,12 @@ public class StateStack
 
     public State Peek()
     {
-        if (_Stack.Count == 0)
+        if (_Stack.Count < 2)
         {
             return null;
         }
 
-        return _Stack[^1];
+        return _Stack[^2];
     }
 
     public int Count()
