@@ -130,7 +130,7 @@ public class NoteBookManager : MonoBehaviour
             Debug.Log("word already in dictionary");
             return;
         }
-        Translation translationEmpty = new Translation(" ", " ");
+        string translationEmpty = " ";
         _dictionary.AddOrUpdate(originalWord, translationEmpty);
         PageManager currentPage = _dependencies.GetDependancy<PageManager>();
         currentPage.AddNewWord(wordPref, originalWord);

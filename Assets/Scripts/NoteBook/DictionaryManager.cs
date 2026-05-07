@@ -1,11 +1,15 @@
+using Mono.Cecil.Cil;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class DictionaryManager : MonoBehaviour
 {
     public static DictionaryManager Instance { get; private set; }
+    public List<string> originalWords = new List<string>();
+    public List<string> translatedWords = new List<string>();
+    
 
-    private readonly Dictionary<string, Translation> words = new Dictionary<string, Translation>();
+    private readonly Dictionary<string, string> words = new Dictionary<string, string>();
 
     private void Awake()
     {
@@ -19,17 +23,19 @@ public class DictionaryManager : MonoBehaviour
     }
 
 
-    public void AddOrUpdate(string original, Translation translation)
+    public void AddOrUpdate(string original, string translation)
     {
-        if (string.IsNullOrEmpty(original) || translation == null)
+        string lWord = original.ToLower();
+        string lTranslation = translation.ToLower();
+        if (string.IsNullOrEmpty(lWord) || translation == null)
             return;
 
-        words[original] = translation;
+        words[original] = lTranslation;
 
-        Debug.Log($"Saving the word /{original}/ as /{words[original].translatedText ?? string.Empty}/");
+        Debug.Log($"Saving the word /{original}/ as /{words[original] ?? string.Empty}/");
     }
 
-    public bool TryGetTranslation(string original, out Translation translation)
+    public bool TryGetTranslation(string original, out string translation)
     {
         if (original == null)
         {
@@ -40,7 +46,7 @@ public class DictionaryManager : MonoBehaviour
         return words.TryGetValue(original, out translation);
     }
 
-    public Translation GetTranslation(string original)
+    public string GetTranslation(string original)
     {
         return TryGetTranslation(original, out var translation) ? translation : null;
     }
@@ -55,10 +61,11 @@ public class DictionaryManager : MonoBehaviour
 
     public bool Contains(string original)
     {
-        if (original == null)
+        string lWord = original.ToLower();
+        if (lWord == null)
             return false;
 
-        return words.ContainsKey(original);
+        return words.ContainsKey(lWord);
     }
 
     public void Clear()
@@ -66,9 +73,27 @@ public class DictionaryManager : MonoBehaviour
         words.Clear();
     }
 
-    // Expose a read-only view of all entries
-    public IReadOnlyDictionary<string, Translation> GetAll()
+
+
+    public bool CheckTranslation(string original)
     {
-        return words;
+        string lWord = original.ToLower();
+        Debug.Log("checking translation");
+        if (!originalWords.Contains(lWord)) return false;
+        int index = originalWords.IndexOf(lWord);
+        string goodTranslation = translatedWords[index];
+        Debug.Log("word in dictionary");
+        if (goodTranslation == null) return false;
+        if (GetTranslation(lWord) == goodTranslation)
+        {
+            Debug.Log("translation correct");
+            return true;
+        }
+        else
+        {
+            Debug.Log("wrong");
+            return false;
+
+        }
     }
 }

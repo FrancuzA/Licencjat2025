@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -5,28 +6,26 @@ public class TranslateWord : MonoBehaviour
 {
     public TMP_InputField inputField;
     public TextMeshProUGUI originalText;
-    public Translation _translation;
+    private DictionaryManager manager;
+    private Animator _animator;
     void Start()
     {
         inputField.onSubmit.AddListener(SendToManager);
+        inputField.onSubmit.AddListener(CheckIFCorrect);
+        manager = DictionaryManager.Instance;
+        _animator = GetComponentInParent<Animator>();
     }
 
     public void SendToManager(string word)
     {
-        if (_translation == null)
-        {
-            _translation = new Translation(word, $"correct {word}");
-        }
-        else
-        {
-            _translation.translatedText = word;
-            _translation.correctTranslation = $"correct {word}";
-        }
-
-        DictionaryManager.Instance.AddOrUpdate(originalText.text, _translation);
+        manager.AddOrUpdate(originalText.text, word);
     }
 
-
+    private void CheckIFCorrect(string word)
+    {
+        if (manager.CheckTranslation(word)) StartCoroutine(GoodTranslation());
+        else StartCoroutine(BadTranslation());
+    }
     public void BlockNotebookInteraction()
     {
         NoteBookManager noteBookManager = Dependencies.Instance.GetDependancy<NoteBookManager>();
@@ -37,6 +36,20 @@ public class TranslateWord : MonoBehaviour
     {
         NoteBookManager noteBookManager = Dependencies.Instance.GetDependancy<NoteBookManager>();
         noteBookManager.isWriting = false;
+    }
+
+    private IEnumerator GoodTranslation()
+    {
+        inputField.interactable = false;
+        _animator.SetTrigger("Good");
+        yield return null;
+
+    }
+
+    private IEnumerator BadTranslation()
+    {
+        _animator.SetTrigger("Bad");
+        yield return null;
     }
 
 }

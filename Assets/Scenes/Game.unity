@@ -14903,6 +14903,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0.244
       objectReference: {fileID: 0}
+    - target: {fileID: 2760196495639476541, guid: 1dbfc229ab1de464f8e1741f55f18e8a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3621734134455226562, guid: 1dbfc229ab1de464f8e1741f55f18e8a, type: 3}
       propertyPath: interactText
       value: 
@@ -16043,6 +16047,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1109838751438361005, guid: 562c46606e24f6e419ead2ac8cb38ebb, type: 3}
+      propertyPath: originalWords.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109838751438361005, guid: 562c46606e24f6e419ead2ac8cb38ebb, type: 3}
+      propertyPath: translatedWords.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109838751438361005, guid: 562c46606e24f6e419ead2ac8cb38ebb, type: 3}
+      propertyPath: 'originalWords.Array.data[0]'
+      value: village
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109838751438361005, guid: 562c46606e24f6e419ead2ac8cb38ebb, type: 3}
+      propertyPath: 'translatedWords.Array.data[0]'
+      value: village
+      objectReference: {fileID: 0}
     - target: {fileID: 6300205550262260453, guid: 562c46606e24f6e419ead2ac8cb38ebb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -92.01503
