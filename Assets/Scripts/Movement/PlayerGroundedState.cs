@@ -38,7 +38,7 @@ public class PlayerGroundedState : State
     {
         if(_cameraT.UILock == true)
         {
-            if (_animator != null) _animator.SetInteger("MoveState", 0);
+            _animator?.SetInteger("MoveState", 0);
             isMoving = false;
             _stateMachine.SetState(new PlayerPauseState(_stateMachine));
         }

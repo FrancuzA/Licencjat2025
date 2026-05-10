@@ -31,8 +31,6 @@ public class DictionaryManager : MonoBehaviour
             return;
 
         words[original] = lTranslation;
-
-        Debug.Log($"Saving the word /{original}/ as /{words[original] ?? string.Empty}/");
     }
 
     public bool TryGetTranslation(string original, out string translation)
@@ -78,20 +76,16 @@ public class DictionaryManager : MonoBehaviour
     public bool CheckTranslation(string original)
     {
         string lWord = original.ToLower();
-        Debug.Log("checking translation");
         if (!originalWords.Contains(lWord)) return false;
         int index = originalWords.IndexOf(lWord);
         string goodTranslation = translatedWords[index];
-        Debug.Log("word in dictionary");
         if (goodTranslation == null) return false;
         if (GetTranslation(lWord) == goodTranslation)
         {
-            Debug.Log("translation correct");
             return true;
         }
         else
         {
-            Debug.Log("wrong");
             return false;
 
         }

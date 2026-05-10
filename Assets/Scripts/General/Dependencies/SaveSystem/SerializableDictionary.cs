@@ -27,7 +27,6 @@ public class SerializableDictionary<TKey, TValue> : Dictionary<TKey, TValue>, IS
 
         if (_keys.Count != _values.Count)
         {
-            Debug.Log("not good");
             _keys.Clear();
             _values.Clear();
             return;

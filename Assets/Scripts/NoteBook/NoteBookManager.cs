@@ -127,7 +127,6 @@ public class NoteBookManager : MonoBehaviour
     {
         if (_dictionary.Contains(originalWord))
         {
-            Debug.Log("word already in dictionary");
             return;
         }
         string translationEmpty = " ";

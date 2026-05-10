@@ -49,7 +49,6 @@ public class ButtonSetter : MonoBehaviour
 
         if (_dictionary.Contains(wordOnButton))
         {
-            Debug.Log("word already in dictionary");
             return;
         }
         _popUpmanager.StartPopUp($"NEW WORD ADDED TO JURNAL - {wordOnButton}");

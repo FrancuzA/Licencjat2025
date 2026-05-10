@@ -25,7 +25,6 @@ public class NameScript : MonoBehaviour
 
     public bool namesMatch()
     {
-        Debug.Log($"current name: {CurrentName}, PlayerName: {PlayerName} ");
         if (CurrentName == PlayerName) return true;
         else return false;
     }

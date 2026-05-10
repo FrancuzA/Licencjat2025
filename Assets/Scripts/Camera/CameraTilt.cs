@@ -24,8 +24,9 @@ public class CameraTilt : MonoBehaviour
     }
     void Update()
     {
-        if (UILock) return;
+        
         float mouseY = Input.GetAxis("Mouse Y");
+        if (UILock) mouseY =0;
         tiltAngle -= mouseY * mouseSensitivity * 300  * Time.fixedDeltaTime;
         tiltAngle = Mathf.Clamp(tiltAngle, minTilt, maxTilt);
         if (followTarget != null && !UILock)
