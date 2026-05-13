@@ -13,9 +13,10 @@ public class CameraTilt : MonoBehaviour
     private float tiltAngle = 0f;
     public bool UILock  = false;
 
-    public void Start()
+    private void Awake()
     {
         Dependencies.Instance.RegisterDependency<CameraTilt>(this);
+
     }
 
     public void ChangeSens(float value)
