@@ -22,10 +22,6 @@ MonoBehaviour:
     - rid: 57701808918233450
       type: {class: 'Constant`1[[Actor, UIAssembly]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
       data:
-        m_Value: {fileID: 11400000, guid: 12caed552363c9441affc8d4e784d1bd, type: 2}
-    - rid: 57701808918233451
-      type: {class: 'Constant`1[[Actor, UIAssembly]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
-      data:
         m_Value: {fileID: 11400000, guid: 6bda2ea45667ccb4386e72dfae252bbd, type: 2}
     - rid: 7957907924668907626
       type: {class: GraphModelImp, ns: Unity.GraphToolkit.Editor.Implementation, asm: Unity.GraphToolkit.Editor}
@@ -40,10 +36,8 @@ MonoBehaviour:
         m_GraphNodeModels:
         - rid: 7957907924668907629
         - rid: 7957907924668907631
-        - rid: 7957907924668907636
         m_GraphWireModels:
         - rid: 7957907924668907635
-        - rid: 7957907924668907637
         m_GraphStickyNoteModels: []
         m_GraphPlacematModels: []
         m_GraphVariableModels: []
@@ -54,9 +48,9 @@ MonoBehaviour:
         m_LastKnownBounds:
           serializedVersion: 2
           x: -32
-          y: -76.8
-          width: 688
-          height: 196.79999
+          y: -22
+          width: 391
+          height: 142
         m_GraphElementMetaData:
         - m_Guid:
             m_Value0: 15176715144687102599
@@ -82,22 +76,6 @@ MonoBehaviour:
             Hash: 85f0ec9e7e60e27392d5f125dc73e822
           m_Category: 2
           m_Index: 0
-        - m_Guid:
-            m_Value0: 775838617906262542
-            m_Value1: 12663684433022526288
-          m_HashGuid:
-            serializedVersion: 2
-            Hash: 0e3255c71c55c40a50a3f391e571beaf
-          m_Category: 0
-          m_Index: 2
-        - m_Guid:
-            m_Value0: 2605024179205838218
-            m_Value1: 7538667685483237766
-          m_HashGuid:
-            serializedVersion: 2
-            Hash: 8a15de60b0e7262486d1f18051ba9e68
-          m_Category: 2
-          m_Index: 1
         m_EntryPoint:
           rid: 7957907924668907629
         m_Graph:
@@ -195,7 +173,7 @@ MonoBehaviour:
     - rid: 7957907924668907633
       type: {class: 'Constant`1[[System.String, mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
       data:
-        m_Value: you cold . fire help . sit . watch .
+        m_Value: HE SEEMS BUSY RIGHT NOW
     - rid: 7957907924668907634
       type: {class: MessageNode, ns: , asm: Notebook.Editor}
       data:
@@ -233,82 +211,3 @@ MonoBehaviour:
           m_PortDirection: 1
           m_PortOrientation: 0
           m_Title: Input
-    - rid: 7957907924668907636
-      type: {class: UserNodeModelImp, ns: Unity.GraphToolkit.Editor.Implementation, asm: Unity.GraphToolkit.Editor}
-      data:
-        m_Guid:
-          m_Value0: 775838617906262542
-          m_Value1: 12663684433022526288
-        m_HashGuid:
-          serializedVersion: 2
-          Hash: 0e3255c71c55c40a50a3f391e571beaf
-        m_Version: 2
-        m_Position: {x: 440, y: -77}
-        m_Title: 
-        m_Tooltip: 
-        m_NodePreviewModel:
-          rid: -2
-        m_State: 0
-        m_InputConstantsById:
-          m_KeyList:
-          - __option_Message
-          - __option_actorField
-          m_ValueList:
-          - rid: 7957907924668907639
-          - rid: 57701808918233451
-        m_InputPortInfos:
-          expandedPortsById:
-            m_KeyList: []
-            m_ValueList: 
-        m_OutputPortInfos:
-          expandedPortsById:
-            m_KeyList: []
-            m_ValueList: 
-        m_Collapsed: 0
-        m_CurrentModeIndex: 0
-        m_ElementColor:
-          m_Color: {r: 0, g: 0, b: 0, a: 0}
-          m_HasUserColor: 0
-        m_Node:
-          rid: 7957907924668907640
-    - rid: 7957907924668907637
-      type: {class: WireModel, ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
-      data:
-        m_Guid:
-          m_Value0: 2605024179205838218
-          m_Value1: 7538667685483237766
-        m_HashGuid:
-          serializedVersion: 2
-          Hash: 8a15de60b0e7262486d1f18051ba9e68
-        m_Version: 2
-        m_FromPortReference:
-          m_NodeModelGuid:
-            m_Value0: 1500712984917516120
-            m_Value1: 3992769404052695429
-          m_NodeModelHashGuid:
-            serializedVersion: 2
-            Hash: 581fd337829ad31485e99b4e9e2a6937
-          m_UniqueId: Output
-          m_PortDirection: 2
-          m_PortOrientation: 0
-          m_Title: Output
-        m_ToPortReference:
-          m_NodeModelGuid:
-            m_Value0: 775838617906262542
-            m_Value1: 12663684433022526288
-          m_NodeModelHashGuid:
-            serializedVersion: 2
-            Hash: 0e3255c71c55c40a50a3f391e571beaf
-          m_UniqueId: Input
-          m_PortDirection: 1
-          m_PortOrientation: 0
-          m_Title: Input
-    - rid: 7957907924668907639
-      type: {class: 'Constant`1[[System.String, mscorlib]]', ns: Unity.GraphToolkit.Editor, asm: Unity.GraphToolkit.Internal.Editor}
-      data:
-        m_Value: YEAH..I ALMOST FREEZED TO DEATH. THANK YOU...I THINK
-    - rid: 7957907924668907640
-      type: {class: MessageNode, ns: , asm: Notebook.Editor}
-      data:
-        actorField: actorField
-        msgField: Message
