@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlantGeneration : MonoBehaviour
+public class PlantGeneration : SingletonMaker<PlantGeneration>
 {
     [Header("Automatyczne odœwie¿anie")]
     public bool regenerateOnUpdate;
@@ -26,7 +26,7 @@ public class PlantGeneration : MonoBehaviour
 
     private Dictionary<int, RegionData> regionDataMap = new Dictionary<int, RegionData>();
 
-    private void Awake()
+    public override void Awake()
     {
         Custom_RNG.Init(-1);
     }

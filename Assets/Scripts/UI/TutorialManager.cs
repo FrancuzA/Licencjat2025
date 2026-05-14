@@ -12,10 +12,12 @@ public class TutorialManager : MonoBehaviour
     public List<string> TutorialMessages;
     private Dependencies _dep;
     private CameraTilt _cameraT;
+    private bool _tutorialActive;
 
 
     private void Start()
     {
+        _tutorialActive=true;
         _dep = Dependencies.Instance;
         _cameraT = _dep.GetDependancy<CameraTilt>();
     }
@@ -24,13 +26,14 @@ public class TutorialManager : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (TutorialMessages.Count == 0) return;
+            if (TutorialMessages.Count == 0 || _tutorialActive) return;
             StartCoroutine(Tutorial_Rutine());
         }
     }
 
     public IEnumerator Tutorial_Rutine()
     {
+        _tutorialActive=true;
         StopTime();
         TutorialCanva.SetActive(true);
         TutorialTxt.text = TutorialMessages[0];
@@ -39,7 +42,7 @@ public class TutorialManager : MonoBehaviour
         TutorialCanva.SetActive(true);
         TutorialTxt.text = TutorialMessages[1];
         yield return new WaitUntil(() => DialogueCanva.activeInHierarchy == false);
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         StopTime();
         TutorialCanva.SetActive(true);
         TutorialTxt.text = TutorialMessages[2];

@@ -6,7 +6,7 @@ public class PlantGenerationEditor : Editor
 {
     private PlantGeneration script;
 
-    private void OnEnable() => script = (PlantGeneration)target;
+    private void OnEnable() => script = PlantGeneration.Instance;
 
     private void OnSceneGUI()
     {

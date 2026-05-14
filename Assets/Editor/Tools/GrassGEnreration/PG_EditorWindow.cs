@@ -1,9 +1,7 @@
-using System;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
-using System.Collections.Generic;
 
 public class PG_EditorWindow : EditorWindow
 {
@@ -299,6 +297,6 @@ public class PG_EditorWindow : EditorWindow
 
     private PlantGeneration GetPlantGenerator()
     {
-        return FindFirstObjectByType<PlantGeneration>();
+        return PlantGeneration.instance;
     }
 }

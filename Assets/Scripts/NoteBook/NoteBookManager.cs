@@ -11,7 +11,6 @@ public class NoteBookManager : MonoBehaviour
     [Header("General")]
     public GameObject noteBookObject;
     public GameObject settingsObject;
-    public GameObject inventoryObject;
     private GameObject currentActivePage;
     public GameObject pagePrefab;
     public GameObject wordPref;
@@ -42,7 +41,7 @@ public class NoteBookManager : MonoBehaviour
 
     void Update()
     {
-        if (noteBookObject == null || settingsObject == null || inventoryObject == null) return;
+        if (noteBookObject == null || settingsObject == null ) return;
         if (!isWriting)
             ProcessInputs();
     }
@@ -137,7 +136,7 @@ public class NoteBookManager : MonoBehaviour
     public void OpenCloseNotebook()
     {
         NotebookSoundInstance = RuntimeManager.CreateInstance(NotebookSoundRef);
-        if (noteBookObject.activeInHierarchy || settingsObject.activeInHierarchy || inventoryObject.activeInHierarchy)
+        if (noteBookObject.activeInHierarchy || settingsObject.activeInHierarchy )
 
         {
             NotebookSoundInstance.setParameterByName("NoteBookState", 1);
@@ -146,13 +145,12 @@ public class NoteBookManager : MonoBehaviour
             _dependencies.GetDependancy<CameraTilt>().UILock = false;
             noteBookObject.SetActive(false);
             settingsObject.SetActive(false);
-            inventoryObject.SetActive(false);
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
             return;
         }
 
-        if (!noteBookObject.activeInHierarchy && !settingsObject.activeInHierarchy && !inventoryObject.activeInHierarchy)
+        if (!noteBookObject.activeInHierarchy && !settingsObject.activeInHierarchy)
         {
             NotebookSoundInstance.setParameterByName("NoteBookState", 0);
             NotebookSoundInstance.start();
@@ -192,7 +190,6 @@ public class NoteBookManager : MonoBehaviour
         _dependencies.GetDependancy<CameraTilt>().UILock = false;
         noteBookObject.SetActive(false);
         settingsObject.SetActive(false);
-        inventoryObject.SetActive(false);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         SceneManager.LoadSceneAsync(0);
