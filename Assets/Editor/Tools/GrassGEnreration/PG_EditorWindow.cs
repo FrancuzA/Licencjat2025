@@ -297,6 +297,6 @@ public class PG_EditorWindow : EditorWindow
 
     private PlantGeneration GetPlantGenerator()
     {
-        return PlantGeneration.instance;
+        return Dependencies.Instance.GetDependancy<PlantGeneration>();
     }
 }

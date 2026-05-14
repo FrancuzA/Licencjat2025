@@ -18,8 +18,8 @@ MonoBehaviour:
     material: {fileID: 2100000, guid: 13a1419749903f94bb82a9515e4a1b42, type: 2}
     meshScale: 0.3
     polygonColor: {r: 0, g: 1, b: 0.263525, a: 1}
-    spacing: 3
-    jitterAmount: 0.5
+    spacing: 4
+    jitterAmount: 0.7
     groundLayer:
       serializedVersion: 2
       m_Bits: 8
@@ -30,10 +30,10 @@ MonoBehaviour:
   - regionName: Region2
     mesh: {fileID: 3736498397910106463, guid: 3c52b94f3f4583f49b59865719913040, type: 3}
     material: {fileID: 2100000, guid: 13a1419749903f94bb82a9515e4a1b42, type: 2}
-    meshScale: 1
+    meshScale: 0.3
     polygonColor: {r: 0.8306236, g: 0, b: 1, a: 1}
-    spacing: 3
-    jitterAmount: 0.5
+    spacing: 4
+    jitterAmount: 0.7
     groundLayer:
       serializedVersion: 2
       m_Bits: 8

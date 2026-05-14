@@ -28,6 +28,7 @@ public class PlantGeneration : SingletonMaker<PlantGeneration>
 
     public override void Awake()
     {
+        Dependencies.Instance.RegisterDependency<PlantGeneration>(this);
         Custom_RNG.Init(-1);
     }
 

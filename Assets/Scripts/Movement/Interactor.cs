@@ -8,7 +8,6 @@ public class Interactor : MonoBehaviour
     public GameObject playerCamera;
     public GameObject noteBookObject;
     public GameObject settingsObject;
-    public GameObject inventoryObject;
     public GameObject dialogueScreen;
     private bool interactableInRange;
     private IInteractable interactable;
@@ -18,8 +17,7 @@ public class Interactor : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && interactableInRange &&
             noteBookObject?.activeInHierarchy == false &&
-            settingsObject?.activeInHierarchy == false &&
-            inventoryObject?.activeInHierarchy == false && dialogueScreen?.activeInHierarchy == false)
+            settingsObject?.activeInHierarchy == false && dialogueScreen?.activeInHierarchy == false)
         {
             MonoBehaviour mb = interactable as MonoBehaviour;
             if (mb != null && mb.gameObject != null)
