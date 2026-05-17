@@ -18,6 +18,7 @@ public class DialogueRunner : MonoBehaviour
 
     private DialogueRuntimeNodes _currentNode;
     private Dependencies _dependencies;
+    private NPCScript _dialoguer;
 
     private void Start()
     {
@@ -49,6 +50,7 @@ public class DialogueRunner : MonoBehaviour
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
             _dependencies.GetDependancy<CameraTilt>().UILock = false;
+            _dialoguer?.
             gameObject.SetActive(false);
             return;
         }
@@ -98,12 +100,13 @@ public class DialogueRunner : MonoBehaviour
         graph = DialogueGraph;
     }
 
-    public void OpenDialogue(DialogueRuntimeGraph DialogueGraph)
+    public void OpenDialogue(DialogueRuntimeGraph DialogueGraph, NPCScript newDialoguer)
     {
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         _dependencies.GetDependancy<CameraTilt>().UILock = true;
         ChangeDialogue(DialogueGraph);
+        _dialoguer = newDialoguer;
         dialogueScreen.SetActive(true);
         _currentNode = graph.StartingNode;
         UpdateUI(graph.StartingNode);

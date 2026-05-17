@@ -23,7 +23,7 @@ public class TranslateWord : MonoBehaviour
 
     private void CheckIFCorrect(string word)
     {
-        if (manager.CheckTranslation(word)) StartCoroutine(GoodTranslation());
+        if (manager.CheckTranslation(originalText.text, word)) StartCoroutine(GoodTranslation());
         else StartCoroutine(BadTranslation());
     }
     public void BlockNotebookInteraction()
