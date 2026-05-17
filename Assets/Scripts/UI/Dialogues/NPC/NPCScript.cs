@@ -16,6 +16,7 @@ public class NPCScript : MonoBehaviour, IInteractable, ISaveSystemElement
     }
     public void Interact()
     {
+        onDialogueStart.Invoke();
         Dependencies.Instance.GetDependancy<DialogueRunner>().OpenDialogue(NPCDialogue, this);
     }
 

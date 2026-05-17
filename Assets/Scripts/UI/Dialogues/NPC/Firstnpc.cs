@@ -78,18 +78,20 @@ public class Firstnpc : MonoBehaviour
                 yield return new WaitForFixedUpdate();
             }
 
-            npcAnim.SetTrigger("Idle");
-
-            if (player != null)
+            if (player != null && Vector3.Distance(transform.position, player.position) > waitForPlayerDistance)
             {
+                npcAnim.SetTrigger("Idle");
+
                 while (Vector3.Distance(transform.position, player.position) > waitForPlayerDistance)
                 {
                     yield return null;
                 }
-            }
 
-            npcAnim.SetTrigger("Walk");
+                npcAnim.SetTrigger("Walk");
+            }
         }
+
         npcAnim.SetTrigger("Idle");
+        rb.constraints = RigidbodyConstraints.FreezeAll;
     }
 }
