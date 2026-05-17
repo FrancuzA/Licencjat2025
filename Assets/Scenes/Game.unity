@@ -14508,6 +14508,10 @@ PrefabInstance:
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1916838298608832289, guid: 9c8ee677b61c71e43aa0dd97a20c5c8e, type: 3}
+      propertyPath: m_WarningMessage
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1916838298608832289, guid: 9c8ee677b61c71e43aa0dd97a20c5c8e, type: 3}
       propertyPath: m_ApplyRootMotion
       value: 0
       objectReference: {fileID: 0}
@@ -15410,7 +15414,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83427cc23e1c1e742a36484a5352bf02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UIAssembly::Firstnpc
-  moveSpeed: 3
+  moveSpeed: 6
   arrivalDistance: 1
   waitForPlayerDistance: 10
   rotationSpeed: 5
