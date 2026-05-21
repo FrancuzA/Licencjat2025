@@ -4,6 +4,7 @@ public class SecondNPCScript : MonoBehaviour
 {
     private Animator npcAnim;
 
+    public string triggerName;
 
     private void Start()
     {
@@ -12,6 +13,6 @@ public class SecondNPCScript : MonoBehaviour
 
     public void StartPostDialogueAnimation()
     {
-        npcAnim.SetTrigger("Point");
+        npcAnim.SetTrigger(triggerName);
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CutSceneManager : MonoBehaviour
 {
@@ -41,8 +42,8 @@ public class CutSceneManager : MonoBehaviour
     {
         CutSceneTwo.SetActive(true);
         _animator.SetTrigger("SecondCutscene");
-        yield return new WaitForSecondsRealtime(5);
-        CutSceneTwo.SetActive(false);
+        yield return new WaitForSecondsRealtime(7);
+        SceneManager.LoadSceneAsync(0);
     }
 
 }
