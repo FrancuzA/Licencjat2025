@@ -7850,6 +7850,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Island
       objectReference: {fileID: 0}
+    - target: {fileID: 2473902964435608917, guid: 59b233c9bd57eca44856fc015199629a, type: 3}
+      propertyPath: NPCName
+      value: rodrigez
+      objectReference: {fileID: 0}
+    - target: {fileID: 2473902964435608917, guid: 59b233c9bd57eca44856fc015199629a, type: 3}
+      propertyPath: NPCDialogue
+      value: 
+      objectReference: {fileID: 2841676755933307327, guid: bd0e503bbc088174facb9edc825c820b, type: 3}
+    - target: {fileID: 2699693941790955733, guid: 59b233c9bd57eca44856fc015199629a, type: 3}
+      propertyPath: NPCName
+      value: ramon
+      objectReference: {fileID: 0}
+    - target: {fileID: 2699693941790955733, guid: 59b233c9bd57eca44856fc015199629a, type: 3}
+      propertyPath: NPCDialogue
+      value: 
+      objectReference: {fileID: 2841676755933307327, guid: bd0e503bbc088174facb9edc825c820b, type: 3}
     - target: {fileID: 3577252707518861224, guid: 59b233c9bd57eca44856fc015199629a, type: 3}
       propertyPath: m_Name
       value: Fisherman
@@ -7874,9 +7890,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 42.039
       objectReference: {fileID: 0}
+    - target: {fileID: 4843703271792857108, guid: 59b233c9bd57eca44856fc015199629a, type: 3}
+      propertyPath: NPCName
+      value: hugo
+      objectReference: {fileID: 0}
+    - target: {fileID: 4843703271792857108, guid: 59b233c9bd57eca44856fc015199629a, type: 3}
+      propertyPath: NPCDialogue
+      value: 
+      objectReference: {fileID: 2841676755933307327, guid: bd0e503bbc088174facb9edc825c820b, type: 3}
     - target: {fileID: 5261431811200263381, guid: 59b233c9bd57eca44856fc015199629a, type: 3}
       propertyPath: NPCName
-      value: priest
+      value: enrico pucci
       objectReference: {fileID: 0}
     - target: {fileID: 5261431811200263381, guid: 59b233c9bd57eca44856fc015199629a, type: 3}
       propertyPath: NPCDialogue
@@ -7986,6 +8010,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Herbalist
       objectReference: {fileID: 0}
+    - target: {fileID: 6515287292291462151, guid: 59b233c9bd57eca44856fc015199629a, type: 3}
+      propertyPath: NPCName
+      value: hermandez
+      objectReference: {fileID: 0}
+    - target: {fileID: 6515287292291462151, guid: 59b233c9bd57eca44856fc015199629a, type: 3}
+      propertyPath: NPCDialogue
+      value: 
+      objectReference: {fileID: 2841676755933307327, guid: bd0e503bbc088174facb9edc825c820b, type: 3}
     - target: {fileID: 7191142803182487487, guid: 59b233c9bd57eca44856fc015199629a, type: 3}
       propertyPath: NPCName
       value: xavier
@@ -8022,6 +8054,14 @@ PrefabInstance:
       propertyPath: onDialogueStop.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 7402844698472619558, guid: 59b233c9bd57eca44856fc015199629a, type: 3}
+      propertyPath: NPCName
+      value: jesus
+      objectReference: {fileID: 0}
+    - target: {fileID: 7402844698472619558, guid: 59b233c9bd57eca44856fc015199629a, type: 3}
+      propertyPath: NPCDialogue
+      value: 
+      objectReference: {fileID: 2841676755933307327, guid: bd0e503bbc088174facb9edc825c820b, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 482332313588247664, guid: 59b233c9bd57eca44856fc015199629a, type: 3}
