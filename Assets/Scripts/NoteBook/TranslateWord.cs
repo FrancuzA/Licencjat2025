@@ -7,6 +7,7 @@ public class TranslateWord : MonoBehaviour
     public TMP_InputField inputField;
     public TextMeshProUGUI originalText;
     private DictionaryManager manager;
+    private CutSceneManager cutSceneManager;
     private Animator _animator;
     void Start()
     {
@@ -14,6 +15,7 @@ public class TranslateWord : MonoBehaviour
         inputField.onSubmit.AddListener(CheckIFCorrect);
         manager = DictionaryManager.Instance;
         _animator = GetComponentInParent<Animator>();
+        cutSceneManager = Dependencies.Instance.GetDependancy<CutSceneManager>();
     }
 
     public void SendToManager(string word)
@@ -23,7 +25,7 @@ public class TranslateWord : MonoBehaviour
 
     private void CheckIFCorrect(string word)
     {
-        if (manager.CheckTranslation(word)) StartCoroutine(GoodTranslation());
+        if (manager.CheckTranslation(originalText.text, word)) StartCoroutine(GoodTranslation());
         else StartCoroutine(BadTranslation());
     }
     public void BlockNotebookInteraction()
@@ -40,6 +42,7 @@ public class TranslateWord : MonoBehaviour
 
     private IEnumerator GoodTranslation()
     {
+        cutSceneManager.AddCorrectWord();
         inputField.interactable = false;
         _animator.SetTrigger("Good");
         yield return null;

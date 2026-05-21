@@ -72,15 +72,17 @@ public class DictionaryManager : MonoBehaviour
 
 
 
-    public bool CheckTranslation(string original)
+    public bool CheckTranslation(string original, string translation)
     {
-        string lWord = original.ToLower();
-        if (!originalWords.Contains(lWord)) return false;
-        int index = originalWords.IndexOf(lWord);
+        string lWord = translation.ToLower();
+        if (!originalWords.Contains(original)) return false;
+        int index = originalWords.IndexOf(original);
         string goodTranslation = translatedWords[index];
+        Debug.Log($"your translation: {lWord}, correct translation: {goodTranslation}");
         if (goodTranslation == null) return false;
-        if (GetTranslation(lWord) == goodTranslation)
+        if (lWord == goodTranslation)
         {
+            AddOrUpdate(original, lWord);
             return true;
         }
         else

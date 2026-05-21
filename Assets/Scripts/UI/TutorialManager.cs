@@ -12,14 +12,16 @@ public class TutorialManager : MonoBehaviour
     public List<string> TutorialMessages;
     private Dependencies _dep;
     private CameraTilt _cameraT;
+    private Rigidbody playerRb;
     private bool _tutorialActive;
 
 
     private void Start()
     {
-        _tutorialActive=true;
+        _tutorialActive = false ;
         _dep = Dependencies.Instance;
         _cameraT = _dep.GetDependancy<CameraTilt>();
+        playerRb = _dep.GetDependancy<StartPlayerMovement>().gameObject.GetComponent<Rigidbody>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -27,6 +29,7 @@ public class TutorialManager : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             if (TutorialMessages.Count == 0 || _tutorialActive) return;
+            playerRb.linearVelocity = Vector3.zero;
             StartCoroutine(Tutorial_Rutine());
         }
     }
