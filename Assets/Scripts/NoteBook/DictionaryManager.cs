@@ -6,7 +6,7 @@ public class DictionaryManager : MonoBehaviour
     public static DictionaryManager Instance { get; private set; }
     public List<string> originalWords = new List<string>();
     public List<string> translatedWords = new List<string>();
-    
+    public bool hasTranslated = false;
 
     private readonly Dictionary<string, string> words = new Dictionary<string, string>();
 
@@ -82,6 +82,7 @@ public class DictionaryManager : MonoBehaviour
         if (goodTranslation == null) return false;
         if (lWord == goodTranslation)
         {
+            hasTranslated = true;
             AddOrUpdate(original, lWord);
             return true;
         }

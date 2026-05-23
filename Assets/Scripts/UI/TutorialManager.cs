@@ -60,7 +60,7 @@ public class TutorialManager : MonoBehaviour
     public void RevertTimeAndMouse()
     {
         if (DialogueCanva.activeInHierarchy == true || NotebookUI.activeInHierarchy == true) return;
-        _cameraT.UILock = false;   
+        _cameraT.UILock = false;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }

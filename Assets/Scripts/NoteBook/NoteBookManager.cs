@@ -27,16 +27,22 @@ public class NoteBookManager : MonoBehaviour
 
     private Dependencies _dependencies;
     private DictionaryManager _dictionary;
-    private void Start()
+    private CameraTilt _camera;
+
+    private void Awake()
     {
         _dependencies = Dependencies.Instance;
+
+        //CommandsManager.Instance.RegisterInstance(this);
+        _dependencies.RegisterDependency<NoteBookManager>(this);
+    }
+    private void Start()
+    {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         LoadAllPages();
-        if (CommandsManager.Instance == null || Dependencies.Instance == null) return;
-        CommandsManager.Instance.RegisterInstance(this);
-        _dependencies.RegisterDependency<NoteBookManager>(this);
         _dictionary = DictionaryManager.Instance;
+        _camera = _dependencies.GetDependancy<CameraTilt>();
     }
 
     void Update()
@@ -142,7 +148,7 @@ public class NoteBookManager : MonoBehaviour
             NotebookSoundInstance.setParameterByName("NoteBookState", 1);
             NotebookSoundInstance.start();
             NotebookSoundInstance.release();
-            _dependencies.GetDependancy<CameraTilt>().UILock = false;
+            _camera.UILock = false;
             noteBookObject.SetActive(false);
             settingsObject.SetActive(false);
             Cursor.visible = false;
@@ -150,12 +156,12 @@ public class NoteBookManager : MonoBehaviour
             return;
         }
 
-        if (!noteBookObject.activeInHierarchy && !settingsObject.activeInHierarchy)
+        if (!noteBookObject.activeInHierarchy && !settingsObject.activeInHierarchy  && !_camera.UILock)
         {
             NotebookSoundInstance.setParameterByName("NoteBookState", 0);
             NotebookSoundInstance.start();
             NotebookSoundInstance.release();
-            _dependencies.GetDependancy<CameraTilt>().UILock = true;
+            _camera.UILock = true;
             noteBookObject.SetActive(true);
             LoadAllPages();
             Openpage(currentPageIndex);
@@ -187,7 +193,7 @@ public class NoteBookManager : MonoBehaviour
     public void ExitToMenu()
     {
         _dependencies.GetDependancy<SaveSystemManager>().SaveGame();
-        _dependencies.GetDependancy<CameraTilt>().UILock = false;
+        _camera.UILock = false;
         noteBookObject.SetActive(false);
         settingsObject.SetActive(false);
         Cursor.visible = true;

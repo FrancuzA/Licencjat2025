@@ -42,6 +42,7 @@ public class TranslateWord : MonoBehaviour
 
     private IEnumerator GoodTranslation()
     {
+        
         cutSceneManager.AddCorrectWord();
         inputField.interactable = false;
         _animator.SetTrigger("Good");

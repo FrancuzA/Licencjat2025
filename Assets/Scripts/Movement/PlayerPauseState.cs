@@ -25,6 +25,7 @@ public class PlayerPauseState : State
             _stateMachine.ReturnToState();
         }
         mainBody.rotation = Quaternion.Euler(0, _stateMachine.CurrentRotationAngle, 0);
+        _rb.linearVelocity = Vector3.zero;
     }
 
 

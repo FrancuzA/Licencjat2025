@@ -2,6 +2,7 @@ using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Firstnpc : MonoBehaviour
 {
@@ -18,14 +19,22 @@ public class Firstnpc : MonoBehaviour
     private Animator npcAnim;
     private Rigidbody rb;
     private Transform player;
+    private DictionaryManager _Distionary;
     private bool inDialogue;
+    private bool hasTranslated = false;
     private WaitForSecondsRealtime waveCycle = new WaitForSecondsRealtime(5);
 
     void Start()
     {
+        _Distionary = DictionaryManager.Instance;
         npcAnim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         StartCoroutine(Wave());
+    }
+
+    private void FixedUpdate()
+    {
+        hasTranslated = _Distionary.hasTranslated;
     }
 
     private IEnumerator Wave()
@@ -56,7 +65,8 @@ public class Firstnpc : MonoBehaviour
 
     private IEnumerator GoToCheckpoints()
     {
-        yield return waveCycle;
+        npcAnim.SetTrigger("Greet");
+        yield return new WaitUntil(()=> hasTranslated == true);
         AssignPlayer();
         npcAnim.SetTrigger("Walk");
 
@@ -80,10 +90,13 @@ public class Firstnpc : MonoBehaviour
 
             if (player != null && Vector3.Distance(transform.position, player.position) > waitForPlayerDistance)
             {
-                npcAnim.SetTrigger("Idle");
-
+                npcAnim.SetTrigger("Greet");
+                
                 while (Vector3.Distance(transform.position, player.position) > waitForPlayerDistance)
                 {
+                    Vector3 flatDirection = new Vector3(player.position.x, 0f, player.position.z);
+                    Quaternion targetRotation = Quaternion.LookRotation(flatDirection);
+                    rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime));
                     yield return null;
                 }
 

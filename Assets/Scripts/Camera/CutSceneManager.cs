@@ -8,6 +8,7 @@ public class CutSceneManager : MonoBehaviour
     public int correctWords = 0;
     public GameObject CutSceneOne;
     public GameObject CutSceneTwo;
+    private CameraTilt _camera;
 
     private void Awake()
     {
@@ -15,6 +16,7 @@ public class CutSceneManager : MonoBehaviour
     }
     void Start()
     {
+        _camera = Dependencies.Instance.GetDependancy<CameraTilt>();
         _animator = GetComponent<Animator>();
         StartCoroutine(StartFirstCutScene());
     }
@@ -33,16 +35,20 @@ public class CutSceneManager : MonoBehaviour
     private IEnumerator StartFirstCutScene()
     {
         CutSceneOne.SetActive(true);
+        _camera.UILock = true;
         _animator.SetTrigger("FirstCutscene");
-        yield return new WaitForSecondsRealtime(10);
+        yield return new WaitForSecondsRealtime(12);
+        _camera.UILock=false;
         CutSceneOne.SetActive(false);
     }
 
     private IEnumerator StartSecondCutScene()
     {
         CutSceneTwo.SetActive(true);
+        _camera.UILock = true;
         _animator.SetTrigger("SecondCutscene");
-        yield return new WaitForSecondsRealtime(7);
+        yield return new WaitForSecondsRealtime(10);
+        _camera.UILock=false;
         SceneManager.LoadSceneAsync(0);
     }
 
