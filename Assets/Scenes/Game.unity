@@ -5892,7 +5892,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1238298009}
     m_Modifications:
     - target: {fileID: 841987215910109409, guid: 50f95995e35154746aeb7394c1a76541, type: 3}
       propertyPath: m_LocalScale.x
@@ -17262,6 +17262,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7510965306605869560}
+        m_TargetAssemblyTypeName: Firstnpc, UIAssembly
+        m_MethodName: CloseEventIndicator
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   NPCName: juan
 --- !u!95 &6501571338644374325
 Animator:
@@ -17544,6 +17556,8 @@ MonoBehaviour:
   arrivalDistance: 1
   waitForPlayerDistance: 10
   rotationSpeed: 5
+  textBubble: {fileID: 0}
+  eventIndicator: {fileID: 0}
   checkPoints:
   - {fileID: 1693862031}
   - {fileID: 1799135232}
