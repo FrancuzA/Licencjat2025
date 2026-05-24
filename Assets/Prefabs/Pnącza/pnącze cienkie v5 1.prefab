@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2915128611131007639}
   - component: {fileID: 5374602811484052876}
   - component: {fileID: 8636400290532995640}
+  - component: {fileID: 300446127037826058}
   m_Layer: 0
   m_Name: "pn\u0105cze cienkie v5 1"
   m_TagString: Untagged
@@ -90,3 +91,25 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &300446127037826058
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4772309477961051540}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 1
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -6858665648124358076, guid: d1d9fb885402450479cfbce304f9d78b, type: 3}

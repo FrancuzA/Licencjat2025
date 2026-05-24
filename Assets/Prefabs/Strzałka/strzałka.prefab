@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2059910257936004782}
   - component: {fileID: 7597343436082244291}
   - component: {fileID: 7368068500483635491}
+  - component: {fileID: 5586090171841089295}
   m_Layer: 0
   m_Name: "strza\u0142ka"
   m_TagString: Untagged
@@ -90,6 +91,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5586090171841089295
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 246119143755013537}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.020545, y: 0.9511768, z: 0.069768466}
+  m_Center: {x: 0, y: 0, z: 0.0000038091093}
 --- !u!1 &715338209260911166
 GameObject:
   m_ObjectHideFlags: 0
@@ -101,6 +123,7 @@ GameObject:
   - component: {fileID: 5948000488885496119}
   - component: {fileID: 2698626631119187781}
   - component: {fileID: 1087225108200890045}
+  - component: {fileID: 6508495573188826557}
   m_Layer: 0
   m_Name: "strza\u0142ka"
   m_TagString: Untagged
@@ -181,3 +204,24 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6508495573188826557
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 715338209260911166}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.12218791, y: 2.5450368, z: 0.11376482}
+  m_Center: {x: -0.0000000018626454, y: 1.323489e-23, z: 0}

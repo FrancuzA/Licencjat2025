@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6935460767826321970}
   - component: {fileID: 8571379743375943836}
   - component: {fileID: 4315083643737020234}
+  - component: {fileID: 7603832950509729841}
   m_Layer: 0
   m_Name: ryba 3
   m_TagString: Untagged
@@ -90,3 +91,24 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7603832950509729841
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8719687751749624623}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.64853513, y: 1.4021587, z: 0.4218902}
+  m_Center: {x: -0.0000005364418, y: 3.213536e-16, z: 0.011306442}

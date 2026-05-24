@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7275224769026232874}
   - component: {fileID: 2872649318872374182}
   - component: {fileID: 3841747441039248307}
+  - component: {fileID: -6248337246168169117}
   m_Layer: 0
   m_Name: "Kryszta\u0142y ma\u0142e v1"
   m_TagString: Untagged
@@ -90,3 +91,25 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &-6248337246168169117
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5614592027561567966}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 1
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1474370853754753452, guid: d5993ad9a20e20042b0e4bfcfb9afad4, type: 3}
