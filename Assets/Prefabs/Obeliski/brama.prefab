@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5685439512531780123}
   - component: {fileID: 7566692051836581585}
   - component: {fileID: 3463429501369667595}
+  - component: {fileID: -4289014710254952139}
   m_Layer: 0
   m_Name: brama
   m_TagString: Untagged
@@ -92,6 +93,28 @@ MeshRenderer:
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!64 &3463429501369667595
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8215328940119693060}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 1
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3055541751849688376, guid: 9ba74ae5bb0773b4485b26de83f988c4, type: 3}
+--- !u!64 &-4289014710254952139
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
