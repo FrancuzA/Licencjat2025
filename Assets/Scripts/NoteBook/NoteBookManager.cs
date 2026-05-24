@@ -14,6 +14,7 @@ public class NoteBookManager : MonoBehaviour
     private GameObject currentActivePage;
     public GameObject pagePrefab;
     public GameObject wordPref;
+    public GameObject exitScreen;
     public List<GameObject> pages;
     public List<string> wordsToAdd = new List<string>();
     private int currentPageIndex = 0;
@@ -28,6 +29,7 @@ public class NoteBookManager : MonoBehaviour
     private Dependencies _dependencies;
     private DictionaryManager _dictionary;
     private CameraTilt _camera;
+    
 
     private void Awake()
     {
@@ -82,7 +84,7 @@ public class NoteBookManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape)) 
         {
-            ExitToMenu();
+            exitScreen.SetActive(true);
         }
     }
 
