@@ -17,10 +17,11 @@ public class PopUpManager : MonoBehaviour
         StartCoroutine(PopUpEvent(message));
     }
 
-    private IEnumerator PopUpEvent(string messgage)
+    private IEnumerator PopUpEvent(string message)
     {
+        var fullMessage = $"{message} PRESS J TO ONEP THE JURNAL";
         GameObject newPopUp = Instantiate(popUpPref, gameObject.transform.position, Quaternion.identity, gameObject.transform);
-        newPopUp.GetComponentInChildren<TextMeshProUGUI>().text = messgage;
+        newPopUp.GetComponentInChildren<TextMeshProUGUI>().text = fullMessage;
         newPopUp.GetComponent<Animator>().SetTrigger("In");
         yield return new WaitForSecondsRealtime(10);
         newPopUp.GetComponent<Animator>().SetTrigger("Out");
