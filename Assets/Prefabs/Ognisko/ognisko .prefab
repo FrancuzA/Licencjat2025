@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8510145654443017546}
   - component: {fileID: 8424839476807781247}
   - component: {fileID: 3895398221476506837}
+  - component: {fileID: 8805699064941031403}
   m_Layer: 0
   m_Name: 'ognisko '
   m_TagString: Untagged
@@ -98,6 +99,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8805699064941031403
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 272203714609995836}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.2744577, y: 0.29, z: 1.2798339}
+  m_Center: {x: -0.3252529, y: 0.024375789, z: 0.017004134}
 --- !u!1 &738330920501875819
 GameObject:
   m_ObjectHideFlags: 0
