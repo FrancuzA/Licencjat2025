@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8535808857314097223}
   - component: {fileID: 8506231556675360506}
   - component: {fileID: 4780930666017690816}
+  - component: {fileID: -7130091582174742348}
   m_Layer: 0
   m_Name: "kolumna o\u0142tarza3"
   m_TagString: Untagged
@@ -112,3 +113,25 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.306015, y: 2.1598682, z: 1.3060147}
   m_Center: {x: -0.0000019073486, y: 0.000000059604645, z: 0.00000011920929}
+--- !u!64 &-7130091582174742348
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4058045113188047962}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 1
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6434929808055024486, guid: c17f1db9bc30e6f49b858d238569393a, type: 3}
