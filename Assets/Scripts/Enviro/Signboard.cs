@@ -18,21 +18,20 @@ public class Signboard : MonoBehaviour, IInteractable
         _popUpmanager = Dependencies.Instance?.GetDependancy<PopUpManager>();
         _notebook = Dependencies.Instance?.GetDependancy<NoteBookManager>();
     }
-    public void EndInteraction()
-    {
-        if (!hasInteracted) return;
-        settings?.SetFOV(currentFOV);
-        hasInteracted = false;
-
-    }
-
     public void Interact()
     {
         if (hasInteracted) return;
-        currentFOV = PlayerPrefs.GetFloat("FOV");
-        settings?.HardSetFOV(20);
+        currentFOV = settings.FOVSlider.value; 
+        settings.HardSetFOV(20f);
         hasInteracted = true;
         AddWordToNotebook();
+    }
+
+    public void EndInteraction()
+    {
+        if (!hasInteracted) return;
+        settings.HardSetFOV(Mathf.Lerp(60f, 110f, currentFOV)); 
+        hasInteracted = false;
     }
 
     private void AddWordToNotebook()

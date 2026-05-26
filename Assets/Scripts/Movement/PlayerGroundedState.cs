@@ -2,15 +2,25 @@ using UnityEngine;
 
 public class PlayerGroundedState : State
 {
+    // Movement
     private Vector3 _input;
-    private float _CurrentmovementSpeed = 300f;
-    public float _mouseSens = 0.5f;
+    private Vector3 _moveDirection;
+    private float _baseMovementSpeed;
+    private const float SprintMultiplier = 2f;
+
+    // State flags
+    private bool _isMoving = false;
+    private bool _isRunning = false;
+
+    // Mouse
+    private float _mouseSens;
+
+    // Components
     private Rigidbody _rb;
-    private Transform mainBody;
+    private Transform _mainBody;
     private Animator _animator;
-    private bool isRunning = false;
-    private bool isMoving = false;
-    private Dependencies _dep;
+
+    // Dependencies
     private StartPlayerMovement _startP;
     private CameraTilt _cameraT;
 
@@ -18,77 +28,99 @@ public class PlayerGroundedState : State
 
     public override void Enter()
     {
-        _dep = Dependencies.Instance;
-        _startP = _dep.GetDependancy<StartPlayerMovement>();
-        _cameraT = _dep.GetDependancy<CameraTilt>();
+        var dep = Dependencies.Instance;
+        _startP = dep.GetDependancy<StartPlayerMovement>();
+        _cameraT = dep.GetDependancy<CameraTilt>();
 
         _animator = _startP.gameObject.GetComponent<Animator>();
-        
-         if(_animator != null) _animator.SetInteger("MoveState", 0);
+        _animator?.SetInteger("MoveState", 0);
+
+        _baseMovementSpeed = _startP.walkSpeed;
         _mouseSens = _cameraT.mouseSensitivity;
-        _CurrentmovementSpeed = _startP.walkSpeed;
+
         _rb = _stateMachine.GetComponent<Rigidbody>();
-        mainBody = _rb.GetComponent<Transform>();
+        _mainBody = _rb.transform;
+
+        _moveDirection = Vector3.zero;
+        _isMoving = false;
+        _isRunning = false;
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
 
-
     public override void Update()
     {
-        if(_cameraT.UILock == true)
+        if (_cameraT.UILock)
         {
             _animator?.SetInteger("MoveState", 0);
-            isMoving = false;
+            _isMoving = false;
             _stateMachine.SetState(new PlayerPauseState(_stateMachine));
+            return;
         }
-        _mouseSens = _cameraT.mouseSensitivity;
-        _input = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
+        HandleRotation();
+        GatherMovementInput();
+        HandleJump();
+    }
+
+    public override void FixedUpdate()
+    {
+        ApplyMovement();
+    }
+
+    // ─── PRIVATE ─────────────────────────────────────────────────────────────
+
+    private void HandleRotation()
+    {
+        _mouseSens = _cameraT.mouseSensitivity;
         float mouseX = Input.GetAxis("Mouse X");
-        _stateMachine.CurrentRotationAngle += mouseX * _mouseSens * 300 * Time.fixedDeltaTime * Time.timeScale;
-       
-        mainBody.rotation = Quaternion.Euler(0, _stateMachine.CurrentRotationAngle, 0);
-       
+        _stateMachine.CurrentRotationAngle += mouseX * _mouseSens * 300f * Time.fixedDeltaTime * Time.timeScale;
+        _mainBody.rotation = Quaternion.Euler(0, _stateMachine.CurrentRotationAngle, 0);
+    }
+
+    private void GatherMovementInput()
+    {
+        _input = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
+
         if (_input.magnitude > 0.1f)
         {
-            _animator?.SetInteger("MoveState", 1);
-            isMoving = true;
-            Vector3 moveDirection = Quaternion.Euler(0, _stateMachine.CurrentRotationAngle, 0) * _input;
-            moveDirection = moveDirection.normalized * _CurrentmovementSpeed * Time.fixedDeltaTime;
-            moveDirection.y = _rb.linearVelocity.y;
-            _rb.linearVelocity = moveDirection;
+            _isMoving = true;
+            _isRunning = Input.GetKey(KeyCode.LeftShift);
+
+            float speed = _isRunning ? _baseMovementSpeed * SprintMultiplier : _baseMovementSpeed;
+
+            _moveDirection = Quaternion.Euler(0, _stateMachine.CurrentRotationAngle, 0) * _input;
+            _moveDirection = _moveDirection.normalized * speed * Time.fixedDeltaTime;
+
+            _animator?.SetInteger("MoveState", _isRunning ? 2 : 1);
         }
         else
         {
-            if (isMoving) StopedMoving();
+            _isMoving = false;
+            _isRunning = false;
+            _moveDirection = Vector3.zero;
             _animator?.SetInteger("MoveState", 0);
-            isMoving = false;
-            _rb.linearVelocity = new Vector3(0, _rb.linearVelocity.y, 0);
-        }
-        if (Input.GetKeyDown(KeyCode.LeftShift) && isMoving)
-        {
-            isRunning = true;
-            _CurrentmovementSpeed *= 2;
-             _animator?.SetInteger("MoveState", 2);
-        }
-
-        if (Input.GetKeyUp(KeyCode.LeftShift))
-        {
-            isRunning = false;
-            _CurrentmovementSpeed /= 2;
-        }
-
-        if (Input.GetButtonDown("Jump"))
-        {
-            _animator?.SetInteger("MoveState", 0);
-            isMoving = false;   
-            _stateMachine.SetState(new PlayerJumpState(_stateMachine));
         }
     }
 
-    private void StopedMoving()
+    private void ApplyMovement()
     {
-        _rb.linearVelocity = new Vector3(0, 0, 0);
+        float yVelocity = _rb.linearVelocity.y; // preserve gravity
+
+        if (_isMoving)
+            _rb.linearVelocity = new Vector3(_moveDirection.x, yVelocity, _moveDirection.z);
+        else
+            _rb.linearVelocity = new Vector3(0f, yVelocity, 0f);
+    }
+
+    private void HandleJump()
+    {
+        if (Input.GetButtonDown("Jump"))
+        {
+            _animator?.SetInteger("MoveState", 0);
+            _isMoving = false;
+            _stateMachine.SetState(new PlayerJumpState(_stateMachine));
+        }
     }
 }

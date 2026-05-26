@@ -4,6 +4,8 @@ using TMPro;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.UI;
+using FMODUnity;
+using FMOD.Studio;
 
 public class SettingsManager : MonoBehaviour
 {
@@ -11,153 +13,185 @@ public class SettingsManager : MonoBehaviour
     public TMP_Dropdown resolutionDropdown;
     public Slider sensitivitySlider;
     public Slider FOVSlider;
-    public Slider MusicVolume;
-    public Slider SFXVolume;
-    public Slider UIVolume;
+    public Slider MusicVolumeSlider;
+    public Slider SFXVolumeSlider;
+    public Slider UIVolumeSlider;
     public GameObject _camera;
-    private List<Resolution> filteredResolutions;
-    private Resolution[] resolutions;
-    private float fovMin = 40f;
-    private float fovMax = 100f;
-    public float resOptionsSpacing = 2;
-    public float resOptionsHight = 5;
-    private int currentResolutionIndex = 0;
+
+    [Header("FOV Settings")]
+    private const float FOVMin = 60f;
+    private const float FOVMax = 110f;
+
+    [Header("FMOD VCA Paths")]
+    private const string MusicVCAPath = "vca:/Music";
+    private const string SFXVCAPath = "vca:/SFX";
+    private const string UIVCAPath = "vca:/UI";
+
+    private VCA _musicVCA;
+    private VCA _sfxVCA;
+    private VCA _uiVCA;
+
+    private List<Resolution> _filteredResolutions;
+    private int _currentResolutionIndex = 0;
+
+    private const float VolumeMultiplier = 2f;
+    private const float DefaultVolumeSlider = 0.5f; 
 
     private void Awake()
     {
         Dependencies.Instance.RegisterDependency<SettingsManager>(this);
     }
+
     private void Start()
     {
-        sensitivitySlider.onValueChanged.AddListener(SetSensitivity);
-        FOVSlider.onValueChanged.AddListener(SetFOV);
-        MusicVolume.onValueChanged.AddListener(SetMusicVolume);
-        SFXVolume.onValueChanged.AddListener(SetSFXVolume);
-        UIVolume.onValueChanged.AddListener(SetUIVolume);
-        resolutionDropdown.onValueChanged.AddListener(OnResolutionChanged);
-        StartCoroutine(TryGetDep());
-        SetFOV(0f);
+        InitializeFMOD();
         InitializeResolutions();
-        LoadResolutionSettings();
+
+        
+        LoadAllSettings();
+
+        sensitivitySlider.onValueChanged.AddListener(OnSensitivityChanged);
+        FOVSlider.onValueChanged.AddListener(OnFOVChanged);
+        MusicVolumeSlider.onValueChanged.AddListener(OnMusicVolumeChanged);
+        SFXVolumeSlider.onValueChanged.AddListener(OnSFXVolumeChanged);
+        UIVolumeSlider.onValueChanged.AddListener(OnUIVolumeChanged);
+        resolutionDropdown.onValueChanged.AddListener(OnResolutionChanged);
+
+        StartCoroutine(ApplySensitivityWhenReady());
     }
-    public void SetSensitivity(float value)
+
+    // ─── FMOD ────────────────────────────────────────────────────────────────
+
+    private void InitializeFMOD()
+    {
+        _musicVCA = RuntimeManager.GetVCA(MusicVCAPath);
+        _sfxVCA = RuntimeManager.GetVCA(SFXVCAPath);
+        _uiVCA = RuntimeManager.GetVCA(UIVCAPath);
+    }
+
+    private void SetVCAVolume(VCA vca, float sliderValue)
+    {
+        float volume = sliderValue * VolumeMultiplier;
+        vca.setVolume(volume);
+    }
+
+    // ─── LISTENERS ───────────────────────────────────────────────────────────
+
+    private void OnSensitivityChanged(float value)
     {
         Dependencies.Instance.GetDependancy<CameraTilt>().ChangeSens(value);
         PlayerPrefs.SetFloat("sensitivity", value);
     }
 
-    public void SetFOV(float value)
+    private void OnFOVChanged(float value)
     {
-        float fovValue = Mathf.Lerp(fovMin, fovMax, value);
-        _camera.GetComponent<CinemachineCamera>().Lens.FieldOfView = fovValue;
+        float fov = Mathf.Lerp(FOVMin, FOVMax, value);
+        _camera.GetComponent<CinemachineCamera>().Lens.FieldOfView = fov;
         PlayerPrefs.SetFloat("FOV", value);
     }
 
+    private void OnMusicVolumeChanged(float value)
+    {
+        SetVCAVolume(_musicVCA, value);
+        PlayerPrefs.SetFloat("MusicVolume", value);
+    }
+
+    private void OnSFXVolumeChanged(float value)
+    {
+        SetVCAVolume(_sfxVCA, value);
+        PlayerPrefs.SetFloat("SFXVolume", value);
+    }
+
+    private void OnUIVolumeChanged(float value)
+    {
+        SetVCAVolume(_uiVCA, value);
+        PlayerPrefs.SetFloat("UIVolume", value);
+    }
     public void HardSetFOV(float lensValue)
     {
         _camera.GetComponent<CinemachineCamera>().Lens.FieldOfView = lensValue;
     }
 
-    public void SetMusicVolume(float value)
+
+    // ─── LOAD / SAVE ─────────────────────────────────────────────────────────
+
+    private void LoadAllSettings()
     {
-        
-        PlayerPrefs.SetFloat("MusicVolume", value);
+        MusicVolumeSlider.value = PlayerPrefs.GetFloat("MusicVolume", DefaultVolumeSlider);
+        SFXVolumeSlider.value = PlayerPrefs.GetFloat("SFXVolume", DefaultVolumeSlider);
+        UIVolumeSlider.value = PlayerPrefs.GetFloat("UIVolume", DefaultVolumeSlider);
+
+        SetVCAVolume(_musicVCA, MusicVolumeSlider.value);
+        SetVCAVolume(_sfxVCA, SFXVolumeSlider.value);
+        SetVCAVolume(_uiVCA, UIVolumeSlider.value);
+
+        float savedFOV = PlayerPrefs.GetFloat("FOV", 0.6f);
+        FOVSlider.value = savedFOV;
+        _camera.GetComponent<CinemachineCamera>().Lens.FieldOfView = Mathf.Lerp(FOVMin, FOVMax, savedFOV);
+        sensitivitySlider.value = PlayerPrefs.GetFloat("sensitivity", 0.5f);
+
+        LoadResolutionSettings();
     }
 
-    public void SetSFXVolume(float value)
+    // ─── RESOLUTION ──────────────────────────────────────────────────────────
+
+    private void InitializeResolutions()
     {
-
-        PlayerPrefs.SetFloat("SFXVolume", value);
-    }
-
-    public void SetUIVolume(float value)
-    {
-
-        PlayerPrefs.SetFloat("UIVolume", value);
-    }
-
-
-    void InitializeResolutions()
-    {
-        resolutions = Screen.resolutions;
-        filteredResolutions = new List<Resolution>();
+        Resolution[] resolutions = Screen.resolutions;
+        _filteredResolutions = new List<Resolution>();
 
         for (int i = 0; i < resolutions.Length; i++)
         {
-            if (i == resolutions.Length - 1 ||
-                resolutions[i].width != resolutions[i + 1].width ||
-                resolutions[i].height != resolutions[i + 1].height)
-            {
-                filteredResolutions.Add(resolutions[i]);
-            }
+            bool isLastEntry = i == resolutions.Length - 1;
+            bool isDuplicate = !isLastEntry &&
+                               resolutions[i].width == resolutions[i + 1].width &&
+                               resolutions[i].height == resolutions[i + 1].height;
+            if (!isDuplicate)
+                _filteredResolutions.Add(resolutions[i]);
+        }
+
+        List<string> options = new List<string>();
+        for (int i = 0; i < _filteredResolutions.Count; i++)
+        {
+            Resolution res = _filteredResolutions[i];
+            string option = $"{res.width} x {res.height}";
+            if (res.refreshRateRatio.value != 60)
+                option += $" ({res.refreshRateRatio.value:0}Hz)";
+            options.Add(option);
+
+            if (res.width == Screen.currentResolution.width &&
+                res.height == Screen.currentResolution.height)
+                _currentResolutionIndex = i;
         }
 
         resolutionDropdown.ClearOptions();
-
-        List<string> options = new List<string>();
-        for (int i = 0; i < filteredResolutions.Count; i++)
-        {
-            string option = $"{filteredResolutions[i].width} x {filteredResolutions[i].height}";
-            if (filteredResolutions[i].refreshRateRatio.value != 60)
-            {
-                option += $" ({filteredResolutions[i].refreshRateRatio.value:0}Hz)";
-            }
-            options.Add(option);
-
-            if (filteredResolutions[i].width == Screen.currentResolution.width &&
-                filteredResolutions[i].height == Screen.currentResolution.height)
-            {
-                currentResolutionIndex = i;
-            }
-        }
-
         resolutionDropdown.AddOptions(options);
-        resolutionDropdown.value = currentResolutionIndex;
-        resolutionDropdown.RefreshShownValue();
-        resolutionDropdown.onValueChanged.AddListener(OnResolutionChanged);
     }
 
-    public void OnResolutionChanged(int dropdownIndex)
+    public void OnResolutionChanged(int index)
     {
-        if (filteredResolutions == null || filteredResolutions.Count == 0) return;
+        if (_filteredResolutions == null || _filteredResolutions.Count == 0) return;
 
-        Resolution selectedResolution = filteredResolutions[dropdownIndex];
-
-        Screen.SetResolution(selectedResolution.width, selectedResolution.height, Screen.fullScreen);
-
-        PlayerPrefs.SetInt("ResolutionWidth", selectedResolution.width);
-        PlayerPrefs.SetInt("ResolutionHeight", selectedResolution.height);
-        PlayerPrefs.SetInt("ResolutionIndex", dropdownIndex);
-
+        Resolution res = _filteredResolutions[index];
+        Screen.SetResolution(res.width, res.height, Screen.fullScreen);
+        PlayerPrefs.SetInt("ResolutionWidth", res.width);
+        PlayerPrefs.SetInt("ResolutionHeight", res.height);
+        PlayerPrefs.SetInt("ResolutionIndex", index);
     }
 
     private void LoadResolutionSettings()
     {
-        if (PlayerPrefs.HasKey("ResolutionWidth") && PlayerPrefs.HasKey("ResolutionHeight"))
-        {
-            int savedWidth = PlayerPrefs.GetInt("ResolutionWidth");
-            int savedHeight = PlayerPrefs.GetInt("ResolutionHeight");
-            int savedIndex = PlayerPrefs.GetInt("ResolutionIndex", 0);
-
-            if (resolutionDropdown != null && savedIndex < resolutionDropdown.options.Count)
-            {
-                resolutionDropdown.value = savedIndex;
-                resolutionDropdown.RefreshShownValue();
-            }
-        }
-        else
-        {
-            resolutionDropdown.value = currentResolutionIndex;
-            resolutionDropdown.RefreshShownValue();
-        }
+        int savedIndex = PlayerPrefs.GetInt("ResolutionIndex", _currentResolutionIndex);
+        savedIndex = Mathf.Clamp(savedIndex, 0, resolutionDropdown.options.Count - 1);
+        resolutionDropdown.value = savedIndex;
+        resolutionDropdown.RefreshShownValue();
     }
 
-    IEnumerator TryGetDep()
+    // ─── COROUTINES ──────────────────────────────────────────────────────────
+
+    private IEnumerator ApplySensitivityWhenReady()
     {
         yield return new WaitUntil(() => Dependencies.Instance.GetDependancy<CameraTilt>() != null);
-        SetSensitivity(0.1f);
+        OnSensitivityChanged(sensitivitySlider.value);
     }
-
-
 }
-

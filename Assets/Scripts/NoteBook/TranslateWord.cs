@@ -42,12 +42,11 @@ public class TranslateWord : MonoBehaviour
 
     private IEnumerator GoodTranslation()
     {
-        
+        Dependencies.Instance.GetDependancy<WordTranslationHub>().NewWordTranslated(originalText.text);
         cutSceneManager.AddCorrectWord();
         inputField.interactable = false;
         _animator.SetTrigger("Good");
         yield return null;
-
     }
 
     private IEnumerator BadTranslation()

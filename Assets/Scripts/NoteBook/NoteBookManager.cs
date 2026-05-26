@@ -155,6 +155,7 @@ public class NoteBookManager : MonoBehaviour
             settingsObject.SetActive(false);
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
+            PlayerPrefs.Save();
             return;
         }
 

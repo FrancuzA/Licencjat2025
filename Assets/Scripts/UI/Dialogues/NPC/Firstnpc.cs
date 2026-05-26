@@ -13,7 +13,6 @@ public class Firstnpc : MonoBehaviour
     [SerializeField] private float rotationSpeed = 5f;
 
     [Header("Checkpoints")]
-    public GameObject textBubble;
     public GameObject eventIndicator;
     public List<Transform> checkPoints = new List<Transform>();
 
@@ -65,10 +64,6 @@ public class Firstnpc : MonoBehaviour
         StartCoroutine(GoToCheckpoints());
     }
 
-    public void CloseBubble()
-    {
-        textBubble.SetActive(false);
-    }
 
     public void CloseEventIndicator()
     {

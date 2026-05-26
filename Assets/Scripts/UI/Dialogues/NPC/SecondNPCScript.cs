@@ -4,6 +4,7 @@ public class SecondNPCScript : MonoBehaviour
 {
     private Animator npcAnim;
 
+    public GameObject eventIndicator;
     public string triggerName;
 
     private void Start()
@@ -13,6 +14,7 @@ public class SecondNPCScript : MonoBehaviour
 
     public void StartPostDialogueAnimation()
     {
+        eventIndicator.SetActive(false);
         npcAnim.SetTrigger(triggerName);
     }
 }
