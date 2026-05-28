@@ -15,7 +15,7 @@ public class Firstnpc : MonoBehaviour
     [Header("Checkpoints")]
     public GameObject eventIndicator;
     public List<Transform> checkPoints = new List<Transform>();
-
+    public List<Transform> runPoints = new List<Transform>();
 
     private Animator npcAnim;
     private Rigidbody rb;
@@ -30,7 +30,7 @@ public class Firstnpc : MonoBehaviour
         _Distionary = DictionaryManager.Instance;
         npcAnim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
-        StartCoroutine(Wave());
+        
     }
 
     private void FixedUpdate()
@@ -64,7 +64,10 @@ public class Firstnpc : MonoBehaviour
         StartCoroutine(GoToCheckpoints());
     }
 
-
+    public void StartGoingHome()
+    {
+        StartCoroutine(RunToHome());
+    }
     public void CloseEventIndicator()
     {
         eventIndicator.SetActive(false); 
@@ -113,5 +116,36 @@ public class Firstnpc : MonoBehaviour
 
         npcAnim.SetTrigger("Idle");
         rb.constraints = RigidbodyConstraints.FreezeAll;
+    }
+
+    private IEnumerator RunToHome()
+    {
+        AssignPlayer();
+        npcAnim.SetTrigger("Walk");
+
+        foreach (Transform checkpoint in runPoints)
+        {
+            while (Vector3.Distance(transform.position, checkpoint.position) > arrivalDistance)
+            {
+                Vector3 direction = (checkpoint.position - transform.position).normalized;
+
+                Vector3 flatDirection = new Vector3(direction.x, 0f, direction.z);
+                if (flatDirection != Vector3.zero)
+                {
+                    Quaternion targetRotation = Quaternion.LookRotation(flatDirection);
+                    rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime));
+                }
+
+                rb.MovePosition(rb.position + direction * moveSpeed * Time.fixedDeltaTime);
+
+                yield return new WaitForFixedUpdate();
+            }
+        }
+
+        npcAnim.SetTrigger("Idle");
+        Vector3 flatDirection2 = new Vector3(player.position.x, 0f, player.position.z);
+        Quaternion targetRotation2 = Quaternion.LookRotation(flatDirection2);
+        rb.MoveRotation(targetRotation2);
+        StartCoroutine(Wave());
     }
 }
