@@ -9683,6 +9683,7 @@ GameObject:
   - component: {fileID: 3887112669200937637}
   - component: {fileID: 8018363467659966406}
   - component: {fileID: 179631958837773792}
+  - component: {fileID: 7704515782444256337}
   m_Layer: 0
   m_Name: F_TreeCryingBlue
   m_TagString: Untagged
@@ -9765,3 +9766,24 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7704515782444256337
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6818734215579887335}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.4527985, y: 19.656813, z: 1.8441836}
+  m_Center: {x: -0.07846826, y: 9.011306, z: -0.0020083785}
