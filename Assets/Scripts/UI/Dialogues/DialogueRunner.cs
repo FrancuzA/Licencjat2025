@@ -36,7 +36,7 @@ public class DialogueRunner : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             _dependencies.GetDependancy<CameraTilt>().UILock = false;
             dialogueScreen.SetActive(false);
-            _dialoguer.onDialogueStop.Invoke();
+            _dialoguer?.onDialogueStop.Invoke();
             return;
         }
 
@@ -51,7 +51,6 @@ public class DialogueRunner : MonoBehaviour
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
             _dependencies.GetDependancy<CameraTilt>().UILock = false;
-            _dialoguer?.
             gameObject.SetActive(false);
             return;
         }

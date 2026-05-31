@@ -104,7 +104,11 @@ public class Firstnpc : MonoBehaviour
                 
                 while (Vector3.Distance(transform.position, player.position) > waitForPlayerDistance)
                 {
-                    Vector3 flatDirection = new Vector3(player.position.x, 0f, player.position.z);
+                    Vector3 flatDirection = new Vector3(
+                       player.position.x - transform.position.x,
+                       0f,
+                       player.position.z - transform.position.z);
+        
                     Quaternion targetRotation = Quaternion.LookRotation(flatDirection);
                     rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime));
                     yield return null;
@@ -136,16 +140,25 @@ public class Firstnpc : MonoBehaviour
                     rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime));
                 }
 
-                rb.MovePosition(rb.position + direction * moveSpeed * Time.fixedDeltaTime);
+                rb.MovePosition(rb.position + direction * moveSpeed * 2 * Time.fixedDeltaTime);
 
                 yield return new WaitForFixedUpdate();
             }
         }
 
         npcAnim.SetTrigger("Idle");
-        Vector3 flatDirection2 = new Vector3(player.position.x, 0f, player.position.z);
+
+        Vector3 flatDirection2 = new Vector3(
+            player.position.x - transform.position.x,
+            0f,
+            player.position.z - transform.position.z
+        );
+
         Quaternion targetRotation2 = Quaternion.LookRotation(flatDirection2);
         rb.MoveRotation(targetRotation2);
+
         StartCoroutine(Wave());
+
+
     }
 }

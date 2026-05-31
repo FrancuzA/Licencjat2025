@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class CutSceneManager : MonoBehaviour
@@ -8,6 +9,7 @@ public class CutSceneManager : MonoBehaviour
     public int correctWords = 0;
     public GameObject CutSceneOne;
     public GameObject CutSceneTwo;
+    public UnityEvent onCutSceneOff;
     private CameraTilt _camera;
 
     private void Awake()
@@ -40,6 +42,7 @@ public class CutSceneManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(12);
         _camera.UILock=false;
         CutSceneOne.SetActive(false);
+        onCutSceneOff.Invoke();
     }
 
     private IEnumerator StartSecondCutScene()

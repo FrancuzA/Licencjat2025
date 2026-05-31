@@ -2,34 +2,30 @@ using UnityEngine;
 
 public class PlayerPauseState : State
 {
-    public Dependencies _dependencies;
     private Rigidbody _rb;
-    private Transform mainBody;
-    public CameraTilt _cameraTilt;
+    private CameraTilt _cameraTilt;
 
     public PlayerPauseState(StateMachine stateMachine) : base(stateMachine) { }
 
-
     public override void Enter()
     {
-        _dependencies = Dependencies.Instance;
-        _cameraTilt = _dependencies?.GetDependancy<CameraTilt>();
+        var dep = Dependencies.Instance;
+        _cameraTilt = dep.GetDependancy<CameraTilt>();
         _rb = _stateMachine.GetComponent<Rigidbody>();
-        mainBody = _rb.GetComponent<Transform>();
+
+        // Sync the rotation angle so grounded state resumes from the correct angle
+        _stateMachine.CurrentRotationAngle = _rb.rotation.eulerAngles.y;
+
+        _rb.linearVelocity = Vector3.zero;
     }
 
     public override void Update()
     {
-        if (_cameraTilt.UILock == false) 
-        {
+        if (!_cameraTilt.UILock)
             _stateMachine.ReturnToState();
-        }
-        mainBody.rotation = Quaternion.Euler(0, _stateMachine.CurrentRotationAngle, 0);
+
         _rb.linearVelocity = Vector3.zero;
     }
 
-
-    public override void Exit() 
-    {
-    }
+    public override void Exit() { }
 }
