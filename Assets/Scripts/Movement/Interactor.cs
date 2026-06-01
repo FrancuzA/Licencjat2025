@@ -1,3 +1,4 @@
+using log4net;
 using System;
 using UnityEngine;
 
@@ -9,10 +10,18 @@ public class Interactor : MonoBehaviour
     public GameObject noteBookObject;
     public GameObject settingsObject;
     public GameObject dialogueScreen;
+    private Transform playerObject;
+    private GameObject interactedObject;
+    private Rigidbody _playerRb;
+    private bool _stopLooking;
     private bool interactableInRange;
     private IInteractable interactable;
 
-
+    private void Start()
+    {
+        playerObject = transform.parent;
+        _playerRb = gameObject.GetComponentInParent<Rigidbody>();
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.E) && interactableInRange &&
@@ -24,6 +33,20 @@ public class Interactor : MonoBehaviour
             {
                 interactable?.Interact();
                 interactText?.SetActive(false);
+
+                interactedObject = mb.gameObject;
+                _stopLooking = false;
+
+                Vector3 flatDirection = new Vector3(
+           interactedObject.transform.position.x - playerObject.position.x,
+           0f,
+           interactedObject.transform.position.z - playerObject.position.z
+       );
+
+                Quaternion targetRotation = Quaternion.LookRotation(flatDirection);
+                _playerRb?.MoveRotation(targetRotation);
+                _playerRb.angularVelocity = Vector3.zero;
+
             }
             else
             {
@@ -32,6 +55,10 @@ public class Interactor : MonoBehaviour
                 interactText?.SetActive(false);
             }
         }
+
+        //if (_stopLooking) return;
+
+       
     }
 
     private void OnTriggerEnter(Collider other)
