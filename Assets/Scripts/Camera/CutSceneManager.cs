@@ -39,7 +39,7 @@ public class CutSceneManager : MonoBehaviour
         CutSceneOne.SetActive(true);
         _camera.UILock = true;
         _animator.SetTrigger("FirstCutscene");
-        yield return new WaitForSecondsRealtime(12);
+        yield return new WaitForSecondsRealtime(16.3f);
         _camera.UILock=false;
         CutSceneOne.SetActive(false);
         onCutSceneOff.Invoke();
