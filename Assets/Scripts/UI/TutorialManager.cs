@@ -17,10 +17,12 @@ public class TutorialManager : MonoBehaviour
     public Transform playerTransform;
     private bool _tutorialActive;
     private bool _stopLooking;
+    private bool _isShouting;
 
     private void Start()
     {
         _tutorialActive = false;
+        _isShouting = false;
         _dep = Dependencies.Instance;
         _playerRb = _dep.GetDependancy<StartPlayerMovement>().gameObject.GetComponent<Rigidbody>();
         playerTransform = _playerRb.gameObject.transform;
@@ -49,6 +51,11 @@ public class TutorialManager : MonoBehaviour
         StartCoroutine(Tutorial_Rutine());
     }
 
+    public void StartShouting()
+    {
+        _isShouting=true;
+    }
+
     public IEnumerator Tutorial_Rutine()
     {
         _tutorialActive = true;
@@ -56,13 +63,20 @@ public class TutorialManager : MonoBehaviour
         yield return new WaitUntil(() => !DialogueCanva.activeInHierarchy);
 
         _stopLooking = true;
+       
+
+        yield return new WaitUntil(() => _isShouting);
+        _stopLooking=false;
+        _dialogueRunner.OpenDialogue(monologPhases[1], null);
+        yield return new WaitUntil(() => !DialogueCanva.activeInHierarchy);
+        _stopLooking=true;
         clickToAdd.SetActive(true);
         yield return new WaitUntil(() => DialogueCanva.activeInHierarchy);
         yield return new WaitUntil(() => !DialogueCanva.activeInHierarchy);
         yield return new WaitForSeconds(1);
 
         clickToAdd.SetActive(false);
-        _dialogueRunner.OpenDialogue(monologPhases[1], null);
+        _dialogueRunner.OpenDialogue(monologPhases[2], null);
         yield return new WaitUntil(() => NotebookUI.activeInHierarchy);
 
         gameObject.SetActive(false);
