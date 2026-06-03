@@ -41,6 +41,8 @@ public class PlayerGroundedState : State
         _rb = _stateMachine.GetComponent<Rigidbody>();
         _mainBody = _rb.transform;
 
+        _stateMachine.CurrentRotationAngle = _rb.rotation.eulerAngles.y; // now _rb is ready
+
         _moveDirection = Vector3.zero;
         _isMoving = false;
         _isRunning = false;
@@ -106,7 +108,7 @@ public class PlayerGroundedState : State
 
     private void ApplyMovement()
     {
-        float yVelocity = _rb.linearVelocity.y; // preserve gravity
+        float yVelocity = _rb.linearVelocity.y; 
 
         if (_isMoving)
             _rb.linearVelocity = new Vector3(_moveDirection.x, yVelocity, _moveDirection.z);

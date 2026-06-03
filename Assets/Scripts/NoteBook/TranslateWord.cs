@@ -9,13 +9,17 @@ public class TranslateWord : MonoBehaviour
     private DictionaryManager manager;
     private CutSceneManager cutSceneManager;
     private Animator _animator;
+    private PopUpManager _popupmanager;
+    private int wrongCount;
     void Start()
     {
+        wrongCount = 0;
         inputField.onSubmit.AddListener(SendToManager);
         inputField.onSubmit.AddListener(CheckIFCorrect);
         manager = DictionaryManager.Instance;
         _animator = GetComponentInParent<Animator>();
         cutSceneManager = Dependencies.Instance.GetDependancy<CutSceneManager>();
+        _popupmanager = Dependencies.Instance.GetDependancy<PopUpManager>();
     }
 
     public void SendToManager(string word)
@@ -51,6 +55,8 @@ public class TranslateWord : MonoBehaviour
 
     private IEnumerator BadTranslation()
     {
+        wrongCount++;
+        if (wrongCount == 3) _popupmanager.StartHintPopUp("<i>*MAYBE HE IS GREATING ME?*");
         _animator.SetTrigger("Bad");
         yield return null;
     }

@@ -20749,6 +20749,10 @@ PrefabInstance:
       value: fm
       objectReference: {fileID: 0}
     - target: {fileID: 1109838751438361005, guid: 562c46606e24f6e419ead2ac8cb38ebb, type: 3}
+      propertyPath: 'translatedWords.Array.data[1]'
+      value: hello
+      objectReference: {fileID: 0}
+    - target: {fileID: 1109838751438361005, guid: 562c46606e24f6e419ead2ac8cb38ebb, type: 3}
       propertyPath: 'translatedWords.Array.data[6]'
       value: fisherman
       objectReference: {fileID: 0}
@@ -21082,6 +21086,10 @@ PrefabInstance:
       propertyPath: DialogueCanva
       value: 
       objectReference: {fileID: 506753700}
+    - target: {fileID: 4433955170494138589, guid: 099b2dcdfc44f1145929927443bf46db, type: 3}
+      propertyPath: lookSmoothing
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4433955170494138589, guid: 099b2dcdfc44f1145929927443bf46db, type: 3}
       propertyPath: monologPhases.Array.size
       value: 3

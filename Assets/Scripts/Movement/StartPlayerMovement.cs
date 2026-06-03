@@ -1,13 +1,11 @@
-
 using UnityEngine;
 
-public class StartPlayerMovement : StateMachine,ISaveSystemElement
+public class StartPlayerMovement : StateMachine, ISaveSystemElement
 {
-    [Header("PlayerStats")] 
+    [Header("PlayerStats")]
     [SerializeField] public float walkSpeed = 300;
     [SerializeField] public float jumpForce = 5;
     [SerializeField] public float baseStepTime = 0.6f;
-
 
     private Transform playerTransform;
     private SaveSystemManager SSM;
@@ -17,25 +15,29 @@ public class StartPlayerMovement : StateMachine,ISaveSystemElement
         Dependencies.Instance.RegisterDependency<StartPlayerMovement>(this);
         SSM = Dependencies.Instance.GetDependancy<SaveSystemManager>();
         if (SSM != null)
-        {
             SSM.RegisterToSaveList(this);
-        }
-       playerTransform = transform;
-       Time.timeScale = 1;
+
+        playerTransform = transform;
+        Time.timeScale = 1;
     }
+
     private void Start()
     {
+        CameraTilt cameraT = Dependencies.Instance.GetDependancy<CameraTilt>();
+        if (cameraT == null)
+        {
+            Debug.LogError("CameraTilt not registered before StartPlayerMovement.Start() — check script execution order.");
+            return;
+        }
+
         Begin(new PlayerGroundedState(this));
     }
-
-
 
     public void LoadData(SaveData saveData)
     {
         if (saveData.playerPosition != Vector3.zero)
         {
             playerTransform.SetPositionAndRotation(saveData.playerPosition, Quaternion.identity);
-
             Rigidbody rb = GetComponent<Rigidbody>();
             if (rb != null)
             {
@@ -47,6 +49,6 @@ public class StartPlayerMovement : StateMachine,ISaveSystemElement
 
     public void SaveData(SaveData saveData)
     {
-       saveData.playerPosition = playerTransform.position;
+        saveData.playerPosition = playerTransform.position;
     }
 }

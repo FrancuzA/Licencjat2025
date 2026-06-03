@@ -10,6 +10,7 @@ public class TutorialManager : MonoBehaviour
     public GameObject clickToAdd;
     public Transform npc;
     public List<DialogueRuntimeGraph> monologPhases = new List<DialogueRuntimeGraph>();
+    public float lookSmoothing = 5f;
 
     private Dependencies _dep;
     private DialogueRunner _dialogueRunner;
@@ -40,8 +41,13 @@ public class TutorialManager : MonoBehaviour
         );
 
         Quaternion targetRotation = Quaternion.LookRotation(flatDirection);
-        _playerRb.MoveRotation(targetRotation);
-        Debug.Log(playerTransform.rotation.eulerAngles);
+        Quaternion smoothedRotation = Quaternion.Slerp(
+            _playerRb.rotation,
+            targetRotation,
+            lookSmoothing * Time.fixedDeltaTime
+        );
+
+        _playerRb.MoveRotation(smoothedRotation);
     }
 
     public void startMonologue()

@@ -18,11 +18,13 @@ public class PlayerJumpState : State
 
     public override void Enter()
     {
+        
         _dep = Dependencies.Instance;
         audio = _dep.GetDependancy<AudioManager>();
         _cameraT = _dep.GetDependancy<CameraTilt>();
         jumpForce = _dep.GetDependancy<StartPlayerMovement>().jumpForce;
         _rb = _stateMachine.GetComponent<Rigidbody>();
+        _stateMachine.CurrentRotationAngle = _rb.rotation.eulerAngles.y;
         mainBody = _rb.GetComponent<Transform>();
         var Player = _stateMachine.gameObject;
         var Model = Player.GetComponent<MeshFilter>();

@@ -13,10 +13,9 @@ public class PlayerPauseState : State
         _cameraTilt = dep.GetDependancy<CameraTilt>();
         _rb = _stateMachine.GetComponent<Rigidbody>();
 
-        // Sync the rotation angle so grounded state resumes from the correct angle
         _stateMachine.CurrentRotationAngle = _rb.rotation.eulerAngles.y;
-
         _rb.linearVelocity = Vector3.zero;
+        _rb.angularVelocity = Vector3.zero;
     }
 
     public override void Update()
