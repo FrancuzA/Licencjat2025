@@ -1,5 +1,3 @@
-using log4net;
-using System;
 using UnityEngine;
 
 public class Interactor : MonoBehaviour
