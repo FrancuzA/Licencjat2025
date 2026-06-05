@@ -2516,7 +2516,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &388914120
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18555,6 +18555,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 136814163379897418, guid: 75b56578741ff084d846428933aaaa80, type: 3}
+      propertyPath: m_fontSize
+      value: 72
+      objectReference: {fileID: 0}
+    - target: {fileID: 136814163379897418, guid: 75b56578741ff084d846428933aaaa80, type: 3}
       propertyPath: m_fontStyle
       value: 0
       objectReference: {fileID: 0}
@@ -18576,11 +18580,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2130839339649240910, guid: 75b56578741ff084d846428933aaaa80, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2614087471678927757, guid: 75b56578741ff084d846428933aaaa80, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2633107981934416726, guid: 75b56578741ff084d846428933aaaa80, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2690944372727233196, guid: 75b56578741ff084d846428933aaaa80, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -18682,6 +18690,10 @@ PrefabInstance:
       propertyPath: m_ChildControlHeight
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8430212875264831772, guid: 75b56578741ff084d846428933aaaa80, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 40bef20e464695f49b550d6f47f50876, type: 3}
     - target: {fileID: 9181379222662860277, guid: 75b56578741ff084d846428933aaaa80, type: 3}
       propertyPath: m_IsActive
       value: 1
