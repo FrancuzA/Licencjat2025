@@ -1,8 +1,6 @@
-using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class Firstnpc : MonoBehaviour
 {
@@ -12,41 +10,74 @@ public class Firstnpc : MonoBehaviour
     [SerializeField] private float waitForPlayerDistance = 4f;
     [SerializeField] private float rotationSpeed = 5f;
 
+    [Header("Character Controller")]
+    [SerializeField] private float gravity = -9.81f;
+
     [Header("Checkpoints")]
     public GameObject eventIndicator;
     public List<Transform> checkPoints = new List<Transform>();
     public List<Transform> runPoints = new List<Transform>();
 
     private Animator npcAnim;
-    private Rigidbody rb;
+    private CharacterController _cc;
     private Transform player;
-    private DictionaryManager _Distionary;
+    private DictionaryManager _dictionary;
     private bool inDialogue;
     private bool hasTranslated = false;
+    private float _verticalVelocity = 0f;
     private WaitForSecondsRealtime waveCycle = new WaitForSecondsRealtime(5);
 
     void Start()
     {
-        _Distionary = DictionaryManager.Instance;
+        _dictionary = DictionaryManager.Instance;
         npcAnim = GetComponent<Animator>();
-        rb = GetComponent<Rigidbody>();
-        
+        _cc = GetComponent<CharacterController>();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        hasTranslated = _Distionary.hasTranslated;
+        hasTranslated = _dictionary.hasTranslated;
+        ApplyGravity();
     }
 
-    private IEnumerator Wave()
+    // ─── GRAVITY ─────────────────────────────────────────────────────────────
+
+    private void ApplyGravity()
     {
-        do
-        {
-            npcAnim.SetTrigger("Greet");
-            yield return waveCycle;
-        }
-        while (!inDialogue);
+        if (_cc.isGrounded)
+            _verticalVelocity = -1f;
+        else
+            _verticalVelocity += gravity * Time.deltaTime;
+
+        _cc.Move(new Vector3(0, _verticalVelocity * Time.deltaTime, 0));
     }
+
+    // ─── ROTATION ────────────────────────────────────────────────────────────
+
+    private void RotateToward(Vector3 targetPosition)
+    {
+        Vector3 flatDirection = new Vector3(
+            targetPosition.x - transform.position.x,
+            0f,
+            targetPosition.z - transform.position.z
+        );
+
+        if (flatDirection == Vector3.zero) return;
+
+        Quaternion targetRotation = Quaternion.LookRotation(flatDirection);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+    }
+
+    // ─── MOVEMENT ────────────────────────────────────────────────────────────
+
+    private void MoveToward(Vector3 targetPosition, float speedMultiplier = 1f)
+    {
+        Vector3 direction = (targetPosition - transform.position).normalized;
+        Vector3 flatDirection = new Vector3(direction.x, 0f, direction.z);
+        _cc.Move(flatDirection * moveSpeed * speedMultiplier * Time.deltaTime);
+    }
+
+    // ─── PUBLIC ──────────────────────────────────────────────────────────────
 
     public void StopWaveing()
     {
@@ -61,6 +92,8 @@ public class Firstnpc : MonoBehaviour
 
     public void StartGoing()
     {
+        var interactionScript = GetComponent<NPCScript>();
+        Destroy(interactionScript);
         StartCoroutine(GoToCheckpoints());
     }
 
@@ -68,15 +101,28 @@ public class Firstnpc : MonoBehaviour
     {
         StartCoroutine(RunToHome());
     }
+
     public void CloseEventIndicator()
     {
-        eventIndicator.SetActive(false); 
+        eventIndicator.SetActive(false);
+    }
+
+    // ─── COROUTINES ──────────────────────────────────────────────────────────
+
+    private IEnumerator Wave()
+    {
+        do
+        {
+            npcAnim.SetTrigger("Greet");
+            yield return waveCycle;
+        }
+        while (!inDialogue);
     }
 
     private IEnumerator GoToCheckpoints()
     {
         npcAnim.SetTrigger("Greet");
-        yield return new WaitUntil(()=> hasTranslated == true);
+        yield return new WaitUntil(() => hasTranslated);
         AssignPlayer();
         npcAnim.SetTrigger("Walk");
 
@@ -84,33 +130,18 @@ public class Firstnpc : MonoBehaviour
         {
             while (Vector3.Distance(transform.position, checkpoint.position) > arrivalDistance)
             {
-                Vector3 direction = (checkpoint.position - transform.position).normalized;
-
-                Vector3 flatDirection = new Vector3(direction.x, 0f, direction.z);
-                if (flatDirection != Vector3.zero)
-                {
-                    Quaternion targetRotation = Quaternion.LookRotation(flatDirection);
-                    rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime));
-                }
-
-                rb.MovePosition(rb.position + direction * moveSpeed * Time.fixedDeltaTime);
-
-                yield return new WaitForFixedUpdate();
+                RotateToward(checkpoint.position);
+                MoveToward(checkpoint.position);
+                yield return null;
             }
 
             if (player != null && Vector3.Distance(transform.position, player.position) > waitForPlayerDistance)
             {
                 npcAnim.SetTrigger("Greet");
-                
+
                 while (Vector3.Distance(transform.position, player.position) > waitForPlayerDistance)
                 {
-                    Vector3 flatDirection = new Vector3(
-                       player.position.x - transform.position.x,
-                       0f,
-                       player.position.z - transform.position.z);
-        
-                    Quaternion targetRotation = Quaternion.LookRotation(flatDirection);
-                    rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime));
+                    RotateToward(player.position);
                     yield return null;
                 }
 
@@ -119,7 +150,8 @@ public class Firstnpc : MonoBehaviour
         }
 
         npcAnim.SetTrigger("Idle");
-        rb.constraints = RigidbodyConstraints.FreezeAll;
+        _cc.enabled = false; 
+        CloseEventIndicator();
     }
 
     private IEnumerator RunToHome()
@@ -131,34 +163,23 @@ public class Firstnpc : MonoBehaviour
         {
             while (Vector3.Distance(transform.position, checkpoint.position) > arrivalDistance)
             {
-                Vector3 direction = (checkpoint.position - transform.position).normalized;
-
-                Vector3 flatDirection = new Vector3(direction.x, 0f, direction.z);
-                if (flatDirection != Vector3.zero)
-                {
-                    Quaternion targetRotation = Quaternion.LookRotation(flatDirection);
-                    rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime));
-                }
-
-                rb.MovePosition(rb.position + direction * moveSpeed * 2 * Time.fixedDeltaTime);
-
-                yield return new WaitForFixedUpdate();
+                RotateToward(checkpoint.position);
+                MoveToward(checkpoint.position, speedMultiplier: 2f);
+                yield return null;
             }
         }
 
         npcAnim.SetTrigger("Idle");
 
-        Vector3 flatDirection2 = new Vector3(
+        while (Quaternion.Angle(transform.rotation, Quaternion.LookRotation(new Vector3(
             player.position.x - transform.position.x,
             0f,
-            player.position.z - transform.position.z
-        );
-
-        Quaternion targetRotation2 = Quaternion.LookRotation(flatDirection2);
-        rb.MoveRotation(targetRotation2);
+            player.position.z - transform.position.z))) > 1f)
+        {
+            RotateToward(player.position);
+            yield return null;
+        }
 
         StartCoroutine(Wave());
-
-
     }
 }

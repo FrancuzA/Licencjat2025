@@ -100,7 +100,7 @@ public class DialogueRunner : MonoBehaviour
         graph = DialogueGraph;
     }
 
-    public void OpenDialogue(DialogueRuntimeGraph DialogueGraph, NPCScript newDialoguer)
+    public void OpenDialogue(DialogueRuntimeGraph DialogueGraph, NPCScript newDialoguer = null)
     {
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;

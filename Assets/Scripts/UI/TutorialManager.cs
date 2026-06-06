@@ -64,7 +64,7 @@ public class TutorialManager : MonoBehaviour
     public IEnumerator Tutorial_Rutine()
     {
         _tutorialActive = true;
-        _dialogueRunner.OpenDialogue(monologPhases[0], null);
+        _dialogueRunner.OpenDialogue(monologPhases[0]);
         yield return new WaitUntil(() => !DialogueCanva.activeInHierarchy);
 
         _stopLooking = true;
@@ -72,7 +72,7 @@ public class TutorialManager : MonoBehaviour
 
         yield return new WaitUntil(() => _isShouting);
         _stopLooking=false;
-        _dialogueRunner.OpenDialogue(monologPhases[1], null);
+        _dialogueRunner.OpenDialogue(monologPhases[1]);
         yield return new WaitUntil(() => !DialogueCanva.activeInHierarchy);
         _stopLooking=true;
         clickToAdd.SetActive(true);
@@ -81,7 +81,7 @@ public class TutorialManager : MonoBehaviour
         yield return new WaitForSeconds(1);
 
         clickToAdd.SetActive(false);
-        _dialogueRunner.OpenDialogue(monologPhases[2], null);
+        _dialogueRunner.OpenDialogue(monologPhases[2]);
         yield return new WaitUntil(() => NotebookUI.activeInHierarchy);
 
         gameObject.SetActive(false);
