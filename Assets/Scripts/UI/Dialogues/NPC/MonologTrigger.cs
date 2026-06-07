@@ -6,6 +6,11 @@ public class MonologTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Dependencies.Instance.GetDependancy<DialogueRunner>().OpenDialogue(Monolog, null);
+        if (other.CompareTag("Player"))
+        {
+            Dependencies.Instance.GetDependancy<DialogueRunner>().OpenDialogue(Monolog, null);
+            gameObject.SetActive(false);
+        }
+        
     }
 }

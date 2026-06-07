@@ -55,8 +55,11 @@ public class TranslateWord : MonoBehaviour
 
     private IEnumerator BadTranslation()
     {
-        wrongCount++;
-        if (wrongCount == 3) _popupmanager.StartHintPopUp("<i>*MAYBE HE IS GREATING ME?*");
+        if(originalText.text == "c")
+        {
+            wrongCount++;
+            if (wrongCount == 3) _popupmanager.StartHintPopUp("<i>*MAYBE HE IS GREATING ME?*");
+        }
         _animator.SetTrigger("Bad");
         yield return null;
     }

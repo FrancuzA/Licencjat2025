@@ -44,6 +44,7 @@ public class Firstnpc : MonoBehaviour
 
     private void ApplyGravity()
     {
+        if (!_cc.enabled) return;
         if (_cc.isGrounded)
             _verticalVelocity = -1f;
         else
@@ -85,6 +86,12 @@ public class Firstnpc : MonoBehaviour
         npcAnim.SetTrigger("Idle");
     }
 
+    public void StartWaving()
+    {
+        inDialogue = false;
+        StartCoroutine(Wave());
+    }
+
     public void AssignPlayer()
     {
         player = Dependencies.Instance.GetDependancy<StartPlayerMovement>().gameObject.transform;
@@ -121,9 +128,9 @@ public class Firstnpc : MonoBehaviour
 
     private IEnumerator GoToCheckpoints()
     {
-        npcAnim.SetTrigger("Greet");
         yield return new WaitUntil(() => hasTranslated);
         AssignPlayer();
+        inDialogue = true;
         npcAnim.SetTrigger("Walk");
 
         foreach (Transform checkpoint in checkPoints)
@@ -149,8 +156,7 @@ public class Firstnpc : MonoBehaviour
             }
         }
 
-        npcAnim.SetTrigger("Idle");
-        _cc.enabled = false; 
+        npcAnim.SetTrigger("Sit");
         CloseEventIndicator();
     }
 

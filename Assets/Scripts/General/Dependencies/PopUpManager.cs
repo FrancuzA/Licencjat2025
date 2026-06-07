@@ -1,8 +1,6 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
-
 public class PopUpManager : MonoBehaviour
 {
     public GameObject popUpPref;
@@ -23,7 +21,7 @@ public class PopUpManager : MonoBehaviour
 
     private IEnumerator PopUpEvent(string message)
     {
-        var fullMessage = $"{message} PRESS J TO OPEN THE JURNAL";
+        var fullMessage = $"{message} PRESS J TO OPEN THE JOURNAL";
         GameObject newPopUp = Instantiate(popUpPref, gameObject.transform.position, Quaternion.identity, gameObject.transform);
         newPopUp.GetComponentInChildren<TextMeshProUGUI>().text = fullMessage;
         newPopUp.GetComponent<Animator>().SetTrigger("In");
