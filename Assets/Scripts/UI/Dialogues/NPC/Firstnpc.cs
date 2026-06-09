@@ -99,9 +99,13 @@ public class Firstnpc : MonoBehaviour
 
     public void StartGoing()
     {
+        StartCoroutine(GoToCheckpoints());
+    }
+
+    public void DisableInteraction()
+    {
         var interactionScript = GetComponent<NPCScript>();
         Destroy(interactionScript);
-        StartCoroutine(GoToCheckpoints());
     }
 
     public void StartGoingHome()
@@ -132,7 +136,7 @@ public class Firstnpc : MonoBehaviour
         AssignPlayer();
         inDialogue = true;
         npcAnim.SetTrigger("Walk");
-
+        DisableInteraction();
         foreach (Transform checkpoint in checkPoints)
         {
             while (Vector3.Distance(transform.position, checkpoint.position) > arrivalDistance)

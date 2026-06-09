@@ -77,7 +77,7 @@ public class PlayerGroundedState : State
     {
         _mouseSens = _cameraT.mouseSensitivity;
         float mouseX = Input.GetAxis("Mouse X");
-        _stateMachine.CurrentRotationAngle += mouseX * _mouseSens * 300f * Time.fixedDeltaTime * Time.timeScale;
+        _stateMachine.CurrentRotationAngle += mouseX * _mouseSens * 300f * Time.deltaTime * Time.timeScale;
         _mainBody.rotation = Quaternion.Euler(0, _stateMachine.CurrentRotationAngle, 0);
     }
 

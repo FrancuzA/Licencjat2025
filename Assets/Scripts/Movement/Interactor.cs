@@ -3,19 +3,21 @@ using UnityEngine;
 public class Interactor : MonoBehaviour
 {
     public float interactRange = 3f;
-    [SerializeField] private float exitRange = 3.5f;
     public GameObject interactText;
     public GameObject playerCamera;
     public GameObject noteBookObject;
     public GameObject settingsObject;
     public GameObject dialogueScreen;
+
     private Transform playerObject;
     private GameObject interactedObject;
     private Rigidbody _playerRb;
     private bool _stopLooking;
     private bool interactableInRange;
     private IInteractable interactable;
-    private Collider _currentCollider;
+
+    private float _exitCooldown = 0f;
+    private const float ExitDelay = 0.15f; // seconds before exit is confirmed
 
     private void Start()
     {
@@ -25,15 +27,15 @@ public class Interactor : MonoBehaviour
 
     private void Update()
     {
-        if (interactableInRange && _currentCollider != null)
+        // Count down exit cooldown — only actually exit when it reaches zero
+        if (_exitCooldown > 0f)
         {
-            float dist = Vector3.Distance(transform.position, _currentCollider.transform.position);
-            if (dist > exitRange)
+            _exitCooldown -= Time.deltaTime;
+            if (_exitCooldown <= 0f)
             {
                 interactText?.SetActive(false);
                 interactable?.EndInteraction();
                 interactableInRange = false;
-                _currentCollider = null;
                 interactable = null;
             }
         }
@@ -75,11 +77,20 @@ public class Interactor : MonoBehaviour
     {
         if (other.gameObject.TryGetComponent(out IInteractable interactObj))
         {
+            _exitCooldown = 0f; // cancel any pending exit
             interactText?.SetActive(true);
             interactable = interactObj;
             interactableInRange = true;
-            _currentCollider = other;
         }
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.TryGetComponent(out IInteractable _))
+        {
+            // Don't exit immediately — start the cooldown timer
+            // If OnTriggerEnter fires again within ExitDelay, the exit is cancelled
+            _exitCooldown = ExitDelay;
+        }
+    }
 }

@@ -42,7 +42,7 @@ public class Signboard : MonoBehaviour, IInteractable
         {
             return;
         }
-        _popUpmanager?.StartPopUp($"NEW WORD ADDED TO JURNAL - {wordOnSign}");
+        _popUpmanager?.StartPopUp($"NEW WORD ADDED - {wordOnSign}");
        _notebook?.AddWordToList(wordOnSign);
         _notebook?.StartCoroutine(_notebook?.CheckForNewWords());
 

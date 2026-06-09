@@ -10,10 +10,14 @@ public class TranslateWord : MonoBehaviour
     private CutSceneManager cutSceneManager;
     private Animator _animator;
     private PopUpManager _popupmanager;
-    private int wrongCount;
+    private int wrongCountH;
+    private int wrongCountP;
+    private int wrongCountS;
     void Start()
     {
-        wrongCount = 0;
+        wrongCountH = 0;
+        wrongCountP = 0;
+        wrongCountS = 0;
         inputField.onSubmit.AddListener(SendToManager);
         inputField.onSubmit.AddListener(CheckIFCorrect);
         manager = DictionaryManager.Instance;
@@ -57,9 +61,25 @@ public class TranslateWord : MonoBehaviour
     {
         if(originalText.text == "c")
         {
-            wrongCount++;
-            if (wrongCount == 3) _popupmanager.StartHintPopUp("<i>*MAYBE HE IS GREATING ME?*");
+            
         }
+
+        switch (originalText.text)
+        {
+            case "c":
+                wrongCountH++;
+                if (wrongCountH == 3) _popupmanager.StartHintPopUp("<i>*MAYBE HE IS GREATING ME?*");
+                break;
+            case "p":
+                wrongCountP++;
+                if (wrongCountP == 3) _popupmanager.StartHintPopUp("<i>*MAYBE HE IS POINTING TO AN OBJECT TO HIS RIGHT?*");
+                break;
+            case "s":
+                wrongCountS++;
+                if (wrongCountS == 3) _popupmanager.StartHintPopUp("<i>*MAYBE HE IS POINTING AT SOMETHING FAR ON THE HORIZON?*");
+                break;
+        }
+
         _animator.SetTrigger("Bad");
         yield return null;
     }

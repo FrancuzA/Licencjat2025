@@ -85,6 +85,8 @@ public class NoteBookManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape)) 
         {
             exitScreen.SetActive(true);
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
     }
 
@@ -202,5 +204,11 @@ public class NoteBookManager : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         SceneManager.LoadSceneAsync(0);
+    }
+
+    public void GoBackToGame()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }

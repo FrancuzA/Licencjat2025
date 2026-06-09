@@ -43,7 +43,7 @@ public class PlayerJumpState : State
         float mouseX = Input.GetAxis("Mouse X");
 
       
-        _stateMachine.CurrentRotationAngle += mouseX * _mouseSens * 300 * Time.fixedDeltaTime;
+        _stateMachine.CurrentRotationAngle += mouseX * _mouseSens * 300 * Time.deltaTime;
 
         mainBody.rotation = Quaternion.Euler(0, _stateMachine.CurrentRotationAngle, 0);
 

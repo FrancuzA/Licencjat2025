@@ -51,7 +51,7 @@ public class ButtonSetter : MonoBehaviour
         {
             return;
         }
-        _popUpmanager.StartPopUp($"NEW WORD ADDED TO JURNAL - {wordOnButton}");
+        _popUpmanager.StartPopUp($"NEW WORD ADDED - {wordOnButton}");
         Dependencies.Instance.GetDependancy<NoteBookManager>().AddWordToList(wordOnButton);
     }
 }
