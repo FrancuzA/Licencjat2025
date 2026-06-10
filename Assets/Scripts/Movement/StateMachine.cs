@@ -4,17 +4,15 @@ public class StateMachine : MonoBehaviour
 {
     [SerializeField] private StateStack _stack;
     public State CurrentState { get; private set; }
-    private State _PreviousState;
     public static StateMachine instance;
+    private State _pendingState;
 
     public float CurrentRotationAngle { get; set; }
 
     private void Start()
     {
         if (instance == null)
-        {
             instance = this;
-        }
     }
 
     public void Begin(State state)
@@ -27,11 +25,15 @@ public class StateMachine : MonoBehaviour
 
     public void SetState(State state)
     {
-        if (CurrentState != null) { CurrentState.Exit(); }
-
+        CurrentState?.Exit();
         CurrentState = state;
         _stack.Push(state);
         CurrentState.Enter();
+    }
+
+    public void RequestState(State state)
+    {
+        _pendingState = state;
     }
 
     public void ReturnToState()
@@ -44,15 +46,13 @@ public class StateMachine : MonoBehaviour
 
     public void Dispose()
     {
-        if (_stack.Count() == 0)
-            return;
+        if (_stack.Count() == 0) return;
 
         CurrentState.Exit();
         CurrentState = null;
         _stack.Pop();
 
-        if (_stack.Count() == 0)
-            return;
+        if (_stack.Count() == 0) return;
 
         CurrentState = _stack.Peek();
         CurrentState.Enter();
@@ -60,8 +60,13 @@ public class StateMachine : MonoBehaviour
 
     protected virtual void Update()
     {
-
         CurrentState?.Update();
+
+        if (_pendingState != null)
+        {
+            SetState(_pendingState);
+            _pendingState = null;
+        }
     }
 
     protected virtual void FixedUpdate()

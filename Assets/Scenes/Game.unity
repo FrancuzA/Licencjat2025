@@ -2217,7 +2217,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1926809675780162162, guid: 59b233c9bd57eca44856fc015199629a, type: 3}
+    - {fileID: 3887216726950059482, guid: 59b233c9bd57eca44856fc015199629a, type: 3}
+    - {fileID: 8853492790864038187, guid: 59b233c9bd57eca44856fc015199629a, type: 3}
+    - {fileID: 4050703598698728571, guid: 59b233c9bd57eca44856fc015199629a, type: 3}
+    - {fileID: 1207738396133009611, guid: 59b233c9bd57eca44856fc015199629a, type: 3}
+    - {fileID: 8507408955078651612, guid: 59b233c9bd57eca44856fc015199629a, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59b233c9bd57eca44856fc015199629a, type: 3}
@@ -5114,6 +5120,10 @@ PrefabInstance:
       propertyPath: exitScreen
       value: 
       objectReference: {fileID: 388914119}
+    - target: {fileID: 3899822916905695010, guid: 714fdb2aca0872249975d0eb4ef15a0a, type: 3}
+      propertyPath: dialogueScreen
+      value: 
+      objectReference: {fileID: 506753700}
     - target: {fileID: 3953747874227601193, guid: 714fdb2aca0872249975d0eb4ef15a0a, type: 3}
       propertyPath: m_fontSize
       value: 50
@@ -6032,26 +6042,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1109838751438361005, guid: 562c46606e24f6e419ead2ac8cb38ebb, type: 3}
-      propertyPath: originalWords.Array.size
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1109838751438361005, guid: 562c46606e24f6e419ead2ac8cb38ebb, type: 3}
-      propertyPath: translatedWords.Array.size
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1109838751438361005, guid: 562c46606e24f6e419ead2ac8cb38ebb, type: 3}
-      propertyPath: 'originalWords.Array.data[6]'
-      value: fm
-      objectReference: {fileID: 0}
-    - target: {fileID: 1109838751438361005, guid: 562c46606e24f6e419ead2ac8cb38ebb, type: 3}
-      propertyPath: 'translatedWords.Array.data[1]'
-      value: hello
-      objectReference: {fileID: 0}
-    - target: {fileID: 1109838751438361005, guid: 562c46606e24f6e419ead2ac8cb38ebb, type: 3}
-      propertyPath: 'translatedWords.Array.data[6]'
-      value: fisherman
-      objectReference: {fileID: 0}
     - target: {fileID: 6300205550262260453, guid: 562c46606e24f6e419ead2ac8cb38ebb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -92.01503

@@ -3,6 +3,7 @@ using FMOD.Studio;
 using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -15,6 +16,7 @@ public class NoteBookManager : MonoBehaviour
     public GameObject pagePrefab;
     public GameObject wordPref;
     public GameObject exitScreen;
+    public GameObject dialogueScreen;
     public List<GameObject> pages;
     public List<string> wordsToAdd = new List<string>();
     private int currentPageIndex = 0;
@@ -82,7 +84,7 @@ public class NoteBookManager : MonoBehaviour
             else return;
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape)) 
+        if (Input.GetKeyDown(KeyCode.Escape) && !noteBookObject.activeInHierarchy && !settingsObject.activeInHierarchy && !dialogueScreen.activeInHierarchy) 
         {
             exitScreen.SetActive(true);
             Cursor.visible = true;
