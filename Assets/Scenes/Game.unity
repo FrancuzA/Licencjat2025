@@ -3824,7 +3824,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2130839339649240910, guid: 75b56578741ff084d846428933aaaa80, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2576010859405668864, guid: 75b56578741ff084d846428933aaaa80, type: 3}
       propertyPath: m_SizeDelta.x
@@ -3848,7 +3848,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2633107981934416726, guid: 75b56578741ff084d846428933aaaa80, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2690944372727233196, guid: 75b56578741ff084d846428933aaaa80, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -5372,7 +5372,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6159812435066487102, guid: 714fdb2aca0872249975d0eb4ef15a0a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6271309554828453779, guid: 714fdb2aca0872249975d0eb4ef15a0a, type: 3}
       propertyPath: m_fontAsset
@@ -6595,6 +6595,10 @@ PrefabInstance:
     - target: {fileID: 254707059662405588, guid: ca723ff9834559f4886ff96ade4ede03, type: 3}
       propertyPath: m_Name
       value: CineMachineCamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 254707059662405588, guid: ca723ff9834559f4886ff96ade4ede03, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2030065553736055059, guid: ca723ff9834559f4886ff96ade4ede03, type: 3}
       propertyPath: Target.TrackingTarget
