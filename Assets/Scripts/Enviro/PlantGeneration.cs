@@ -70,7 +70,6 @@ public class PlantGeneration : SingletonMaker<PlantGeneration>
 
         var data = regionDataMap[index];
 
-        // Kopiuj dane
         data.mesh = region.mesh;
         data.material = region.material;
         data.meshScale = region.meshScale;
@@ -102,11 +101,17 @@ public class PlantGeneration : SingletonMaker<PlantGeneration>
                     float jitterZ = Custom_RNG.Range(-data.jitterAmount, data.jitterAmount);
                     Vector3 finalPos = hit.point + new Vector3(jitterX, 0, jitterZ);
                     Vector3 scale = Vector3.one * data.meshScale;
-                    data.instances.Add(Matrix4x4.TRS(finalPos, Quaternion.identity, scale));
+
+                    // Align to slope, then spin randomly around the mesh's local up
+                    float randomYSpin = Custom_RNG.Range(0f, 360f);
+                    Quaternion slopeRotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
+                    Quaternion ySpinRotation = Quaternion.AngleAxis(randomYSpin, hit.normal);
+                    Quaternion finalRotation = ySpinRotation * slopeRotation;
+
+                    data.instances.Add(Matrix4x4.TRS(finalPos, finalRotation, scale));
                 }
             }
         }
-
     }
 
     private bool IsPointInPolygon(Vector3 point, List<Vector3> corners)
