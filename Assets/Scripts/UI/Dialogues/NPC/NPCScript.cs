@@ -1,4 +1,3 @@
-using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,24 +8,38 @@ public class NPCScript : MonoBehaviour, IInteractable, ISaveSystemElement
     public UnityEvent onDialogueStop;
     public string NPCName = " ";
     private Transform NPCtransform;
-    private DialogueRunner _dialogueRunner;
 
     private void Start()
     {
         NPCtransform = transform;
-        _dialogueRunner = Dependencies.Instance.GetDependancy<DialogueRunner>();
+    }
+
+    private DialogueRunner GetDialogueRunner()
+    {
+        DialogueRunner runner = Dependencies.Instance.GetDependancy<DialogueRunner>();
+        if (runner == null)
+            Debug.LogError($"[NPCScript] {gameObject.name} could not find DialogueRunner in Dependencies.");
+        return runner;
     }
 
     public void Interact()
     {
-        if (_dialogueRunner.dialogueScreen.activeInHierarchy) return;
+        DialogueRunner runner = GetDialogueRunner();
+        if (runner == null) return;
+
+        if (NPCDialogue == null)
+        {
+            Debug.LogError($"[NPCScript] {gameObject.name} has no DialogueRuntimeGraph assigned.");
+            return;
+        }
+
+        if (runner.dialogueScreen.activeInHierarchy) return;
+
         onDialogueStart.Invoke();
-        _dialogueRunner.OpenDialogue(NPCDialogue, this);
+        runner.OpenDialogue(NPCDialogue, this);
     }
 
-    public void EndInteraction()
-    {
-    }
+    public void EndInteraction() { }
 
     public void LoadData(SaveData saveData)
     {
